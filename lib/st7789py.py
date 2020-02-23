@@ -163,8 +163,9 @@ class ST7789():
         if data is not None:
             self.dc.on()
             self.spi.write(data)
-            if self.cs:
-                self.cs.on()
+
+        if self.cs:
+            self.cs.on()
 
     def hard_reset(self):
         """
@@ -172,6 +173,7 @@ class ST7789():
         """
         if self.cs:
             self.cs.off()
+
         if self.reset:
             self.reset.on()
         time.sleep_ms(50)
@@ -181,6 +183,7 @@ class ST7789():
         if self.reset:
             self.reset.on()
         time.sleep_ms(150)
+
         if self.cs:
             self.cs.on()
 
