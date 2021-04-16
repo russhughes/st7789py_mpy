@@ -15,6 +15,9 @@ https://penfold.owt.com/st7789py/ and videos of the example programs running
 can be seen at https://www.youtube.com/watch?v=atBa0BYPAAc and 
 https://www.youtube.com/watch?v=2cnAhEucPD4.
 
+If you are looking for a faster driver check out the C version of the driver at 
+https://github.com/russhughes/st7789_mpy
+
 Slow ST7789 driver for MicroPython
 ==================================
 
