@@ -94,7 +94,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#ttgo-fonts-py">ttgo_fonts.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#ttgo-scroll-py">ttgo_scroll.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#toasters-py">toasters.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#chango-py">Chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#chango-py">chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#noto-fonts-py">noto_fonts.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fonts.html">Fonts</a><ul>
@@ -195,11 +196,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</p>
-<p>st7789 tft driver in MicroPython based on devbis’ st7789py_mpy module from
+<p>The driver is based on devbis’ st7789py_mpy module from
 <a class="reference external" href="https://github.com/devbis/st7789py_mpy">https://github.com/devbis/st7789py_mpy</a>.</p>
-<p>I added support for display rotation, scrolling and drawing text using 8 and 16
-bit wide bitmap fonts with heights that are multiples of 8.  Included are 12
-bitmap fonts derived from classic pc text mode fonts.</p>
+<p>This driver adds support for:</p>
+<ul class="simple">
+<li><p>320x240, 240x240 and 135x240 pixel displays</p></li>
+<li><p>Display rotation</p></li>
+<li><p>Hardware based scrolling</p></li>
+<li><p>Drawing text using 8 and 16 bit wide bitmap fonts with heights that are
+multiples of 8.  Included are 12 bitmap fonts derived from classic pc
+BIOS text mode fonts.</p></li>
+<li><p>Drawing text using converted TrueType fonts.</p></li>
+<li><p>Drawing converted bitmaps</p></li>
+</ul>
 <dl class="py function">
 <dt id="st7789py.color565">
 <code class="sig-prename descclassname"><span class="pre">st7789py.</span></code><code class="sig-name descname"><span class="pre">color565</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#color565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.color565" title="Permalink to this definition">¶</a></dt>
@@ -208,7 +217,7 @@ bitmap fonts derived from classic pc text mode fonts.</p>
 
 <dl class="py class">
 <dt id="st7789py.ST7789">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">st7789py.</span></code><code class="sig-name descname"><span class="pre">ST7789</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">st7789py.</span></code><code class="sig-name descname"><span class="pre">ST7789</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789" title="Permalink to this definition">¶</a></dt>
 <dd><p>ST7789 driver class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -272,10 +281,13 @@ bitmap fonts derived from classic pc text mode fonts.</p>
 <dd><p>Set display rotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rotation</strong> (<em>int</em>) – 0-Portrait, 1-Landscape, 2-Inverted Portrait,</p></li>
-<li><p><strong>Landscape</strong> (<em>3-Inverted</em>) – </p></li>
+<dd class="field-odd"><p><strong>rotation</strong> (<em>int</em>) – <ul class="simple">
+<li><p>0-Portrait</p></li>
+<li><p>1-Landscape</p></li>
+<li><p>2-Inverted Portrait</p></li>
+<li><p>3-Inverted Landscape</p></li>
 </ul>
+</p>
 </dd>
 </dl>
 </dd></dl>

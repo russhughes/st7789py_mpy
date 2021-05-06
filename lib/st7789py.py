@@ -26,13 +26,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
-st7789 tft driver in MicroPython based on devbis' st7789py_mpy module from
+The driver is based on devbis' st7789py_mpy module from
 https://github.com/devbis/st7789py_mpy.
 
-I added support for display rotation, scrolling and drawing text using 8 and 16
-bit wide bitmap fonts with heights that are multiples of 8.  Included are 12
-bitmap fonts derived from classic pc text mode fonts.
+This driver adds support for:
+
+- 320x240, 240x240 and 135x240 pixel displays
+- Display rotation
+- Hardware based scrolling
+- Drawing text using 8 and 16 bit wide bitmap fonts with heights that are
+  multiples of 8.  Included are 12 bitmap fonts derived from classic pc
+  BIOS text mode fonts.
+- Drawing text using converted TrueType fonts.
+- Drawing converted bitmaps
+
 """
 
 import time
@@ -110,6 +117,26 @@ _BIT2 = const(0x04)
 _BIT1 = const(0x02)
 _BIT0 = const(0x01)
 
+# Rotation tables (width, height, xstart, ystart)[rotation % 4]
+
+WIDTH_320 = [(320, 240,  0,  0),
+             (240, 320,  0,  0),
+             (320, 240,  0,  0),
+             (240, 320,  0,  0)]
+
+WIDTH_240 = [(240, 240,  0,  0),
+             (240, 240,  0,  0),
+             (240, 240,  0, 80),
+             (240, 240, 80,  0)]
+
+WIDTH_135 = [(135, 240, 52, 40),
+             (240, 135, 40, 53),
+             (135, 240, 53, 40),
+             (240, 135, 40, 52)]
+
+# MADCTL ROTATIONS[rotation % 4]
+ROTATIONS = [0x00, 0x60, 0xc0, 0xa0]
+
 
 def color565(red, green=0, blue=0):
     """
@@ -153,9 +180,9 @@ class ST7789():
         """
         Initialize display.
         """
-        if (width, height) != (240, 240) and (width, height) != (135, 240):
+        if height != 240 or width not in[320, 240, 135]:
             raise ValueError(
-                "Unsupported display. Only 240x240 and 135x240 are supported."
+                "Unsupported display. 320x240, 240x240 and 135x240 are supported."
             )
 
         self._display_width = self.width = width
@@ -267,41 +294,29 @@ class ST7789():
         Set display rotation.
 
         Args:
-            rotation (int): 0-Portrait, 1-Landscape, 2-Inverted Portrait,
-            3-Inverted Landscape
+            rotation (int):
+                - 0-Portrait
+                - 1-Landscape
+                - 2-Inverted Portrait
+                - 3-Inverted Landscape
         """
-        self._rotation = rotation % 4
-        if self._rotation == 0:         # Portrait
-            madctl = ST7789_MADCTL_RGB
-            self.width = self._display_width
-            self.height = self._display_height
-            if self._display_width == 135:
-                self.xstart = 52
-                self.ystart = 40
 
-        elif self._rotation == 1:       # Landscape
-            madctl = ST7789_MADCTL_MX | ST7789_MADCTL_MV | ST7789_MADCTL_RGB
-            self.width = self._display_height
-            self.height = self._display_width
-            if self._display_width == 135:
-                self.xstart = 40
-                self.ystart = 53
+        rotation %= 4
+        self._rotation = rotation
+        madctl = ROTATIONS[rotation]
 
-        elif self._rotation == 2:       # Inverted Portrait
-            madctl = ST7789_MADCTL_MX | ST7789_MADCTL_MY | ST7789_MADCTL_RGB
-            self.width = self._display_width
-            self.height = self._display_height
-            if self._display_width == 135:
-                self.xstart = 53
-                self.ystart = 40
-        else:                           # Inverted Landscape
-            madctl = ST7789_MADCTL_MV | ST7789_MADCTL_MY | ST7789_MADCTL_RGB
-            self.width = self._display_height
-            self.height = self._display_width
-            if self._display_width == 135:
-                self.xstart = 40
-                self.ystart = 52
+        if self._display_width == 320:
+            table = WIDTH_320
+        elif self._display_width == 240:
+            table = WIDTH_240
+        elif self._display_width == 135:
+            table = WIDTH_135
+        else:
+            raise ValueError(
+                "Unsupported display. 320x240, 240x240 and 135x240 are supported."
+            )
 
+        self.width, self.height, self.xstart, self.ystart = table[rotation]
         self._write(ST7789_MADCTL, bytes([madctl]))
 
     def _set_columns(self, start, end):

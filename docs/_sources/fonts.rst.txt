@@ -26,10 +26,10 @@ Example:
     font_from_romfont -i font-bin -o fonts -f 32 -l 127
 
 
-.. literalinclude:: fontformat.py
+.. literalinclude:: romfont.py
    :linenos:
    :language: python
-   :caption: Example python font file.
+   :caption: Sample converted romfont font module.
 
 
 True-Type Font Conversion
@@ -46,6 +46,13 @@ Example use:
 
 - ./font2bitmap NotoSans-Regular.ttf 32 -s "0123456789ABCEDF"
 - ./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f
+
+
+.. literalinclude:: truetype.py
+   :linenos:
+   :language: python
+   :caption: Sample converted TrueType font module.
+
 
 
 8x8 Fonts

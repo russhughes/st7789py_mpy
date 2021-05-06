@@ -92,7 +92,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples.html#ttgo-fonts-py">ttgo_fonts.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples.html#ttgo-scroll-py">ttgo_scroll.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples.html#toasters-py">toasters.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html#chango-py">Chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#chango-py">chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#noto-fonts-py">noto_fonts.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../fonts.html">Fonts</a><ul>
@@ -198,13 +199,20 @@
 <span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
 <span class="sd">THE SOFTWARE.</span>
 
-
-<span class="sd">st7789 tft driver in MicroPython based on devbis&#39; st7789py_mpy module from</span>
+<span class="sd">The driver is based on devbis&#39; st7789py_mpy module from</span>
 <span class="sd">https://github.com/devbis/st7789py_mpy.</span>
 
-<span class="sd">I added support for display rotation, scrolling and drawing text using 8 and 16</span>
-<span class="sd">bit wide bitmap fonts with heights that are multiples of 8.  Included are 12</span>
-<span class="sd">bitmap fonts derived from classic pc text mode fonts.</span>
+<span class="sd">This driver adds support for:</span>
+
+<span class="sd">- 320x240, 240x240 and 135x240 pixel displays</span>
+<span class="sd">- Display rotation</span>
+<span class="sd">- Hardware based scrolling</span>
+<span class="sd">- Drawing text using 8 and 16 bit wide bitmap fonts with heights that are</span>
+<span class="sd">  multiples of 8.  Included are 12 bitmap fonts derived from classic pc</span>
+<span class="sd">  BIOS text mode fonts.</span>
+<span class="sd">- Drawing text using converted TrueType fonts.</span>
+<span class="sd">- Drawing converted bitmaps</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
@@ -282,6 +290,26 @@
 <span class="n">_BIT1</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x02</span><span class="p">)</span>
 <span class="n">_BIT0</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x01</span><span class="p">)</span>
 
+<span class="c1"># Rotation tables (width, height, xstart, ystart)[rotation % 4]</span>
+
+<span class="n">WIDTH_320</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)]</span>
+
+<span class="n">WIDTH_240</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)]</span>
+
+<span class="n">WIDTH_135</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">52</span><span class="p">)]</span>
+
+<span class="c1"># MADCTL ROTATIONS[rotation % 4]</span>
+<span class="n">ROTATIONS</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x60</span><span class="p">,</span> <span class="mh">0xc0</span><span class="p">,</span> <span class="mh">0xa0</span><span class="p">]</span>
+
 
 <div class="viewcode-block" id="color565"><a class="viewcode-back" href="../st7789py.html#st7789py.color565">[docs]</a><span class="k">def</span> <span class="nf">color565</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -320,18 +348,20 @@
 <span class="sd">        ystart (int): display ystart offset</span>
 <span class="sd">        rotation (int): display rotation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backlight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">xstart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ystart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span>
+                 <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backlight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize display.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">240</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">height</span> <span class="o">!=</span> <span class="mi">240</span> <span class="ow">or</span> <span class="n">width</span> <span class="ow">not</span> <span class="ow">in</span><span class="p">[</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">135</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Unsupported display. Only 240x240 and 135x240 are supported.&quot;</span>
+                <span class="s2">&quot;Unsupported display. 320x240, 240x240 and 135x240 are supported.&quot;</span>
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spi</span> <span class="o">=</span> <span class="n">spi</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span> <span class="o">=</span> <span class="n">reset</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span>
@@ -437,41 +467,29 @@
 <span class="sd">        Set display rotation.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            rotation (int): 0-Portrait, 1-Landscape, 2-Inverted Portrait,</span>
-<span class="sd">            3-Inverted Landscape</span>
+<span class="sd">            rotation (int):</span>
+<span class="sd">                - 0-Portrait</span>
+<span class="sd">                - 1-Landscape</span>
+<span class="sd">                - 2-Inverted Portrait</span>
+<span class="sd">                - 3-Inverted Landscape</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="n">rotation</span> <span class="o">%</span> <span class="mi">4</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>         <span class="c1"># Portrait</span>
-            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_RGB</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">52</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">40</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>       <span class="c1"># Landscape</span>
-            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_MX</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_MV</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_RGB</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">40</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">53</span>
+        <span class="n">rotation</span> <span class="o">%=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="n">rotation</span>
+        <span class="n">madctl</span> <span class="o">=</span> <span class="n">ROTATIONS</span><span class="p">[</span><span class="n">rotation</span><span class="p">]</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>       <span class="c1"># Inverted Portrait</span>
-            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_MX</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_MY</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_RGB</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">53</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">40</span>
-        <span class="k">else</span><span class="p">:</span>                           <span class="c1"># Inverted Landscape</span>
-            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_MV</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_MY</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_RGB</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">40</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">52</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">320</span><span class="p">:</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_320</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">240</span><span class="p">:</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_240</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_135</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Unsupported display. 320x240, 240x240 and 135x240 are supported.&quot;</span>
+            <span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">rotation</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_MADCTL</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">madctl</span><span class="p">]))</span></div>
 
     <span class="k">def</span> <span class="nf">_set_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>

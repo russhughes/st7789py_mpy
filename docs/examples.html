@@ -94,7 +94,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#ttgo-fonts-py">ttgo_fonts.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ttgo-scroll-py">ttgo_scroll.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#toasters-py">toasters.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chango-py">Chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chango-py">chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#noto-fonts-py">noto_fonts.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fonts.html">Fonts</a><ul>
@@ -767,8 +768,7 @@ information.</p>
 <div class="section" id="toasters-py">
 <h2>toasters.py<a class="headerlink" href="#toasters-py" title="Permalink to this headline">¶</a></h2>
 <p>Flying toasters sprite demo using bitmaps created from spritesheet using
-ImageMagick’s convert and imgtobitmap.py utility. See the maketoast script in
-the utils directory for details.</p>
+ImageMagick’s convert and imgtobitmap.py utility. See the maketoast script in the utils directory for details.</p>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -964,8 +964,8 @@ the utils directory for details.</p>
 </td></tr></table></div>
 </div>
 <div class="section" id="chango-py">
-<h2>Chango.py<a class="headerlink" href="#chango-py" title="Permalink to this headline">¶</a></h2>
-<p>Test for font2bitmap converter for the GC9A01 display.
+<h2>chango.py<a class="headerlink" href="#chango-py" title="Permalink to this headline">¶</a></h2>
+<p>Test for font2bitmap converter for the driver.
 See the font2bitmap program in the utils directory.</p>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1020,7 +1020,7 @@ See the font2bitmap program in the utils directory.</p>
 <span class="normal">51</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">chango.py</span>
 
-<span class="sd">    Test for font2bitmap converter for the st7789 display.</span>
+<span class="sd">    Test for font2bitmap converter for the driver.</span>
 <span class="sd">    See the font2bitmap program in the utils directory.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -1065,6 +1065,150 @@ See the font2bitmap program in the utils directory.</p>
 
     <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_64</span><span class="p">,</span> <span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
     <span class="n">row</span> <span class="o">+=</span> <span class="n">font_64</span><span class="o">.</span><span class="n">HEIGHT</span>
+
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="noto-fonts-py">
+<h2>noto_fonts.py<a class="headerlink" href="#noto-fonts-py" title="Permalink to this headline">¶</a></h2>
+<p>Test for font2bitmap converter for the driver.
+See the font2bitmap program in the utils directory.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">noto_fonts Writes the names of three Noto fonts centered on the display</span>
+<span class="sd">    using the font. The fonts were converted from True Type fonts using</span>
+<span class="sd">    the font2bitmap utility.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SoftSPI</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">st7789py</span> <span class="k">as</span> <span class="nn">st7789</span>
+
+<span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSans_32</span> <span class="k">as</span> <span class="n">noto_sans</span>
+<span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSerif_32</span> <span class="k">as</span> <span class="n">noto_serif</span>
+<span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSansMono_32</span> <span class="k">as</span> <span class="n">noto_mono</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">):</span>
+        <span class="n">screen</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span>                        <span class="c1"># get screen width</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">write_width</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>     <span class="c1"># get the width of the string</span>
+        <span class="k">if</span> <span class="n">width</span> <span class="ow">and</span> <span class="n">width</span> <span class="o">&lt;</span> <span class="n">screen</span><span class="p">:</span>              <span class="c1"># if the string &lt; display</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span>     <span class="c1"># find the column to center</span>
+        <span class="k">else</span><span class="p">:</span>                                     <span class="c1"># otherwise</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>                               <span class="c1"># left justify</span>
+
+        <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>  <span class="c1"># and write the string</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">spi</span> <span class="o">=</span> <span class="n">SoftSPI</span><span class="p">(</span>
+            <span class="n">baudrate</span><span class="o">=</span><span class="mi">20000000</span><span class="p">,</span>
+            <span class="n">polarity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span>
+            <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">19</span><span class="p">),</span>
+            <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">))</span>
+
+        <span class="n">tft</span> <span class="o">=</span> <span class="n">st7789</span><span class="o">.</span><span class="n">ST7789</span><span class="p">(</span>
+            <span class="n">spi</span><span class="p">,</span>
+            <span class="mi">135</span><span class="p">,</span>
+            <span class="mi">240</span><span class="p">,</span>
+            <span class="n">reset</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+            <span class="n">cs</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+            <span class="n">dc</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+            <span class="n">backlight</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+            <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># enable display and clear screen</span>
+        <span class="n">tft</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="mi">16</span>
+
+        <span class="c1"># center the name of the first font, using the font</span>
+        <span class="n">center</span><span class="p">(</span><span class="n">noto_sans</span><span class="p">,</span> <span class="s2">&quot;NotoSans&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+        <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_sans</span><span class="o">.</span><span class="n">HEIGHT</span>
+
+        <span class="c1"># center the name of the second font, using the font</span>
+        <span class="n">center</span><span class="p">(</span><span class="n">noto_serif</span><span class="p">,</span> <span class="s2">&quot;NotoSerif&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
+        <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_serif</span><span class="o">.</span><span class="n">HEIGHT</span>
+
+        <span class="c1"># center the name of the third font, using the font</span>
+        <span class="n">center</span><span class="p">(</span><span class="n">noto_mono</span><span class="p">,</span> <span class="s2">&quot;NotoSansMono&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
+        <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_mono</span><span class="o">.</span><span class="n">HEIGHT</span>
+
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># shutdown spi</span>
+        <span class="k">if</span> <span class="s1">&#39;spi&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+            <span class="n">spi</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
 
 
 <span class="n">main</span><span class="p">()</span>
