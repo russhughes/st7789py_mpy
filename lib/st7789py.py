@@ -171,16 +171,18 @@ class ST7789():
         dc (pin): dc pin
         cs (pin): cs pin
         backlight(pin): backlight pin
-        xstart (int): display xstart offset
-        ystart (int): display ystart offset
         rotation (int): display rotation
+            - 0-Portrait
+            - 1-Landscape
+            - 2-Inverted Portrait
+            - 3-Inverted Landscape
     """
     def __init__(self, spi, width, height, reset, dc,
                  cs=None, backlight=None, rotation=0):
         """
         Initialize display.
         """
-        if height != 240 or width not in[320, 240, 135]:
+        if height != 240 or width not in [320, 240, 135]:
             raise ValueError(
                 "Unsupported display. 320x240, 240x240 and 135x240 are supported."
             )
