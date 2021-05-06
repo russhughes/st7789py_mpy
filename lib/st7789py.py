@@ -148,8 +148,8 @@ class ST7789():
         ystart (int): display ystart offset
         rotation (int): display rotation
     """
-    def __init__(self, spi, width, height, reset, dc, cs=None, backlight=None,
-                 xstart=-1, ystart=-1, rotation=0):
+    def __init__(self, spi, width, height, reset, dc,
+                 cs=None, backlight=None, rotation=0):
         """
         Initialize display.
         """
@@ -160,6 +160,8 @@ class ST7789():
 
         self._display_width = self.width = width
         self._display_height = self.height = height
+        self.xstart = 0
+        self.ystart = 0
         self.spi = spi
         self.reset = reset
         self.dc = dc
