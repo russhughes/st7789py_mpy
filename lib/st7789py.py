@@ -1,4 +1,32 @@
 """
+Copyright (c) 2020, 2021 Russ Hughes
+
+This file incorporates work covered by the following copyright and
+permission notice and is licensed under the same terms:
+
+The MIT License (MIT)
+
+Copyright (c) 2019 Ivan Belokobylskiy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
 st7789 tft driver in MicroPython based on devbis' st7789py_mpy module from
 https://github.com/devbis/st7789py_mpy.
 
@@ -82,6 +110,7 @@ _BIT2 = const(0x04)
 _BIT1 = const(0x02)
 _BIT0 = const(0x01)
 
+
 def color565(red, green=0, blue=0):
     """
     Convert red, green and blue values (0-255) into a 16-bit 565 encoding.
@@ -92,13 +121,16 @@ def color565(red, green=0, blue=0):
         pass
     return (red & 0xf8) << 8 | (green & 0xfc) << 3 | blue >> 3
 
+
 def _encode_pos(x, y):
     """Encode a postion into bytes."""
     return struct.pack(_ENCODE_POS, x, y)
 
+
 def _encode_pixel(color):
     """Encode a pixel color into bytes."""
     return struct.pack(_ENCODE_PIXEL, color)
+
 
 class ST7789():
     """
@@ -139,20 +171,20 @@ class ST7789():
         self.soft_reset()
         self.sleep_mode(False)
 
-        self._set_color_mode(COLOR_MODE_65K|COLOR_MODE_16BIT)
+        self._set_color_mode(COLOR_MODE_65K | COLOR_MODE_16BIT)
         time.sleep_ms(50)
         self.rotation(self._rotation)
         self.inversion_mode(True)
         time.sleep_ms(10)
-        self.write(ST7789_NORON)
+        self._write(ST7789_NORON)
         time.sleep_ms(10)
         if backlight is not None:
             backlight.value(1)
         self.fill(0)
-        self.write(ST7789_DISPON)
+        self._write(ST7789_DISPON)
         time.sleep_ms(500)
 
-    def write(self, command=None, data=None):
+    def _write(self, command=None, data=None):
         """SPI write to the device: commands and data."""
         if self.cs:
             self.cs.off()
@@ -163,9 +195,8 @@ class ST7789():
         if data is not None:
             self.dc.on()
             self.spi.write(data)
-
-        if self.cs:
-            self.cs.on()
+            if self.cs:
+                self.cs.on()
 
     def hard_reset(self):
         """
@@ -173,7 +204,6 @@ class ST7789():
         """
         if self.cs:
             self.cs.off()
-
         if self.reset:
             self.reset.on()
         time.sleep_ms(50)
@@ -183,7 +213,6 @@ class ST7789():
         if self.reset:
             self.reset.on()
         time.sleep_ms(150)
-
         if self.cs:
             self.cs.on()
 
@@ -191,7 +220,7 @@ class ST7789():
         """
         Soft reset display.
         """
-        self.write(ST7789_SWRESET)
+        self._write(ST7789_SWRESET)
         time.sleep_ms(150)
 
     def sleep_mode(self, value):
@@ -203,9 +232,9 @@ class ST7789():
             mode
         """
         if value:
-            self.write(ST7789_SLPIN)
+            self._write(ST7789_SLPIN)
         else:
-            self.write(ST7789_SLPOUT)
+            self._write(ST7789_SLPOUT)
 
     def inversion_mode(self, value):
         """
@@ -216,9 +245,9 @@ class ST7789():
             inversion mode
         """
         if value:
-            self.write(ST7789_INVON)
+            self._write(ST7789_INVON)
         else:
-            self.write(ST7789_INVOFF)
+            self._write(ST7789_INVOFF)
 
     def _set_color_mode(self, mode):
         """
@@ -229,7 +258,7 @@ class ST7789():
                 COLOR_MODE_65K, COLOR_MODE_262K, COLOR_MODE_12BIT,
                 COLOR_MODE_16BIT, COLOR_MODE_18BIT, COLOR_MODE_16M
         """
-        self.write(ST7789_COLMOD, bytes([mode & 0x77]))
+        self._write(ST7789_COLMOD, bytes([mode & 0x77]))
 
     def rotation(self, rotation):
         """
@@ -271,7 +300,7 @@ class ST7789():
                 self.xstart = 40
                 self.ystart = 52
 
-        self.write(ST7789_MADCTL, bytes([madctl]))
+        self._write(ST7789_MADCTL, bytes([madctl]))
 
     def _set_columns(self, start, end):
         """
@@ -282,7 +311,7 @@ class ST7789():
             end (int): column end address
         """
         if start <= end <= self.width:
-            self.write(ST7789_CASET, _encode_pos(
+            self._write(ST7789_CASET, _encode_pos(
                 start+self.xstart, end + self.xstart))
 
     def _set_rows(self, start, end):
@@ -294,10 +323,10 @@ class ST7789():
             end (int): row end address
        """
         if start <= end <= self.height:
-            self.write(ST7789_RASET, _encode_pos(
+            self._write(ST7789_RASET, _encode_pos(
                 start+self.ystart, end+self.ystart))
 
-    def set_window(self, x0, y0, x1, y1):
+    def _set_window(self, x0, y0, x1, y1):
         """
         Set window to column and row address.
 
@@ -309,7 +338,7 @@ class ST7789():
         """
         self._set_columns(x0, x1)
         self._set_rows(y0, y1)
-        self.write(ST7789_RAMWR)
+        self._write(ST7789_RAMWR)
 
     def vline(self, x, y, length, color):
         """
@@ -344,8 +373,8 @@ class ST7789():
             Y (int): y coordinate
             color (int): 565 encoded color
         """
-        self.set_window(x, y, x, y)
-        self.write(None, _encode_pixel(color))
+        self._set_window(x, y, x, y)
+        self._write(None, _encode_pixel(color))
 
     def blit_buffer(self, buffer, x, y, width, height):
         """
@@ -358,8 +387,8 @@ class ST7789():
             width (int): Width
             height (int): Height
         """
-        self.set_window(x, y, x + width - 1, y + height - 1)
-        self.write(None, buffer)
+        self._set_window(x, y, x + width - 1, y + height - 1)
+        self._write(None, buffer)
 
     def rect(self, x, y, w, h, color):
         """
@@ -388,16 +417,16 @@ class ST7789():
             height (int): Height in pixels
             color (int): 565 encoded color
         """
-        self.set_window(x, y, x + width - 1, y + height - 1)
+        self._set_window(x, y, x + width - 1, y + height - 1)
         chunks, rest = divmod(width * height, _BUFFER_SIZE)
         pixel = _encode_pixel(color)
         self.dc.on()
         if chunks:
             data = pixel * _BUFFER_SIZE
             for _ in range(chunks):
-                self.write(None, data)
+                self._write(None, data)
         if rest:
-            self.write(None, pixel * rest)
+            self._write(None, pixel * rest)
 
     def fill(self, color):
         """
@@ -460,7 +489,7 @@ class ST7789():
             bfa (int): Bottom Fixed Area
         """
         struct.pack(">HHH", tfa, vsa, bfa)
-        self.write(ST7789_VSCRDEF, struct.pack(">HHH", tfa, vsa, bfa))
+        self._write(ST7789_VSCRDEF, struct.pack(">HHH", tfa, vsa, bfa))
 
     def vscsad(self, vssa):
         """
@@ -479,7 +508,7 @@ class ST7789():
             vssa (int): Vertical Scrolling Start Address
 
         """
-        self.write(ST7789_VSCSAD, struct.pack(">H", vssa))
+        self._write(ST7789_VSCSAD, struct.pack(">H", vssa))
 
     def _text8(self, font, text, x0, y0, color=WHITE, background=BLACK):
         """
@@ -511,7 +540,8 @@ class ST7789():
 
                 for line in range(passes):
                     idx = (ch-font.FIRST)*size+(each*line)
-                    buffer = struct.pack('>64H',
+                    buffer = struct.pack(
+                        '>64H',
                         color if font.FONT[idx] & _BIT7 else background,
                         color if font.FONT[idx] & _BIT6 else background,
                         color if font.FONT[idx] & _BIT5 else background,
@@ -611,7 +641,8 @@ class ST7789():
 
                 for line in range(passes):
                     idx = (ch-font.FIRST)*size+(each*line)
-                    buffer = struct.pack('>128H',
+                    buffer = struct.pack(
+                        '>128H',
                         color if font.FONT[idx] & _BIT7 else background,
                         color if font.FONT[idx] & _BIT6 else background,
                         color if font.FONT[idx] & _BIT5 else background,
@@ -761,3 +792,115 @@ class ST7789():
             self._text8(font, text, x0, y0, color, background)
         else:
             self._text16(font, text, x0, y0, color, background)
+
+    def bitmap(self, bitmap, x, y, index=0):
+        """
+        Draw a bitmap on display at the specified column and row
+
+        Args:
+            bitmap (bitmap_module): The module containing the bitmap to draw
+            x (int): column to start drawing at
+            y (int): row to start drawing at
+            index (int): Optional index of bitmap to draw from multiple bitmap
+                module
+
+        """
+        bitmap_size = bitmap.HEIGHT * bitmap.WIDTH
+        buffer_len = bitmap_size * 2
+        buffer = bytearray(buffer_len)
+        bs_bit = bitmap.BPP * bitmap_size * index if index > 0 else 0
+
+        for i in range(0, buffer_len, 2):
+            color_index = 0
+            for bit in range(bitmap.BPP):
+                color_index <<= 1
+                color_index |= (bitmap.BITMAP[bs_bit // 8]
+                                & 1 << (7 - (bs_bit % 8))) > 0
+                bs_bit += 1
+
+            color = bitmap.PALETTE[color_index]
+            buffer[i] = color & 0xff00 >> 8
+            buffer[i + 1] = color_index & 0xff
+
+        to_col = x + bitmap.WIDTH - 1
+        to_row = y + bitmap.HEIGHT - 1
+        if self.width > to_col and self.height > to_row:
+            self._set_window(x, y, to_col, to_row)
+            self._write(None, buffer)
+
+    # @micropython.native
+    def write(self, font, string, x, y, fg=WHITE, bg=BLACK):
+        """
+        Write a string using a converted true-type font on the display starting
+        at the specified column and row
+
+        Args:
+            font (font): The module containing the converted true-type font
+            s (string): The string to write
+            x (int): column to start writing
+            y (int): row to start writing
+            fg (int): foreground color, optional, defaults to WHITE
+            bg (int): background color, optional, defaults to BLACK
+        """
+        buffer_len = font.HEIGHT * font.MAX_WIDTH * 2
+        buffer = bytearray(buffer_len)
+        fg_hi = (fg & 0xff00) >> 8
+        fg_lo = fg & 0xff
+
+        bg_hi = (bg & 0xff00) >> 8
+        bg_lo = bg & 0xff
+
+        for character in string:
+            try:
+                char_index = font.MAP.index(character)
+                offset = char_index * font.OFFSET_WIDTH
+                bs_bit = font.OFFSETS[offset]
+                if font.OFFSET_WIDTH > 1:
+                    bs_bit = (bs_bit << 8) + font.OFFSETS[offset + 1]
+
+                if font.OFFSET_WIDTH > 2:
+                    bs_bit = (bs_bit << 8) + font.OFFSETS[offset + 2]
+
+                char_width = font.WIDTHS[char_index]
+                buffer_needed = char_width * font.HEIGHT * 2
+
+                for i in range(0, buffer_needed, 2):
+                    if font.BITMAPS[bs_bit // 8] & 1 << (7 - (bs_bit % 8)) > 0:
+                        buffer[i] = fg_hi
+                        buffer[i + 1] = fg_lo
+                    else:
+                        buffer[i] = bg_hi
+                        buffer[i + 1] = bg_lo
+
+                    bs_bit += 1
+
+                to_col = x + char_width - 1
+                to_row = y + font.HEIGHT - 1
+                if self.width > to_col and self.height > to_row:
+                    self._set_window(x, y, to_col, to_row)
+                    self._write(None, buffer[0:buffer_needed])
+
+                x += char_width
+
+            except ValueError:
+                pass
+
+    def write_width(self, font, string):
+        """
+        Returns the width in pixels of the string if it was written with the
+        specified font
+
+        Args:
+            font (font): The module containing the converted true-type font
+            string (string): The string to measure
+        """
+        width = 0
+        for character in string:
+            try:
+                char_index = font.MAP.index(character)
+                width += font.WIDTHS[char_index]
+
+            except ValueError:
+                pass
+
+        return width

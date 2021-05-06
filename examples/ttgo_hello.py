@@ -8,27 +8,36 @@ ttgo_hello.py
 
 """
 import random
-from machine import Pin, SPI
+from machine import Pin, SoftSPI
 import st7789py as st7789
 
 # Choose a font
 
-# from fonts import vga1_8x8 as font
-# from fonts import vga2_8x8 as font
-# from fonts import vga1_8x16 as font
-# from fonts import vga2_8x16 as font
-# from fonts import vga1_16x16 as font
-# from fonts import vga1_bold_16x16 as font
-# from fonts import vga2_16x16 as font
-# from fonts import vga2_bold_16x16 as font
-# from fonts import vga1_16x32 as font
-# from fonts import vga1_bold_16x32 as font
-# from fonts import vga2_16x32 as font
-from fonts import vga2_bold_16x32 as font
+# from romfonts import vga1_8x8 as font
+# from romfonts import vga2_8x8 as font
+# from romfonts import vga1_8x16 as font
+# from romfonts import vga2_8x16 as font
+# from romfonts import vga1_16x16 as font
+# from romfonts import vga1_bold_16x16 as font
+# from romfonts import vga2_16x16 as font
+# from romfonts import vga2_bold_16x16 as font
+# from romfonts import vga1_16x32 as font
+# from romfonts import vga1_bold_16x32 as font
+# from romfonts import vga2_16x32 as font
+from romfonts import vga2_bold_16x32 as font
+
 
 def main():
+    spi = SoftSPI(
+        baudrate=20000000,
+        polarity=1,
+        phase=0,
+        sck=Pin(18),
+        mosi=Pin(19),
+        miso=Pin(13))
+
     tft = st7789.ST7789(
-        SPI(2, baudrate=30000000, polarity=1, phase=1, sck=Pin(18), mosi=Pin(19)),
+        spi,
         135,
         240,
         reset=Pin(23, Pin.OUT),
@@ -59,5 +68,6 @@ def main():
                         random.getrandbits(8),
                         random.getrandbits(8))
                 )
+
 
 main()

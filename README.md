@@ -7,16 +7,12 @@ https://github.com/devbis/st7789py_mpy.
 I modified the original driver for one of my projects by adding support for
 display rotation, scrolling and drawing text using 8 and 16 bit wide bitmap
 fonts with heights that are multiples of 8.  Included are 12 bitmap fonts
-derived from classic pc text mode fonts and a couple of example
-programs that run on the TTGO T-Display.
+derived from classic pc text mode fonts and several example programs that run
+on the TTGO T-Display.
 
-This is a work in progress. More documentation can be found at
-https://penfold.owt.com/st7789py/ and videos of the example programs running 
-can be seen at https://www.youtube.com/watch?v=atBa0BYPAAc and 
-https://www.youtube.com/watch?v=2cnAhEucPD4.
+This is a work in progress. Documentation can be found in the docs directory
+and at https://penfold.owt.com/st7789py
 
-If you are looking for a faster driver check out the C version of the driver at 
-https://github.com/russhughes/st7789_mpy
 
 Slow ST7789 driver for MicroPython
 ==================================
@@ -24,9 +20,6 @@ Slow ST7789 driver for MicroPython
 This is a slow MicroPython driver for 240x240 ST7789 display without CS pin
 from Ali Express. It also supports 135x240 TTGO Display
 
-
-
-Version: 0.1.4
 
 The performance is quite low due to python function call overhead.
 If you have a chance to build firmware and you are using

@@ -1,0 +1,1123 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>st7789py &mdash; st7789py 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> st7789py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#ttgo-lines-py">ttgo_lines.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#ttgo-hello-py">ttgo_hello.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#ttgo-fonts-py">ttgo_fonts.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#ttgo-scroll-py">ttgo_scroll.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#toasters-py">toasters.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#chango-py">Chango.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fonts.html">Fonts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#rom-font-conversion">Rom Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x8-fonts">8x8 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x16-fonts">8x16 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#id1">16x16 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x32-fonts">16x32 Fonts</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">st7789py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>st7789py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for st7789py</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Copyright (c) 2020, 2021 Russ Hughes</span>
+
+<span class="sd">This file incorporates work covered by the following copyright and</span>
+<span class="sd">permission notice and is licensed under the same terms:</span>
+
+<span class="sd">The MIT License (MIT)</span>
+
+<span class="sd">Copyright (c) 2019 Ivan Belokobylskiy</span>
+
+<span class="sd">Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="sd">of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="sd">in the Software without restriction, including without limitation the rights</span>
+<span class="sd">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="sd">copies of the Software, and to permit persons to whom the Software is</span>
+<span class="sd">furnished to do so, subject to the following conditions:</span>
+
+<span class="sd">The above copyright notice and this permission notice shall be included in</span>
+<span class="sd">all copies or substantial portions of the Software.</span>
+
+<span class="sd">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="sd">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="sd">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="sd">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="sd">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class="sd">THE SOFTWARE.</span>
+
+
+<span class="sd">st7789 tft driver in MicroPython based on devbis&#39; st7789py_mpy module from</span>
+<span class="sd">https://github.com/devbis/st7789py_mpy.</span>
+
+<span class="sd">I added support for display rotation, scrolling and drawing text using 8 and 16</span>
+<span class="sd">bit wide bitmap fonts with heights that are multiples of 8.  Included are 12</span>
+<span class="sd">bitmap fonts derived from classic pc text mode fonts.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span> <span class="nn">ustruct</span> <span class="k">as</span> <span class="nn">struct</span>
+
+<span class="c1"># commands</span>
+<span class="n">ST7789_NOP</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x00</span><span class="p">)</span>
+<span class="n">ST7789_SWRESET</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x01</span><span class="p">)</span>
+<span class="n">ST7789_RDDID</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x04</span><span class="p">)</span>
+<span class="n">ST7789_RDDST</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x09</span><span class="p">)</span>
+
+<span class="n">ST7789_SLPIN</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x10</span><span class="p">)</span>
+<span class="n">ST7789_SLPOUT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x11</span><span class="p">)</span>
+<span class="n">ST7789_PTLON</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x12</span><span class="p">)</span>
+<span class="n">ST7789_NORON</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x13</span><span class="p">)</span>
+
+<span class="n">ST7789_INVOFF</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span>
+<span class="n">ST7789_INVON</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x21</span><span class="p">)</span>
+<span class="n">ST7789_DISPOFF</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x28</span><span class="p">)</span>
+<span class="n">ST7789_DISPON</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x29</span><span class="p">)</span>
+<span class="n">ST7789_CASET</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x2A</span><span class="p">)</span>
+<span class="n">ST7789_RASET</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x2B</span><span class="p">)</span>
+<span class="n">ST7789_RAMWR</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x2C</span><span class="p">)</span>
+<span class="n">ST7789_RAMRD</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x2E</span><span class="p">)</span>
+
+<span class="n">ST7789_PTLAR</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x30</span><span class="p">)</span>
+<span class="n">ST7789_VSCRDEF</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x33</span><span class="p">)</span>
+<span class="n">ST7789_COLMOD</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x3A</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x36</span><span class="p">)</span>
+<span class="n">ST7789_VSCSAD</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x37</span><span class="p">)</span>
+
+<span class="n">ST7789_MADCTL_MY</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x80</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL_MX</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x40</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL_MV</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL_ML</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x10</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL_BGR</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x08</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL_MH</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x04</span><span class="p">)</span>
+<span class="n">ST7789_MADCTL_RGB</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x00</span><span class="p">)</span>
+
+<span class="n">ST7789_RDID1</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xDA</span><span class="p">)</span>
+<span class="n">ST7789_RDID2</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xDB</span><span class="p">)</span>
+<span class="n">ST7789_RDID3</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xDC</span><span class="p">)</span>
+<span class="n">ST7789_RDID4</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xDD</span><span class="p">)</span>
+
+<span class="n">COLOR_MODE_65K</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x50</span><span class="p">)</span>
+<span class="n">COLOR_MODE_262K</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x60</span><span class="p">)</span>
+<span class="n">COLOR_MODE_12BIT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x03</span><span class="p">)</span>
+<span class="n">COLOR_MODE_16BIT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x05</span><span class="p">)</span>
+<span class="n">COLOR_MODE_18BIT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x06</span><span class="p">)</span>
+<span class="n">COLOR_MODE_16M</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x07</span><span class="p">)</span>
+
+<span class="c1"># Color definitions</span>
+<span class="n">BLACK</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x0000</span><span class="p">)</span>
+<span class="n">BLUE</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x001F</span><span class="p">)</span>
+<span class="n">RED</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xF800</span><span class="p">)</span>
+<span class="n">GREEN</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x07E0</span><span class="p">)</span>
+<span class="n">CYAN</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x07FF</span><span class="p">)</span>
+<span class="n">MAGENTA</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xF81F</span><span class="p">)</span>
+<span class="n">YELLOW</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xFFE0</span><span class="p">)</span>
+<span class="n">WHITE</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0xFFFF</span><span class="p">)</span>
+
+<span class="n">_ENCODE_PIXEL</span> <span class="o">=</span> <span class="s2">&quot;&gt;H&quot;</span>
+<span class="n">_ENCODE_POS</span> <span class="o">=</span> <span class="s2">&quot;&gt;HH&quot;</span>
+<span class="n">_DECODE_PIXEL</span> <span class="o">=</span> <span class="s2">&quot;&gt;BBB&quot;</span>
+
+<span class="n">_BUFFER_SIZE</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+
+<span class="n">_BIT7</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x80</span><span class="p">)</span>
+<span class="n">_BIT6</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x40</span><span class="p">)</span>
+<span class="n">_BIT5</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span>
+<span class="n">_BIT4</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x10</span><span class="p">)</span>
+<span class="n">_BIT3</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x08</span><span class="p">)</span>
+<span class="n">_BIT2</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x04</span><span class="p">)</span>
+<span class="n">_BIT1</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x02</span><span class="p">)</span>
+<span class="n">_BIT0</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x01</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="color565"><a class="viewcode-back" href="../st7789py.html#st7789py.color565">[docs]</a><span class="k">def</span> <span class="nf">color565</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert red, green and blue values (0-255) into a 16-bit 565 encoding.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="n">red</span>  <span class="c1"># see if the first var is a tuple/list</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">red</span> <span class="o">&amp;</span> <span class="mh">0xf8</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="p">(</span><span class="n">green</span> <span class="o">&amp;</span> <span class="mh">0xfc</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">blue</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span></div>
+
+
+<span class="k">def</span> <span class="nf">_encode_pos</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Encode a postion into bytes.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">_ENCODE_POS</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_encode_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Encode a pixel color into bytes.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">_ENCODE_PIXEL</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ST7789"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789">[docs]</a><span class="k">class</span> <span class="nc">ST7789</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ST7789 driver class</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        spi (spi): spi object</span>
+<span class="sd">        width (int): display width</span>
+<span class="sd">        height (int): display height</span>
+<span class="sd">        reset (pin): reset pin</span>
+<span class="sd">        dc (pin): dc pin</span>
+<span class="sd">        cs (pin): cs pin</span>
+<span class="sd">        backlight(pin): backlight pin</span>
+<span class="sd">        xstart (int): display xstart offset</span>
+<span class="sd">        ystart (int): display ystart offset</span>
+<span class="sd">        rotation (int): display rotation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backlight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">xstart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ystart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize display.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">240</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Unsupported display. Only 240x240 and 135x240 are supported.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spi</span> <span class="o">=</span> <span class="n">spi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span> <span class="o">=</span> <span class="n">reset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backlight</span> <span class="o">=</span> <span class="n">backlight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="n">rotation</span> <span class="o">%</span> <span class="mi">4</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hard_reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">soft_reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_mode</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_color_mode</span><span class="p">(</span><span class="n">COLOR_MODE_65K</span> <span class="o">|</span> <span class="n">COLOR_MODE_16BIT</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inversion_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_NORON</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">backlight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">backlight</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_DISPON</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;SPI write to the device: commands and data.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dc</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="n">command</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dc</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ST7789.hard_reset"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.hard_reset">[docs]</a>    <span class="k">def</span> <span class="nf">hard_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hard reset display.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">on</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ST7789.soft_reset"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.soft_reset">[docs]</a>    <span class="k">def</span> <span class="nf">soft_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Soft reset display.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_SWRESET</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.sleep_mode"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.sleep_mode">[docs]</a>    <span class="k">def</span> <span class="nf">sleep_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enable or disable display sleep mode.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (bool): if True enable sleep mode. if False disable sleep</span>
+<span class="sd">            mode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_SLPIN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_SLPOUT</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.inversion_mode"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.inversion_mode">[docs]</a>    <span class="k">def</span> <span class="nf">inversion_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enable or disable display inversion mode.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (bool): if True enable inversion mode. if False disable</span>
+<span class="sd">            inversion mode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_INVON</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_INVOFF</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_set_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set display color mode.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mode (int): color mode</span>
+<span class="sd">                COLOR_MODE_65K, COLOR_MODE_262K, COLOR_MODE_12BIT,</span>
+<span class="sd">                COLOR_MODE_16BIT, COLOR_MODE_18BIT, COLOR_MODE_16M</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_COLMOD</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="mh">0x77</span><span class="p">]))</span>
+
+<div class="viewcode-block" id="ST7789.rotation"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.rotation">[docs]</a>    <span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rotation</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set display rotation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rotation (int): 0-Portrait, 1-Landscape, 2-Inverted Portrait,</span>
+<span class="sd">            3-Inverted Landscape</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="n">rotation</span> <span class="o">%</span> <span class="mi">4</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>         <span class="c1"># Portrait</span>
+            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_RGB</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">52</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">40</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>       <span class="c1"># Landscape</span>
+            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_MX</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_MV</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_RGB</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">40</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">53</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>       <span class="c1"># Inverted Portrait</span>
+            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_MX</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_MY</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_RGB</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">53</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="k">else</span><span class="p">:</span>                           <span class="c1"># Inverted Landscape</span>
+            <span class="n">madctl</span> <span class="o">=</span> <span class="n">ST7789_MADCTL_MV</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_MY</span> <span class="o">|</span> <span class="n">ST7789_MADCTL_RGB</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">40</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">52</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_MADCTL</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">madctl</span><span class="p">]))</span></div>
+
+    <span class="k">def</span> <span class="nf">_set_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send CASET (column address set) command to display.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (int): column start address</span>
+<span class="sd">            end (int): column end address</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_CASET</span><span class="p">,</span> <span class="n">_encode_pos</span><span class="p">(</span>
+                <span class="n">start</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send RASET (row address set) command to display.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start (int): row start address</span>
+<span class="sd">            end (int): row end address</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_RASET</span><span class="p">,</span> <span class="n">_encode_pos</span><span class="p">(</span>
+                <span class="n">start</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">,</span> <span class="n">end</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set window to column and row address.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x0 (int): column start address</span>
+<span class="sd">            y0 (int): row start address</span>
+<span class="sd">            x1 (int): column end address</span>
+<span class="sd">            y1 (int): row end address</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_columns</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_rows</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_RAMWR</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ST7789.vline"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vline">[docs]</a>    <span class="k">def</span> <span class="nf">vline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw vertical line at the given location and color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (int): x coordinate</span>
+<span class="sd">            Y (int): y coordinate</span>
+<span class="sd">            length (int): length of line</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.hline"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.hline">[docs]</a>    <span class="k">def</span> <span class="nf">hline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw horizontal line at the given location and color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (int): x coordinate</span>
+<span class="sd">            Y (int): y coordinate</span>
+<span class="sd">            length (int): length of line</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.pixel"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.pixel">[docs]</a>    <span class="k">def</span> <span class="nf">pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a pixel at the given location and color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (int): x coordinate</span>
+<span class="sd">            Y (int): y coordinate</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">_encode_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ST7789.blit_buffer"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.blit_buffer">[docs]</a>    <span class="k">def</span> <span class="nf">blit_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Copy buffer to display at the given location.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            buffer (bytes): Data to copy to display</span>
+<span class="sd">            x (int): Top left corner x coordinate</span>
+<span class="sd">            Y (int): Top left corner y coordinate</span>
+<span class="sd">            width (int): Width</span>
+<span class="sd">            height (int): Height</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.rect"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.rect">[docs]</a>    <span class="k">def</span> <span class="nf">rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a rectangle at the given location, size and color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (int): Top left corner x coordinate</span>
+<span class="sd">            y (int): Top left corner y coordinate</span>
+<span class="sd">            width (int): Width in pixels</span>
+<span class="sd">            height (int): Height in pixels</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.fill_rect"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.fill_rect">[docs]</a>    <span class="k">def</span> <span class="nf">fill_rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a rectangle at the given location, size and filled with color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (int): Top left corner x coordinate</span>
+<span class="sd">            y (int): Top left corner y coordinate</span>
+<span class="sd">            width (int): Width in pixels</span>
+<span class="sd">            height (int): Height in pixels</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">chunks</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">,</span> <span class="n">_BUFFER_SIZE</span><span class="p">)</span>
+        <span class="n">pixel</span> <span class="o">=</span> <span class="n">_encode_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">chunks</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pixel</span> <span class="o">*</span> <span class="n">_BUFFER_SIZE</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chunks</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rest</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">pixel</span> <span class="o">*</span> <span class="n">rest</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.fill"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.fill">[docs]</a>    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fill the entire FrameBuffer with the specified color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.line"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.line">[docs]</a>    <span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a single pixel wide line starting at x0, y0 and ending at x1, y1.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x0 (int): Start point x coordinate</span>
+<span class="sd">            y0 (int): Start point y coordinate</span>
+<span class="sd">            x1 (int): End point x coordinate</span>
+<span class="sd">            y1 (int): End point y coordinate</span>
+<span class="sd">            color (int): 565 encoded color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">steep</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">steep</span><span class="p">:</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x0</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x1</span>
+        <span class="k">if</span> <span class="n">x0</span> <span class="o">&gt;</span> <span class="n">x1</span><span class="p">:</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x0</span>
+            <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y0</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">y0</span> <span class="o">&lt;</span> <span class="n">y1</span><span class="p">:</span>
+            <span class="n">ystep</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ystep</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">x0</span> <span class="o">&lt;=</span> <span class="n">x1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">steep</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+            <span class="n">err</span> <span class="o">-=</span> <span class="n">dy</span>
+            <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">y0</span> <span class="o">+=</span> <span class="n">ystep</span>
+                <span class="n">err</span> <span class="o">+=</span> <span class="n">dx</span>
+            <span class="n">x0</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="ST7789.vscrdef"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vscrdef">[docs]</a>    <span class="k">def</span> <span class="nf">vscrdef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set Vertical Scrolling Definition.</span>
+
+<span class="sd">        To scroll a 135x240 display these values should be 40, 240, 40.</span>
+<span class="sd">        There are 40 lines above the display that are not shown followed by</span>
+<span class="sd">        240 lines that are shown followed by 40 more lines that are not shown.</span>
+<span class="sd">        You could write to these areas off display and scroll them into view by</span>
+<span class="sd">        changing the TFA, VSA and BFA values.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tfa (int): Top Fixed Area</span>
+<span class="sd">            vsa (int): Vertical Scrolling Area</span>
+<span class="sd">            bfa (int): Bottom Fixed Area</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;HHH&quot;</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_VSCRDEF</span><span class="p">,</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;HHH&quot;</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ST7789.vscsad"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vscsad">[docs]</a>    <span class="k">def</span> <span class="nf">vscsad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vssa</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set Vertical Scroll Start Address of RAM.</span>
+
+<span class="sd">        Defines which line in the Frame Memory will be written as the first</span>
+<span class="sd">        line after the last line of the Top Fixed Area on the display</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            for line in range(40, 280, 1):</span>
+<span class="sd">                tft.vscsad(line)</span>
+<span class="sd">                utime.sleep(0.01)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vssa (int): Vertical Scrolling Start Address</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_VSCSAD</span><span class="p">,</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;H&quot;</span><span class="p">,</span> <span class="n">vssa</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">_text8</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method to write characters with width of 8 and</span>
+<span class="sd">        heights of 8 or 16.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            font (module): font module to use</span>
+<span class="sd">            text (str): text to write</span>
+<span class="sd">            x0 (int): column to start drawing at</span>
+<span class="sd">            y0 (int): row to start drawing at</span>
+<span class="sd">            color (int): 565 encoded color to use for characters</span>
+<span class="sd">            background (int): 565 encoded color to use for background</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">FIRST</span> <span class="o">&lt;=</span> <span class="n">ch</span> <span class="o">&lt;</span> <span class="n">font</span><span class="o">.</span><span class="n">LAST</span>
+                    <span class="ow">and</span> <span class="n">x0</span><span class="o">+</span><span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
+                    <span class="ow">and</span> <span class="n">y0</span><span class="o">+</span><span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">):</span>
+
+                <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+                    <span class="n">passes</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">size</span> <span class="o">=</span> <span class="mi">8</span>
+                    <span class="n">each</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">passes</span> <span class="o">=</span> <span class="mi">2</span>
+                    <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span>
+                    <span class="n">each</span> <span class="o">=</span> <span class="mi">8</span>
+
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">passes</span><span class="p">):</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">ch</span><span class="o">-</span><span class="n">font</span><span class="o">.</span><span class="n">FIRST</span><span class="p">)</span><span class="o">*</span><span class="n">size</span><span class="o">+</span><span class="p">(</span><span class="n">each</span><span class="o">*</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">buffer</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>
+                        <span class="s1">&#39;&gt;64H&#39;</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">blit_buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="o">+</span><span class="mi">8</span><span class="o">*</span><span class="n">line</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+                <span class="n">x0</span> <span class="o">+=</span> <span class="mi">8</span>
+
+    <span class="k">def</span> <span class="nf">_text16</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method to draw characters with width of 16 and heights of 16</span>
+<span class="sd">        or 32.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            font (module): font module to use</span>
+<span class="sd">            text (str): text to write</span>
+<span class="sd">            x0 (int): column to start drawing at</span>
+<span class="sd">            y0 (int): row to start drawing at</span>
+<span class="sd">            color (int): 565 encoded color to use for characters</span>
+<span class="sd">            background (int): 565 encoded color to use for background</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">font</span><span class="o">.</span><span class="n">FIRST</span> <span class="o">&lt;=</span> <span class="n">ch</span> <span class="o">&lt;</span> <span class="n">font</span><span class="o">.</span><span class="n">LAST</span>
+                    <span class="ow">and</span> <span class="n">x0</span><span class="o">+</span><span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
+                    <span class="ow">and</span> <span class="n">y0</span><span class="o">+</span><span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">):</span>
+
+                <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">==</span> <span class="mi">16</span><span class="p">:</span>
+                    <span class="n">passes</span> <span class="o">=</span> <span class="mi">2</span>
+                    <span class="n">size</span> <span class="o">=</span> <span class="mi">32</span>
+                    <span class="n">each</span> <span class="o">=</span> <span class="mi">16</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">passes</span> <span class="o">=</span> <span class="mi">4</span>
+                    <span class="n">size</span> <span class="o">=</span> <span class="mi">64</span>
+                    <span class="n">each</span> <span class="o">=</span> <span class="mi">16</span>
+
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">passes</span><span class="p">):</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">ch</span><span class="o">-</span><span class="n">font</span><span class="o">.</span><span class="n">FIRST</span><span class="p">)</span><span class="o">*</span><span class="n">size</span><span class="o">+</span><span class="p">(</span><span class="n">each</span><span class="o">*</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">buffer</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>
+                        <span class="s1">&#39;&gt;128H&#39;</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">5</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">6</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">11</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">13</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">14</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT7</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT6</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT5</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT4</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT3</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT2</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT1</span> <span class="k">else</span> <span class="n">background</span><span class="p">,</span>
+                        <span class="n">color</span> <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">FONT</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">15</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">_BIT0</span> <span class="k">else</span> <span class="n">background</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">blit_buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="o">+</span><span class="mi">8</span><span class="o">*</span><span class="n">line</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+            <span class="n">x0</span> <span class="o">+=</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span>
+
+<div class="viewcode-block" id="ST7789.text"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.text">[docs]</a>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw text on display in specified font and colors. 8 and 16 bit wide</span>
+<span class="sd">        fonts are supported.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            font (module): font module to use.</span>
+<span class="sd">            text (str): text to write</span>
+<span class="sd">            x0 (int): column to start drawing at</span>
+<span class="sd">            y0 (int): row to start drawing at</span>
+<span class="sd">            color (int): 565 encoded color to use for characters</span>
+<span class="sd">            background (int): 565 encoded color to use for background</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text8</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text16</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ST7789.bitmap"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.bitmap">[docs]</a>    <span class="k">def</span> <span class="nf">bitmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draw a bitmap on display at the specified column and row</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            bitmap (bitmap_module): The module containing the bitmap to draw</span>
+<span class="sd">            x (int): column to start drawing at</span>
+<span class="sd">            y (int): row to start drawing at</span>
+<span class="sd">            index (int): Optional index of bitmap to draw from multiple bitmap</span>
+<span class="sd">                module</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">bitmap_size</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">WIDTH</span>
+        <span class="n">buffer_len</span> <span class="o">=</span> <span class="n">bitmap_size</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">buffer_len</span><span class="p">)</span>
+        <span class="n">bs_bit</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">BPP</span> <span class="o">*</span> <span class="n">bitmap_size</span> <span class="o">*</span> <span class="n">index</span> <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buffer_len</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">color_index</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bitmap</span><span class="o">.</span><span class="n">BPP</span><span class="p">):</span>
+                <span class="n">color_index</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+                <span class="n">color_index</span> <span class="o">|=</span> <span class="p">(</span><span class="n">bitmap</span><span class="o">.</span><span class="n">BITMAP</span><span class="p">[</span><span class="n">bs_bit</span> <span class="o">//</span> <span class="mi">8</span><span class="p">]</span>
+                                <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="p">(</span><span class="n">bs_bit</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)))</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="n">bs_bit</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="n">color</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">PALETTE</span><span class="p">[</span><span class="n">color_index</span><span class="p">]</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span> <span class="o">&amp;</span> <span class="mh">0xff00</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color_index</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+
+        <span class="n">to_col</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">to_row</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="n">to_col</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="n">to_row</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">to_col</span><span class="p">,</span> <span class="n">to_row</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></div>
+
+    <span class="c1"># @micropython.native</span>
+<div class="viewcode-block" id="ST7789.write"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write a string using a converted true-type font on the display starting</span>
+<span class="sd">        at the specified column and row</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            font (font): The module containing the converted true-type font</span>
+<span class="sd">            s (string): The string to write</span>
+<span class="sd">            x (int): column to start writing</span>
+<span class="sd">            y (int): row to start writing</span>
+<span class="sd">            fg (int): foreground color, optional, defaults to WHITE</span>
+<span class="sd">            bg (int): background color, optional, defaults to BLACK</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">buffer_len</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">font</span><span class="o">.</span><span class="n">MAX_WIDTH</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">buffer_len</span><span class="p">)</span>
+        <span class="n">fg_hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">fg</span> <span class="o">&amp;</span> <span class="mh">0xff00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+        <span class="n">fg_lo</span> <span class="o">=</span> <span class="n">fg</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+
+        <span class="n">bg_hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">bg</span> <span class="o">&amp;</span> <span class="mh">0xff00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+        <span class="n">bg_lo</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+
+        <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">char_index</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+                <span class="n">offset</span> <span class="o">=</span> <span class="n">char_index</span> <span class="o">*</span> <span class="n">font</span><span class="o">.</span><span class="n">OFFSET_WIDTH</span>
+                <span class="n">bs_bit</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">OFFSETS</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">OFFSET_WIDTH</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">bs_bit</span> <span class="o">=</span> <span class="p">(</span><span class="n">bs_bit</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">font</span><span class="o">.</span><span class="n">OFFSETS</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">OFFSET_WIDTH</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">bs_bit</span> <span class="o">=</span> <span class="p">(</span><span class="n">bs_bit</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">font</span><span class="o">.</span><span class="n">OFFSETS</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+
+                <span class="n">char_width</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTHS</span><span class="p">[</span><span class="n">char_index</span><span class="p">]</span>
+                <span class="n">buffer_needed</span> <span class="o">=</span> <span class="n">char_width</span> <span class="o">*</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="mi">2</span>
+
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buffer_needed</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">font</span><span class="o">.</span><span class="n">BITMAPS</span><span class="p">[</span><span class="n">bs_bit</span> <span class="o">//</span> <span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="p">(</span><span class="n">bs_bit</span> <span class="o">%</span> <span class="mi">8</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fg_hi</span>
+                        <span class="n">buffer</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">fg_lo</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bg_hi</span>
+                        <span class="n">buffer</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">bg_lo</span>
+
+                    <span class="n">bs_bit</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="n">to_col</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">char_width</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">to_row</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="n">to_col</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="n">to_row</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">to_col</span><span class="p">,</span> <span class="n">to_row</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">buffer_needed</span><span class="p">])</span>
+
+                <span class="n">x</span> <span class="o">+=</span> <span class="n">char_width</span>
+
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="ST7789.write_width"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.write_width">[docs]</a>    <span class="k">def</span> <span class="nf">write_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the width in pixels of the string if it was written with the</span>
+<span class="sd">        specified font</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            font (font): The module containing the converted true-type font</span>
+<span class="sd">            string (string): The string to measure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">char_index</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+                <span class="n">width</span> <span class="o">+=</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTHS</span><span class="p">[</span><span class="n">char_index</span><span class="p">]</span>
+
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">width</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

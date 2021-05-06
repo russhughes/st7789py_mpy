@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Fonts &mdash; st7789py 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Example Programs" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> st7789py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">st7789py Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="st7789py.html">st7789py Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#ttgo-lines-py">ttgo_lines.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#ttgo-hello-py">ttgo_hello.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#ttgo-fonts-py">ttgo_fonts.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#ttgo-scroll-py">ttgo_scroll.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#toasters-py">toasters.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#chango-py">Chango.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fonts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rom-font-conversion">Rom Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#true-type-font-conversion">True-Type Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x8-fonts">8x8 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x16-fonts">8x16 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">16x16 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x32-fonts">16x32 Fonts</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">st7789py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Fonts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/fonts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fonts">
+<h1>Fonts<a class="headerlink" href="#fonts" title="Permalink to this headline">¶</a></h1>
+<p>Two type of fonts are supported by this driver fixed size bitmap fonts
+converted from PC Bios images using the font_from_romfont utility and fixed or proportional fonts converted from True-Type fonts using the font2bitmap utility.</p>
+<p>The rom fonts are available in 128 and 256 PC character sets in 8x8, 8x16, 16x6 and 16x32 pixel sizes. They written using the text method.</p>
+<p>The True-Type fonts can be converted to any size as long as the widest
+character is 256 pixels or less. They are written using the write method.</p>
+<p>Pre-compiling the font files to .mpy files will significantly reduce the memory required for the fonts.</p>
+<div class="section" id="rom-font-conversion">
+<h2>Rom Font Conversion<a class="headerlink" href="#rom-font-conversion" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>utils</cite> directory contains the font_from_romfont.py program used to convert PC BIOS bitmap fonts from the font-bin directory of spacerace’s
+<a class="reference external" href="https://github.com/spacerace/romfont">https://github.com/spacerace/romfont</a> repo.</p>
+<p>The utility converts all romfont bin files in the specified -input-directory (-i) and writes python font files to the specified -output-directory (-o).</p>
+<p>Characters included can be limited by using the -first-char (-f) and -last-char (-l) options.</p>
+<p>Example:</p>
+<blockquote>
+<div><p>font_from_romfont -i font-bin -o fonts -f 32 -l 127</p>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Example python font file.</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;converted from vga_8x8.bin &quot;&quot;&quot;</span>
+<span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">FIRST</span> <span class="o">=</span> <span class="mh">0x20</span>
+<span class="n">LAST</span> <span class="o">=</span> <span class="mh">0x7f</span>
+<span class="n">_FONT</span> <span class="o">=</span>\
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span>\
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x18\x3c\x3c\x18\x18\x00\x18\x00</span><span class="s1">&#39;</span>\
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x66\x66\x24\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span>\
+
+<span class="o">...</span> <span class="n">many</span> <span class="n">more</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">data</span><span class="o">...</span>
+
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x70\x18\x18\x0e\x18\x18\x70\x00</span><span class="s1">&#39;</span>\
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x76\xdc\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span>\
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x10\x38\x6c\xc6\xc6\xfe\x00</span><span class="s1">&#39;</span>\
+
+<span class="n">FONT</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">_FONT</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="true-type-font-conversion">
+<h2>True-Type Font Conversion<a class="headerlink" href="#true-type-font-conversion" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>utils</cite> directory contains the <cite>font2bitmap.py</cite> program used to convert True-Type font into bitmap font modules. Use the -h option to see details of the available options.  The <cite>font2bitmap.py</cite> program uses font handling classes from Dan Bader blog post on using freetype
+<a class="reference external" href="http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python">http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python</a> and
+the negative glyph.left fix from peterhinch’s font conversion program
+<a class="reference external" href="https://github.com/peterhinch/micropython-font-to-py">https://github.com/peterhinch/micropython-font-to-py</a>.</p>
+<p>The utility requires the python freetype module.</p>
+<p>Example use:</p>
+<ul class="simple">
+<li><p>./font2bitmap NotoSans-Regular.ttf 32 -s “0123456789ABCEDF”</p></li>
+<li><p>./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f</p></li>
+</ul>
+</div>
+<div class="section" id="x8-fonts">
+<h2>8x8 Fonts<a class="headerlink" href="#x8-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id3">
+<img alt="_images/vga1_8x8.png" src="_images/vga1_8x8.png" />
+<p class="caption"><span class="caption-text">vga1_8x8.py: 128 Character 8x8 Font</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="_images/vga2_8x8.png" src="_images/vga2_8x8.png" />
+<p class="caption"><span class="caption-text">vga2_8x8.py: 256 Character 8x8 Font</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="x16-fonts">
+<h2>8x16 Fonts<a class="headerlink" href="#x16-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id5">
+<img alt="_images/vga1_8x16.png" src="_images/vga1_8x16.png" />
+<p class="caption"><span class="caption-text">vga1_8x16.py: 128 Character 8x16 Font</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id6">
+<img alt="_images/vga2_8x16.png" src="_images/vga2_8x16.png" />
+<p class="caption"><span class="caption-text">vga2_8x16.py: 256 Character 8x16 Font</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>16x16 Fonts<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id7">
+<img alt="_images/vga1_16x16.png" src="_images/vga1_16x16.png" />
+<p class="caption"><span class="caption-text">vga1_16x16.py: 128 Character 16x16 Thin Font</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="_images/vga1_bold_16x16.png" src="_images/vga1_bold_16x16.png" />
+<p class="caption"><span class="caption-text">vga1_bold_16x16.py: 128 Character 16x16 Bold Font</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id9">
+<img alt="_images/vga2_16x16.png" src="_images/vga2_16x16.png" />
+<p class="caption"><span class="caption-text">vga2_16x16.py: 256 Character 16x16 Thin Font</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id10">
+<img alt="_images/vga2_bold_16x16.png" src="_images/vga2_bold_16x16.png" />
+<p class="caption"><span class="caption-text">vga2_bold_16x16.py: 256 Character 16x16 Bold Font</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="x32-fonts">
+<h2>16x32 Fonts<a class="headerlink" href="#x32-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id11">
+<img alt="_images/vga1_16x32.png" src="_images/vga1_16x32.png" />
+<p class="caption"><span class="caption-text">vga1_16x32.py: 128 Character 16x32 Thin Font</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id12">
+<img alt="_images/vga1_bold_16x32.png" src="_images/vga1_bold_16x32.png" />
+<p class="caption"><span class="caption-text">vga1_bold_16x32.py: 128 Character 16x32 Bold Font</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id13">
+<img alt="_images/vga2_16x32.png" src="_images/vga2_16x32.png" />
+<p class="caption"><span class="caption-text">vga2_16x32.py: 256 Character 16x32 Thin Font</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id14">
+<img alt="_images/vga2_bold_16x32.png" src="_images/vga2_bold_16x32.png" />
+<p class="caption"><span class="caption-text">vga2_bold_16x32.py: 256 Character 16x32 Bold Font</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="examples.html" class="btn btn-neutral float-left" title="Example Programs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
