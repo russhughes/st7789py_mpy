@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -82,7 +85,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a></li>
@@ -99,10 +102,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../fonts.html">Fonts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../fonts.html#rom-font-conversion">Rom Font Conversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x8-fonts">8x8 Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x16-fonts">8x16 Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fonts.html#id1">16x16 Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x32-fonts">16x32 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#id1">16x16 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
 </ul>
 </li>
 </ul>
@@ -337,11 +340,11 @@
 <span class="sd">    ST7789 driver class</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        spi (spi): spi object</span>
-<span class="sd">        width (int): display width</span>
-<span class="sd">        height (int): display height</span>
+<span class="sd">        spi (spi): spi object **Required**</span>
+<span class="sd">        width (int): display width **Required**</span>
+<span class="sd">        height (int): display height **Required**</span>
 <span class="sd">        reset (pin): reset pin</span>
-<span class="sd">        dc (pin): dc pin</span>
+<span class="sd">        dc (pin): dc pin **Required**</span>
 <span class="sd">        cs (pin): cs pin</span>
 <span class="sd">        backlight(pin): backlight pin</span>
 <span class="sd">        rotation (int): display rotation</span>
@@ -350,7 +353,7 @@
 <span class="sd">            - 2-Inverted Portrait</span>
 <span class="sd">            - 3-Inverted Landscape</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backlight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize display.</span>
@@ -359,6 +362,9 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s2">&quot;Unsupported display. 320x240, 240x240 and 135x240 are supported.&quot;</span>
             <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dc pin is required.&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>

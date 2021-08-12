@@ -164,11 +164,11 @@ class ST7789():
     ST7789 driver class
 
     Args:
-        spi (spi): spi object
-        width (int): display width
-        height (int): display height
+        spi (spi): spi object **Required**
+        width (int): display width **Required**
+        height (int): display height **Required**
         reset (pin): reset pin
-        dc (pin): dc pin
+        dc (pin): dc pin **Required**
         cs (pin): cs pin
         backlight(pin): backlight pin
         rotation (int): display rotation
@@ -177,7 +177,7 @@ class ST7789():
             - 2-Inverted Portrait
             - 3-Inverted Landscape
     """
-    def __init__(self, spi, width, height, reset, dc,
+    def __init__(self, spi, width, height, reset=None, dc=None,
                  cs=None, backlight=None, rotation=0):
         """
         Initialize display.
@@ -186,6 +186,9 @@ class ST7789():
             raise ValueError(
                 "Unsupported display. 320x240, 240x240 and 135x240 are supported."
             )
+
+        if dc is None:
+            raise ValueError("dc pin is required.")
 
         self._display_width = self.width = width
         self._display_height = self.height = height

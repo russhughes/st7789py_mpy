@@ -1,0 +1,5 @@
+st7789py Reference
+==================
+
+.. automodule:: st7789py
+   :members:

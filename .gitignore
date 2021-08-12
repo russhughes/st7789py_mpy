@@ -1,7 +1,6 @@
 .vscode
 .idea
 __pycache__
-sphinx
 *~
 *.pyc
 *.o
