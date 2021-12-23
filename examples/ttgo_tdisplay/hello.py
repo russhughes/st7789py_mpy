@@ -1,5 +1,5 @@
 """
-ttgo_hello.py
+hello.py
 
     Writes "Hello!" in random colors at random locations on a
     LILYGO® TTGO T-Display.

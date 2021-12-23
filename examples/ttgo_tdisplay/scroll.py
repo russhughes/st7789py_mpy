@@ -1,5 +1,5 @@
 """
-ttgo_fonts.py
+scroll.py
 
     Smoothly scrolls all font characters up the screen on the LILYGO® TTGO
     T-Display. Only works with fonts with heights that are even multiples of
@@ -8,23 +8,32 @@ ttgo_fonts.py
 """
 import utime
 import random
-from machine import Pin, SPI
+from machine import Pin, SoftSPI
 import st7789py as st7789
 
 # choose a font
 
-# import vga1_8x8 as font
-# import vga2_8x8 as font
-# import vga1_8x16 as font
-# import vga2_8x16 as font
-# import vga1_16x16 as font
-# import vga1_bold_16x16 as font
-# import vga2_16x16 as font
-import vga2_bold_16x16 as font
+# from romfonts import vga1_8x8 as font
+# from romfonts import vga2_8x8 as font
+# from romfonts import vga1_8x16 as font
+# from romfonts import vga2_8x16 as font
+# from romfonts import vga1_16x16 as font
+# from romfonts import vga1_bold_16x16 as font
+# from romfonts import vga2_16x16 as font
+from romfonts import vga2_bold_16x16 as font
+
 
 def main():
+    spi = SoftSPI(
+        baudrate=20000000,
+        polarity=1,
+        phase=0,
+        sck=Pin(18),
+        mosi=Pin(19),
+        miso=Pin(13))
+
     tft = st7789.ST7789(
-        SPI(2, baudrate=30000000, polarity=1, phase=1, sck=Pin(18), mosi=Pin(19)),
+        spi,
         135,
         240,
         reset=Pin(23, Pin.OUT),
@@ -42,7 +51,7 @@ def main():
     scroll = 0
     character = 0
     while True:
-        tft.fill_rect(0,scroll, tft.width, 1, st7789.BLUE)
+        tft.fill_rect(0, scroll, tft.width, 1, st7789.BLUE)
 
         if scroll % font.HEIGHT == 0:
             tft.text(
@@ -53,14 +62,15 @@ def main():
                 st7789.WHITE,
                 st7789.BLUE)
 
-            character = character +1 if character < 256 else 0
+            character = character + 1 if character < 256 else 0
 
-        tft.vscsad(scroll+tfa)
-        scroll +=1
+        tft.vscsad(scroll + tfa)
+        scroll += 1
 
         if scroll == tft.height:
             scroll = 0
 
         utime.sleep(0.01)
+
 
 main()

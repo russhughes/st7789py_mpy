@@ -1,8 +1,8 @@
 """
-ttgo_fonts.py
+fonts.py
 
-    Smoothly scrolls all font characters up the screen on the LILYGO® TTGO
-    T-Display. Only works with fonts with heights that are even multiples of
+    Smoothly scrolls all font characters up the screen on the display.
+    Only works with fonts with heights that are even multiples of
     the screen height, (i.e. 8 or 16 pixels high)
 
 """
@@ -34,17 +34,17 @@ def main():
 
     tft = st7789.ST7789(
         spi,
-        135,
+        320,
         240,
-        reset=Pin(23, Pin.OUT),
-        cs=Pin(5, Pin.OUT),
-        dc=Pin(16, Pin.OUT),
-        backlight=Pin(4, Pin.OUT),
+        reset=Pin(4, Pin.OUT),
+        cs=Pin(13, Pin.OUT),
+        dc=Pin(12, Pin.OUT),
+        backlight=Pin(15, Pin.OUT),
         rotation=0)
 
     last_line = tft.height - font.HEIGHT
-    tfa = 40
-    tfb = 40
+    tfa = 0
+    tfb = 0
     tft.vscrdef(tfa, 240, tfb)
 
     tft.fill(st7789.BLUE)

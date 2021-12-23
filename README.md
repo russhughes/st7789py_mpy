@@ -22,7 +22,8 @@ and at https://penfold.owt.com/st7789py.
 Examples
 --------
 
-See the examples directory for example programs that run on the LILYGO® TTGO T-Display.
+See the examples directory for example programs that run on the LILYGO® TTGO T-Display and
+a generic 320x240 display connected to an ESP32.
 
 Fonts
 -----

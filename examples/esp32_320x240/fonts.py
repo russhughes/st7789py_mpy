@@ -1,9 +1,7 @@
 """
-ttgo_fonts.py
+fonts.py
 
-    Pages through all characters of four fonts on the LILYGO® TTGO T-Display.
-
-    https://www.youtube.com/watch?v=2cnAhEucPD4
+    Pages through all characters of four fonts on the display.
 
 """
 import utime
@@ -37,12 +35,12 @@ def main():
 
     tft = st7789.ST7789(
         spi,
-        135,
+        320,
         240,
-        reset=Pin(23, Pin.OUT),
-        cs=Pin(5, Pin.OUT),
-        dc=Pin(16, Pin.OUT),
-        backlight=Pin(4, Pin.OUT),
+        reset=Pin(4, Pin.OUT),
+        cs=Pin(13, Pin.OUT),
+        dc=Pin(12, Pin.OUT),
+        backlight=Pin(15, Pin.OUT),
         rotation=0)
 
     tft.vscrdef(40, 240, 40)
