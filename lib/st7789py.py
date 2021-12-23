@@ -119,10 +119,10 @@ _BIT0 = const(0x01)
 
 # Rotation tables (width, height, xstart, ystart)[rotation % 4]
 
-WIDTH_320 = [(320, 240,  0,  0),
-             (240, 320,  0,  0),
+WIDTH_320 = [(240, 320,  0,  0),
              (320, 240,  0,  0),
-             (240, 320,  0,  0)]
+             (240, 320,  0,  0),
+             (320, 240,  0,  0)]
 
 WIDTH_240 = [(240, 240,  0,  0),
              (240, 240,  0,  0),
@@ -480,10 +480,7 @@ class ST7789():
         dx = x1 - x0
         dy = abs(y1 - y0)
         err = dx // 2
-        if y0 < y1:
-            ystep = 1
-        else:
-            ystep = -1
+        ystep = 1 if y0 < y1 else -1
         while x0 <= x1:
             if steep:
                 self.pixel(y0, x0, color)
@@ -652,14 +649,13 @@ class ST7789():
                     and x0+font.WIDTH <= self.width
                     and y0+font.HEIGHT <= self.height):
 
+                each = 16
                 if font.HEIGHT == 16:
                     passes = 2
                     size = 32
-                    each = 16
                 else:
                     passes = 4
                     size = 64
-                    each = 16
 
                 for line in range(passes):
                     idx = (ch-font.FIRST)*size+(each*line)
@@ -834,7 +830,7 @@ class ST7789():
 
         for i in range(0, buffer_len, 2):
             color_index = 0
-            for bit in range(bitmap.BPP):
+            for _ in range(bitmap.BPP):
                 color_index <<= 1
                 color_index |= (bitmap.BITMAP[bs_bit // 8]
                                 & 1 << (7 - (bs_bit % 8))) > 0
@@ -900,7 +896,7 @@ class ST7789():
                 to_row = y + font.HEIGHT - 1
                 if self.width > to_col and self.height > to_row:
                     self._set_window(x, y, to_col, to_row)
-                    self._write(None, buffer[0:buffer_needed])
+                    self._write(None, buffer[:buffer_needed])
 
                 x += char_width
 
