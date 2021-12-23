@@ -8,7 +8,7 @@ feathers.py
 import random
 import math
 import utime
-from machine import Pin, SoftSPI
+from machine import Pin, SPI
 import st7789py as st7789
 
 
@@ -39,13 +39,7 @@ def main():
     '''
     #enable display and clear screen
 
-    spi = SoftSPI(
-        baudrate=20000000,
-        polarity=1,
-        phase=0,
-        sck=Pin(18),
-        mosi=Pin(19),
-        miso=Pin(13))
+    spi = SPI(1, baudrate=31250000, sck=Pin(18), mosi=Pin(19))
 
     tft = st7789.ST7789(
         spi,
