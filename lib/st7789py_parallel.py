@@ -1,4 +1,10 @@
 # Extended Class to use TFT ST7789 in parallel bus
+#Example of use:
+
+# import st7789py_parallel
+# s=st7789py_parallel.ST7789_PARALLEL(320,240,0,None,None,4,22,5,12)
+# s.fill(0xff)
+
 
 from micropython import const
 from utime import sleep_ms, sleep_us
@@ -7,21 +13,21 @@ from machine import Pin
 ## Pins (wiring) example and description
 #ST7789        STM32F407VGT6
 #LCD_RST <---> 3.3V            #LCD reset control pin, active low, used to force a hardware reset of the board, if unused need be plug on 3.3V 
-#LCD_CS  <---> GND             #LCD chip select control pin, active low, if used only one LCD can be plug on GND
-#LCD_RS  <---> PD13            #LCD register command / data selection control pin, comand active low, data active high
-#LCD_WR  <---> PD5             #LCD write control pin, active low
-#LCD_RD  <---> PD4             #LCD read control pin, active low
+#LCD_CS  <---> GND             #LCD chip select control pin, active low, if unused only one LCD can be used, plug on GND
+#LCD_RS  <---> PD22            #LCD register command / data selection control pin, comand active low, data active high
+#LCD_WR  <---> PD4             #LCD write control pin, active low
+#LCD_RD  <---> PD5             #LCD read control pin, active low, if unused plug on 3.3V
 #GND     <---> GND
 #5V      <---> 5V
 
-#LCD_D2  <---> PD0
-#LCD_D3  <---> PD1
-#LCD_D4  <---> PE7
-#LCD_D5  <---> PE8
-#LCD_D6  <---> PE9
-#LCD_D7  <---> PE10
-#LCD_D0  <---> PD14
-#LCD_D1  <---> PD15
+#LCD_D2  <---> pin-14
+#LCD_D3  <---> pin-15
+#LCD_D4  <---> pin-16
+#LCD_D5  <---> pin-17
+#LCD_D6  <---> pin-18
+#LCD_D7  <---> pin-19
+#LCD_D0  <---> pin-12
+#LCD_D1  <---> pin-13
 
 ## DEFINE PINS CONST
 _LCD_RST       = const(None)      #LCD reset control pin, active low
@@ -65,6 +71,8 @@ def _encode_pos(x, y):
 def _encode_pixel(color):
     """Encode a pixel color into bytes."""
     return struct.pack(_ENCODE_PIXEL, color)
+
+
 
 class ST7789_PARALLEL(ST7789):
     def __init__(self, width:(int) = 320, height:(int) = 240, rotation=0,
