@@ -2,7 +2,9 @@ Excelent micropython driver for st7789 module forked from:
 https://github.com/russhughes/st7789py_mpy
 
 Started this because:
+
    1 - My lack of experience to compile and develop fast modules in C for use in micropython
+   
    2 - Buy a I8080 (parallel 8 bits bus board) to try and learn.
 
 Results:
