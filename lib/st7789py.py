@@ -1,10 +1,7 @@
 """
-Copyright (c) 2020, 2021 Russ Hughes
+MIT License
 
-This file incorporates work covered by the following copyright and
-permission notice and is licensed under the same terms:
-
-The MIT License (MIT)
+Copyright (c) 2020-2023 Russ Hughes
 
 Copyright (c) 2019 Ivan Belokobylskiy
 
@@ -15,30 +12,41 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 The driver is based on devbis' st7789py_mpy module from
 https://github.com/devbis/st7789py_mpy.
 
-This driver adds support for:
+This driver supports:
 
-- 320x240, 240x240 and 135x240 pixel displays
+- 320x240, 240x240, 135x240 and 128x128 pixel displays
 - Display rotation
+- RGB and BGR color orders
 - Hardware based scrolling
 - Drawing text using 8 and 16 bit wide bitmap fonts with heights that are
   multiples of 8.  Included are 12 bitmap fonts derived from classic pc
   BIOS text mode fonts.
 - Drawing text using converted TrueType fonts.
 - Drawing converted bitmaps
+- Named color constants
+
+  - BLACK
+  - BLUE
+  - RED
+  - GREEN
+  - CYAN
+  - MAGENTA
+  - YELLOW
+  - WHITE
 
 """
 
@@ -92,6 +100,9 @@ COLOR_MODE_16BIT = const(0x05)
 COLOR_MODE_18BIT = const(0x06)
 COLOR_MODE_16M = const(0x07)
 
+RGB = 0x00
+BGR = 0x08
+
 # Color definitions
 BLACK = const(0x0000)
 BLUE = const(0x001F)
@@ -119,6 +130,8 @@ _BIT0 = const(0x01)
 
 # Rotation tables (width, height, xstart, ystart)[rotation % 4]
 
+SUPPORTED_RESOLUTIONS = [(320,240),(240,240),(240,135),(128,128)]
+
 WIDTH_320 = [(240, 320,  0,  0),
              (320, 240,  0,  0),
              (240, 320,  0,  0),
@@ -133,6 +146,11 @@ WIDTH_135 = [(135, 240, 52, 40),
              (240, 135, 40, 53),
              (135, 240, 53, 40),
              (240, 135, 40, 52)]
+
+WIDTH_128 = [(128, 128,  2,  1),
+             (128, 128,  1,  2),
+             (128, 128,  2,  1),
+             (128, 128,  1,  2)]
 
 # MADCTL ROTATIONS[rotation % 4]
 ROTATIONS = [0x00, 0x60, 0xc0, 0xa0]
@@ -171,27 +189,34 @@ class ST7789():
         dc (pin): dc pin **Required**
         cs (pin): cs pin
         backlight(pin): backlight pin
-        rotation (int): display rotation
-            - 0-Portrait
-            - 1-Landscape
-            - 2-Inverted Portrait
-            - 3-Inverted Landscape
+        rotation (int):
+
+          - 0-Portrait
+          - 1-Landscape
+          - 2-Inverted Portrait
+          - 3-Inverted Landscape
+
+        color_order (int):
+
+          - RGB: Red, Green Blue, default
+          - BGR: Blue, Green, Red
     """
     def __init__(self, spi, width, height, reset=None, dc=None,
-                 cs=None, backlight=None, rotation=0):
+                 cs=None, backlight=None, rotation=0, color_order=RGB):
         """
         Initialize display.
         """
-        if height != 240 or width not in [320, 240, 135]:
+        if (height,width) not in SUPPORTED_RESOLUTIONS:
+            print (height,width)
             raise ValueError(
-                "Unsupported display. 320x240, 240x240 and 135x240 are supported."
+                "Unsupported display. Supported resolutions are %s"% SUPPORTED_RESOLUTIONS
             )
 
         if dc is None:
             raise ValueError("dc pin is required.")
 
-        self._display_width = self.width = width
-        self._display_height = self.height = height
+        self.physical_width = self.width = width
+        self.physical_height = self.height = height
         self.xstart = 0
         self.ystart = 0
         self.spi = spi
@@ -200,6 +225,7 @@ class ST7789():
         self.cs = cs
         self.backlight = backlight
         self._rotation = rotation % 4
+        self.color_order = color_order
 
         self.hard_reset()
         self.soft_reset()
@@ -216,7 +242,7 @@ class ST7789():
             backlight.value(1)
         self.fill(0)
         self._write(ST7789_DISPON)
-        time.sleep_ms(500)
+        time.sleep_ms(150)
 
     def _write(self, command=None, data=None):
         """SPI write to the device: commands and data."""
@@ -294,6 +320,17 @@ class ST7789():
         """
         self._write(ST7789_COLMOD, bytes([mode & 0x77]))
 
+    def _set_color_order(self, mode):
+        """
+        Set display color order.
+
+        Args:
+            mode (int): color order
+                RGB: Red, Green Blue
+                BGR: Blue, Green, Red
+        """
+        self._write(ST7789_COL, bytes([mode & 0x77]))
+
     def rotation(self, rotation):
         """
         Set display rotation.
@@ -309,16 +346,20 @@ class ST7789():
         rotation %= 4
         self._rotation = rotation
         madctl = ROTATIONS[rotation]
+        if (self.color_order == BGR):
+            madctl |= ST7789_MADCTL_BGR
 
-        if self._display_width == 320:
+        if self.physical_width == 320:
             table = WIDTH_320
-        elif self._display_width == 240:
+        elif self.physical_width == 240:
             table = WIDTH_240
-        elif self._display_width == 135:
+        elif self.physical_width == 135:
             table = WIDTH_135
+        elif self.physical_width == 128:
+            table = WIDTH_128
         else:
             raise ValueError(
-                "Unsupported display. 320x240, 240x240 and 135x240 are supported."
+                "Unsupported display. Supported resolutions are %s"% SUPPORTED_RESOLUTIONS
             )
 
         self.width, self.height, self.xstart, self.ystart = table[rotation]
