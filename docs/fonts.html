@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fonts &mdash; st7789py 0.1.0 documentation</title>
@@ -11,14 +11,15 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Example Programs" href="examples.html" /> 
+    <link rel="prev" title="Raspberry Pi Pico Examples" href="examples_pi_pico.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -26,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #2980B9" >
-            <a href="index.html" class="icon icon-home"> st7789py
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            st7789py
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -39,26 +44,73 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">st7789py Driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="st7789py.html">st7789py Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#x240-example-programs">320x240 Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-lines-py">320x240 lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-hello-py">320x240  hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-feathers-py">320x240 feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-fonts-py">320x240 fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-scroll-py">320x240 scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-toasters-py">320x240 toasters.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="st7789py.html">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#x240-ttgo-t-display-example-programs">135x240 TTGO T-Display Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#lines-py">lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#hello-py">hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#feathers-py">feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#fonts-py">fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#scroll-py">scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#toasters-py">toasters.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#chango-py">chango.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#noto-fonts-py">noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_atoms3.html">M5STACK ATOM-S3 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-feathers-py">atom_s3/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-rotations-py">atom_s3/rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-scroll-py">atom_s3/scroll.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_generic.html">Generic ESP32 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-lines-py">esp32_320x240/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-hello-py">esp32_320x240/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-feathers-py">esp32_320x240/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-fonts-py">esp32_320x240/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-scroll-py">esp32_320x240/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-toasters-py">esp32_320x240/toasters.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_tdisplay.html">TTGO T-Display Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-lines-py">ttgo_tdisplay/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-hello-py">ttgo_tdisplay/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-feathers-py">ttgo_tdisplay/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-fonts-py">ttgo_tdisplay/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-scroll-py">ttgo_tdisplay/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-toasters-py">ttgo_tdisplay/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-chango-py">ttgo_tdisplay/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-noto-fonts-py">ttgo_tdisplay/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_tdisplay_rp2040.html">TTGO T-Display RP2040 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-lines-py">ttgo_tdisplay_rp2040/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-hello-py">ttgo_tdisplay_rp2040/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-feathers-py">ttgo_tdisplay_rp2040/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-fonts-py">ttgo_tdisplay_rp2040/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-scroll-py">ttgo_tdisplay_rp2040/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-toasters-py">ttgo_tdisplay_rp2040/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-chango-py">ttgo_tdisplay_rp2040/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-noto-fonts-py">ttgo_tdisplay_rp2040/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_pi_pico.html">Raspberry Pi Pico Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_pi_pico.html#rp-2040-waveshare-13-feathers-py">rp_2040/waveshare_13/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_pi_pico.html#rp-2040-waveshare-114-feathers-py">rp_2040/waveshare_114/feathers.py</a></li>
 </ul>
 </li>
 </ul>
@@ -87,8 +139,8 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Fonts</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Fonts</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/fonts.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,7 +151,7 @@
            <div itemprop="articleBody">
              
   <section id="fonts">
-<h1>Fonts<a class="headerlink" href="#fonts" title="Permalink to this headline"></a></h1>
+<h1>Fonts<a class="headerlink" href="#fonts" title="Link to this heading"></a></h1>
 <p>Two type of fonts are supported by this driver fixed size bitmap fonts
 converted from PC Bios images using the font_from_romfont utility and fixed or proportional fonts converted from True-Type fonts using the font2bitmap utility.</p>
 <p>The rom fonts are available in 128 and 256 PC character sets in 8x8, 8x16, 16x6 and 16x32 pixel sizes. They written using the text method.</p>
@@ -107,7 +159,7 @@ converted from PC Bios images using the font_from_romfont utility and fixed or p
 character is 256 pixels or less. They are written using the write method.</p>
 <p>Pre-compiling the font files to .mpy files will significantly reduce the memory required for the fonts.</p>
 <section id="rom-font-conversion">
-<h2>Rom Font Conversion<a class="headerlink" href="#rom-font-conversion" title="Permalink to this headline"></a></h2>
+<h2>Rom Font Conversion<a class="headerlink" href="#rom-font-conversion" title="Link to this heading"></a></h2>
 <p>The <cite>utils</cite> directory contains the font_from_romfont.py program used to convert PC BIOS bitmap fonts from the font-bin directory of spacerace’s
 <a class="reference external" href="https://github.com/spacerace/romfont">https://github.com/spacerace/romfont</a> repo.</p>
 <p>The utility converts all romfont bin files in the specified -input-directory (-i) and writes python font files to the specified -output-directory (-o).</p>
@@ -117,7 +169,7 @@ character is 256 pixels or less. They are written using the write method.</p>
 <div><p>font_from_romfont -i font-bin -o fonts -f 32 -l 127</p>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Sample converted romfont font module.</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">Sample converted romfont font module.</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;converted from vga_8x8.bin &quot;&quot;&quot;</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1"># font width</span>
@@ -150,7 +202,7 @@ character is 256 pixels or less. They are written using the write method.</p>
 </div>
 </section>
 <section id="true-type-font-conversion">
-<h2>True-Type Font Conversion<a class="headerlink" href="#true-type-font-conversion" title="Permalink to this headline"></a></h2>
+<h2>True-Type Font Conversion<a class="headerlink" href="#true-type-font-conversion" title="Link to this heading"></a></h2>
 <p>The <cite>utils</cite> directory contains the <cite>font2bitmap.py</cite> program used to convert True-Type font into bitmap font modules. Use the -h option to see details of the available options.  The <cite>font2bitmap.py</cite> program uses font handling classes from Dan Bader blog post on using freetype
 <a class="reference external" href="http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python">http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python</a> and
 the negative glyph.left fix from peterhinch’s font conversion program
@@ -162,7 +214,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <li><p>./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Sample converted TrueType font module.</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">Sample converted TrueType font module.</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="linenos"> 2</span><span class="c1"># Converted from Chango-Regular.ttf using:</span>
 <span class="linenos"> 3</span><span class="c1">#     ./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f</span>
@@ -215,11 +267,11 @@ the negative glyph.left fix from peterhinch’s font conversion program
 </div>
 </section>
 <section id="x8-rom-fonts">
-<h2>8x8 Rom Fonts<a class="headerlink" href="#x8-rom-fonts" title="Permalink to this headline"></a></h2>
+<h2>8x8 Rom Fonts<a class="headerlink" href="#x8-rom-fonts" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id4">
 <img alt="_images/vga1_8x8.png" src="_images/vga1_8x8.png" />
 <figcaption>
-<p><span class="caption-text">vga1_8x8.py: 128 Character 8x8 Font</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga1_8x8.py: 128 Character 8x8 Font</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -228,7 +280,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id5">
 <img alt="_images/vga2_8x8.png" src="_images/vga2_8x8.png" />
 <figcaption>
-<p><span class="caption-text">vga2_8x8.py: 256 Character 8x8 Font</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga2_8x8.py: 256 Character 8x8 Font</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -236,11 +288,11 @@ the negative glyph.left fix from peterhinch’s font conversion program
 </div>
 </section>
 <section id="x16-rom-fonts">
-<h2>8x16 Rom Fonts<a class="headerlink" href="#x16-rom-fonts" title="Permalink to this headline"></a></h2>
+<h2>8x16 Rom Fonts<a class="headerlink" href="#x16-rom-fonts" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id6">
 <img alt="_images/vga1_8x16.png" src="_images/vga1_8x16.png" />
 <figcaption>
-<p><span class="caption-text">vga1_8x16.py: 128 Character 8x16 Font</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga1_8x16.py: 128 Character 8x16 Font</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -249,7 +301,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id7">
 <img alt="_images/vga2_8x16.png" src="_images/vga2_8x16.png" />
 <figcaption>
-<p><span class="caption-text">vga2_8x16.py: 256 Character 8x16 Font</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga2_8x16.py: 256 Character 8x16 Font</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -257,11 +309,11 @@ the negative glyph.left fix from peterhinch’s font conversion program
 </div>
 </section>
 <section id="id1">
-<h2>16x16 Rom Fonts<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>16x16 Rom Fonts<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id8">
 <img alt="_images/vga1_16x16.png" src="_images/vga1_16x16.png" />
 <figcaption>
-<p><span class="caption-text">vga1_16x16.py: 128 Character 16x16 Thin Font</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga1_16x16.py: 128 Character 16x16 Thin Font</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -270,7 +322,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id9">
 <img alt="_images/vga1_bold_16x16.png" src="_images/vga1_bold_16x16.png" />
 <figcaption>
-<p><span class="caption-text">vga1_bold_16x16.py: 128 Character 16x16 Bold Font</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga1_bold_16x16.py: 128 Character 16x16 Bold Font</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -279,7 +331,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id10">
 <img alt="_images/vga2_16x16.png" src="_images/vga2_16x16.png" />
 <figcaption>
-<p><span class="caption-text">vga2_16x16.py: 256 Character 16x16 Thin Font</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga2_16x16.py: 256 Character 16x16 Thin Font</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -288,7 +340,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id11">
 <img alt="_images/vga2_bold_16x16.png" src="_images/vga2_bold_16x16.png" />
 <figcaption>
-<p><span class="caption-text">vga2_bold_16x16.py: 256 Character 16x16 Bold Font</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga2_bold_16x16.py: 256 Character 16x16 Bold Font</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -296,11 +348,11 @@ the negative glyph.left fix from peterhinch’s font conversion program
 </div>
 </section>
 <section id="x32-rom-fonts">
-<h2>16x32 Rom Fonts<a class="headerlink" href="#x32-rom-fonts" title="Permalink to this headline"></a></h2>
+<h2>16x32 Rom Fonts<a class="headerlink" href="#x32-rom-fonts" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id12">
 <img alt="_images/vga1_16x32.png" src="_images/vga1_16x32.png" />
 <figcaption>
-<p><span class="caption-text">vga1_16x32.py: 128 Character 16x32 Thin Font</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga1_16x32.py: 128 Character 16x32 Thin Font</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -309,7 +361,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id13">
 <img alt="_images/vga1_bold_16x32.png" src="_images/vga1_bold_16x32.png" />
 <figcaption>
-<p><span class="caption-text">vga1_bold_16x32.py: 128 Character 16x32 Bold Font</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga1_bold_16x32.py: 128 Character 16x32 Bold Font</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -318,7 +370,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id14">
 <img alt="_images/vga2_16x32.png" src="_images/vga2_16x32.png" />
 <figcaption>
-<p><span class="caption-text">vga2_16x32.py: 256 Character 16x32 Thin Font</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga2_16x32.py: 256 Character 16x32 Thin Font</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -327,7 +379,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
 <figure class="align-center" id="id15">
 <img alt="_images/vga2_bold_16x32.png" src="_images/vga2_bold_16x32.png" />
 <figcaption>
-<p><span class="caption-text">vga2_bold_16x32.py: 256 Character 16x32 Bold Font</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+<p><span class="caption-text">vga2_bold_16x32.py: 256 Character 16x32 Bold Font</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -340,7 +392,7 @@ the negative glyph.left fix from peterhinch’s font conversion program
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="examples.html" class="btn btn-neutral float-left" title="Example Programs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples_pi_pico.html" class="btn btn-neutral float-left" title="Raspberry Pi Pico Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

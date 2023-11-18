@@ -10,10 +10,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -24,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #2980B9" >
-            <a href="../index.html" class="icon icon-home"> st7789py
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            st7789py
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -37,26 +42,73 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html#x240-example-programs">320x240 Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-lines-py">320x240 lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-hello-py">320x240  hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-feathers-py">320x240 feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-fonts-py">320x240 fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-scroll-py">320x240 scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-toasters-py">320x240 toasters.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html#x240-ttgo-t-display-example-programs">135x240 TTGO T-Display Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#lines-py">lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#hello-py">hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#feathers-py">feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#fonts-py">fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#scroll-py">scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#toasters-py">toasters.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#chango-py">chango.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#noto-fonts-py">noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_atoms3.html">M5STACK ATOM-S3 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_atoms3.html#atom-s3-feathers-py">atom_s3/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_atoms3.html#atom-s3-rotations-py">atom_s3/rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_atoms3.html#atom-s3-scroll-py">atom_s3/scroll.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_generic.html">Generic ESP32 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-lines-py">esp32_320x240/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-hello-py">esp32_320x240/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-feathers-py">esp32_320x240/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-fonts-py">esp32_320x240/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-scroll-py">esp32_320x240/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-toasters-py">esp32_320x240/toasters.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_tdisplay.html">TTGO T-Display Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-lines-py">ttgo_tdisplay/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-hello-py">ttgo_tdisplay/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-feathers-py">ttgo_tdisplay/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-fonts-py">ttgo_tdisplay/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-scroll-py">ttgo_tdisplay/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-toasters-py">ttgo_tdisplay/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-chango-py">ttgo_tdisplay/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-noto-fonts-py">ttgo_tdisplay/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_tdisplay_rp2040.html">TTGO T-Display RP2040 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-lines-py">ttgo_tdisplay_rp2040/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-hello-py">ttgo_tdisplay_rp2040/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-feathers-py">ttgo_tdisplay_rp2040/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-fonts-py">ttgo_tdisplay_rp2040/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-scroll-py">ttgo_tdisplay_rp2040/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-toasters-py">ttgo_tdisplay_rp2040/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-chango-py">ttgo_tdisplay_rp2040/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-noto-fonts-py">ttgo_tdisplay_rp2040/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_pi_pico.html">Raspberry Pi Pico Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_pi_pico.html#rp-2040-waveshare-13-feathers-py">rp_2040/waveshare_13/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_pi_pico.html#rp-2040-waveshare-114-feathers-py">rp_2040/waveshare_114/feathers.py</a></li>
 </ul>
 </li>
 </ul>
@@ -85,8 +137,8 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Overview: module code</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview: module code</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>

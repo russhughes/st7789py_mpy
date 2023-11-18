@@ -1,12 +1,21 @@
 st7789py Driver
 ===============
 
-st7789 tft driver in MicroPython based on devbis' st7789py_mpy module from
+This is a fork of devbis' st7789py_mpy module from
 https://github.com/devbis/st7789py_mpy.
 
-I added support for display rotation, scrolling and drawing text using 8 and 16
-bit wide bitmap fonts with heights that are multiples of 8.  Included are 12
-bitmap fonts derived from classic pc text mode fonts.
+This driver has support for:
+
+- 320x240, 240x240, 135x240, and 128x128 pixel displays
+- RGB and BGR Color Orders
+- Display rotation
+- Hardware based scrolling
+- Drawing text using converted PC BIOS bitmap fonts
+- Drawing text using converted TrueType fonts.
+- Drawing converted bitmaps
+
+This is a work in progress. Documentation can be found in the docs directory
+and at https://penfold.owt.com/st7789py.
 
 
 .. toctree::

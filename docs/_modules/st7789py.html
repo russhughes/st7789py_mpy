@@ -10,10 +10,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -24,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #2980B9" >
-            <a href="../index.html" class="icon icon-home"> st7789py
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            st7789py
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -37,26 +42,73 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html#x240-example-programs">320x240 Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-lines-py">320x240 lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-hello-py">320x240  hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-feathers-py">320x240 feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-fonts-py">320x240 fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-scroll-py">320x240 scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#x240-toasters-py">320x240 toasters.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html#x240-ttgo-t-display-example-programs">135x240 TTGO T-Display Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#lines-py">lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#hello-py">hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#feathers-py">feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#fonts-py">fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#scroll-py">scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#toasters-py">toasters.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#chango-py">chango.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples.html#noto-fonts-py">noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_atoms3.html">M5STACK ATOM-S3 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_atoms3.html#atom-s3-feathers-py">atom_s3/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_atoms3.html#atom-s3-rotations-py">atom_s3/rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_atoms3.html#atom-s3-scroll-py">atom_s3/scroll.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_generic.html">Generic ESP32 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-lines-py">esp32_320x240/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-hello-py">esp32_320x240/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-feathers-py">esp32_320x240/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-fonts-py">esp32_320x240/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-scroll-py">esp32_320x240/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_generic.html#esp32-320x240-toasters-py">esp32_320x240/toasters.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_tdisplay.html">TTGO T-Display Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-lines-py">ttgo_tdisplay/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-hello-py">ttgo_tdisplay/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-feathers-py">ttgo_tdisplay/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-fonts-py">ttgo_tdisplay/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-scroll-py">ttgo_tdisplay/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-toasters-py">ttgo_tdisplay/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-chango-py">ttgo_tdisplay/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay.html#ttgo-tdisplay-noto-fonts-py">ttgo_tdisplay/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_tdisplay_rp2040.html">TTGO T-Display RP2040 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-lines-py">ttgo_tdisplay_rp2040/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-hello-py">ttgo_tdisplay_rp2040/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-feathers-py">ttgo_tdisplay_rp2040/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-fonts-py">ttgo_tdisplay_rp2040/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-scroll-py">ttgo_tdisplay_rp2040/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-toasters-py">ttgo_tdisplay_rp2040/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-chango-py">ttgo_tdisplay_rp2040/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-noto-fonts-py">ttgo_tdisplay_rp2040/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_pi_pico.html">Raspberry Pi Pico Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples_pi_pico.html#rp-2040-waveshare-13-feathers-py">rp_2040/waveshare_13/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples_pi_pico.html#rp-2040-waveshare-114-feathers-py">rp_2040/waveshare_114/feathers.py</a></li>
 </ul>
 </li>
 </ul>
@@ -85,9 +137,9 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Module code</a> &raquo;</li>
-      <li>st7789py</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">st7789py</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -98,12 +150,9 @@
              
   <h1>Source code for st7789py</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Copyright (c) 2020, 2021 Russ Hughes</span>
+<span class="sd">MIT License</span>
 
-<span class="sd">This file incorporates work covered by the following copyright and</span>
-<span class="sd">permission notice and is licensed under the same terms:</span>
-
-<span class="sd">The MIT License (MIT)</span>
+<span class="sd">Copyright (c) 2020-2023 Russ Hughes</span>
 
 <span class="sd">Copyright (c) 2019 Ivan Belokobylskiy</span>
 
@@ -114,30 +163,41 @@
 <span class="sd">copies of the Software, and to permit persons to whom the Software is</span>
 <span class="sd">furnished to do so, subject to the following conditions:</span>
 
-<span class="sd">The above copyright notice and this permission notice shall be included in</span>
-<span class="sd">all copies or substantial portions of the Software.</span>
+<span class="sd">The above copyright notice and this permission notice shall be included in all</span>
+<span class="sd">copies or substantial portions of the Software.</span>
 
 <span class="sd">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
 <span class="sd">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
 <span class="sd">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
 <span class="sd">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
 <span class="sd">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
-<span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
-<span class="sd">THE SOFTWARE.</span>
+<span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="sd">SOFTWARE.</span>
 
 <span class="sd">The driver is based on devbis&#39; st7789py_mpy module from</span>
 <span class="sd">https://github.com/devbis/st7789py_mpy.</span>
 
-<span class="sd">This driver adds support for:</span>
+<span class="sd">This driver supports:</span>
 
-<span class="sd">- 320x240, 240x240 and 135x240 pixel displays</span>
+<span class="sd">- 320x240, 240x240, 135x240 and 128x128 pixel displays</span>
 <span class="sd">- Display rotation</span>
+<span class="sd">- RGB and BGR color orders</span>
 <span class="sd">- Hardware based scrolling</span>
 <span class="sd">- Drawing text using 8 and 16 bit wide bitmap fonts with heights that are</span>
 <span class="sd">  multiples of 8.  Included are 12 bitmap fonts derived from classic pc</span>
 <span class="sd">  BIOS text mode fonts.</span>
 <span class="sd">- Drawing text using converted TrueType fonts.</span>
 <span class="sd">- Drawing converted bitmaps</span>
+<span class="sd">- Named color constants</span>
+
+<span class="sd">  - BLACK</span>
+<span class="sd">  - BLUE</span>
+<span class="sd">  - RED</span>
+<span class="sd">  - GREEN</span>
+<span class="sd">  - CYAN</span>
+<span class="sd">  - MAGENTA</span>
+<span class="sd">  - YELLOW</span>
+<span class="sd">  - WHITE</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -191,6 +251,9 @@
 <span class="n">COLOR_MODE_18BIT</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x06</span><span class="p">)</span>
 <span class="n">COLOR_MODE_16M</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x07</span><span class="p">)</span>
 
+<span class="n">RGB</span> <span class="o">=</span> <span class="mh">0x00</span>
+<span class="n">BGR</span> <span class="o">=</span> <span class="mh">0x08</span>
+
 <span class="c1"># Color definitions</span>
 <span class="n">BLACK</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x0000</span><span class="p">)</span>
 <span class="n">BLUE</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x001F</span><span class="p">)</span>
@@ -218,6 +281,8 @@
 
 <span class="c1"># Rotation tables (width, height, xstart, ystart)[rotation % 4]</span>
 
+<span class="n">SUPPORTED_RESOLUTIONS</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">320</span><span class="p">,</span><span class="mi">240</span><span class="p">),(</span><span class="mi">240</span><span class="p">,</span><span class="mi">240</span><span class="p">),(</span><span class="mi">240</span><span class="p">,</span><span class="mi">135</span><span class="p">),(</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">)]</span>
+
 <span class="n">WIDTH_320</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
              <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
              <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span>
@@ -233,12 +298,19 @@
              <span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
              <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">52</span><span class="p">)]</span>
 
+<span class="n">WIDTH_128</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">)]</span>
+
 <span class="c1"># MADCTL ROTATIONS[rotation % 4]</span>
 <span class="n">ROTATIONS</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x60</span><span class="p">,</span> <span class="mh">0xc0</span><span class="p">,</span> <span class="mh">0xa0</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="color565"><a class="viewcode-back" href="../st7789py.html#st7789py.color565">[docs]</a><span class="k">def</span> <span class="nf">color565</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="color565">
+<a class="viewcode-back" href="../st7789py.html#st7789py.color565">[docs]</a>
+<span class="k">def</span> <span class="nf">color565</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert red, green and blue values (0-255) into a 16-bit 565 encoding.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -248,18 +320,21 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">red</span> <span class="o">&amp;</span> <span class="mh">0xf8</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="p">(</span><span class="n">green</span> <span class="o">&amp;</span> <span class="mh">0xfc</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">blue</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">_encode_pos</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Encode a postion into bytes.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Encode a postion into bytes.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">_ENCODE_POS</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_encode_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Encode a pixel color into bytes.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Encode a pixel color into bytes.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">_ENCODE_PIXEL</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ST7789"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789">[docs]</a><span class="k">class</span> <span class="nc">ST7789</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ST7789">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789">[docs]</a>
+<span class="k">class</span> <span class="nc">ST7789</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ST7789 driver class</span>
 
 <span class="sd">    Args:</span>
@@ -270,27 +345,34 @@
 <span class="sd">        dc (pin): dc pin **Required**</span>
 <span class="sd">        cs (pin): cs pin</span>
 <span class="sd">        backlight(pin): backlight pin</span>
-<span class="sd">        rotation (int): display rotation</span>
-<span class="sd">            - 0-Portrait</span>
-<span class="sd">            - 1-Landscape</span>
-<span class="sd">            - 2-Inverted Portrait</span>
-<span class="sd">            - 3-Inverted Landscape</span>
+<span class="sd">        rotation (int):</span>
+
+<span class="sd">          - 0-Portrait</span>
+<span class="sd">          - 1-Landscape</span>
+<span class="sd">          - 2-Inverted Portrait</span>
+<span class="sd">          - 3-Inverted Landscape</span>
+
+<span class="sd">        color_order (int):</span>
+
+<span class="sd">          - RGB: Red, Green Blue, default</span>
+<span class="sd">          - BGR: Blue, Green, Red</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backlight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+                 <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backlight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color_order</span><span class="o">=</span><span class="n">RGB</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize display.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">height</span> <span class="o">!=</span> <span class="mi">240</span> <span class="ow">or</span> <span class="n">width</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">135</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SUPPORTED_RESOLUTIONS</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Unsupported display. 320x240, 240x240 and 135x240 are supported.&quot;</span>
+                <span class="s2">&quot;Unsupported display. Supported resolutions are </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span> <span class="n">SUPPORTED_RESOLUTIONS</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">dc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dc pin is required.&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_display_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">physical_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">physical_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spi</span> <span class="o">=</span> <span class="n">spi</span>
@@ -299,6 +381,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">backlight</span> <span class="o">=</span> <span class="n">backlight</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="n">rotation</span> <span class="o">%</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color_order</span> <span class="o">=</span> <span class="n">color_order</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">hard_reset</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">soft_reset</span><span class="p">()</span>
@@ -315,10 +398,10 @@
             <span class="n">backlight</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_DISPON</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;SPI write to the device: commands and data.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;SPI write to the device: commands and data.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
 
@@ -331,8 +414,10 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
 
-<div class="viewcode-block" id="ST7789.hard_reset"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.hard_reset">[docs]</a>    <span class="k">def</span> <span class="nf">hard_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ST7789.hard_reset">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.hard_reset">[docs]</a>
+    <span class="k">def</span> <span class="nf">hard_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Hard reset display.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
@@ -349,15 +434,21 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">on</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="ST7789.soft_reset"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.soft_reset">[docs]</a>    <span class="k">def</span> <span class="nf">soft_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.soft_reset">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.soft_reset">[docs]</a>
+    <span class="k">def</span> <span class="nf">soft_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Soft reset display.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_SWRESET</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.sleep_mode"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.sleep_mode">[docs]</a>    <span class="k">def</span> <span class="nf">sleep_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.sleep_mode">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.sleep_mode">[docs]</a>
+    <span class="k">def</span> <span class="nf">sleep_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Enable or disable display sleep mode.</span>
 
 <span class="sd">        Args:</span>
@@ -369,8 +460,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_SLPOUT</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.inversion_mode"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.inversion_mode">[docs]</a>    <span class="k">def</span> <span class="nf">inversion_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.inversion_mode">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.inversion_mode">[docs]</a>
+    <span class="k">def</span> <span class="nf">inversion_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Enable or disable display inversion mode.</span>
 
 <span class="sd">        Args:</span>
@@ -382,8 +476,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_INVOFF</span><span class="p">)</span></div>
 
+
     <span class="k">def</span> <span class="nf">_set_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set display color mode.</span>
 
 <span class="sd">        Args:</span>
@@ -393,8 +488,21 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_COLMOD</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="mh">0x77</span><span class="p">]))</span>
 
-<div class="viewcode-block" id="ST7789.rotation"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.rotation">[docs]</a>    <span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rotation</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_set_color_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set display color order.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mode (int): color order</span>
+<span class="sd">                RGB: Red, Green Blue</span>
+<span class="sd">                BGR: Blue, Green, Red</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_COL</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">mode</span> <span class="o">&amp;</span> <span class="mh">0x77</span><span class="p">]))</span>
+
+<div class="viewcode-block" id="ST7789.rotation">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.rotation">[docs]</a>
+    <span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rotation</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set display rotation.</span>
 
 <span class="sd">        Args:</span>
@@ -408,23 +516,28 @@
         <span class="n">rotation</span> <span class="o">%=</span> <span class="mi">4</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="n">rotation</span>
         <span class="n">madctl</span> <span class="o">=</span> <span class="n">ROTATIONS</span><span class="p">[</span><span class="n">rotation</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color_order</span> <span class="o">==</span> <span class="n">BGR</span><span class="p">):</span>
+            <span class="n">madctl</span> <span class="o">|=</span> <span class="n">ST7789_MADCTL_BGR</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">320</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_width</span> <span class="o">==</span> <span class="mi">320</span><span class="p">:</span>
             <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_320</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">240</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_width</span> <span class="o">==</span> <span class="mi">240</span><span class="p">:</span>
             <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_240</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_width</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
             <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_135</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_width</span> <span class="o">==</span> <span class="mi">128</span><span class="p">:</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">WIDTH_128</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Unsupported display. 320x240, 240x240 and 135x240 are supported.&quot;</span>
+                <span class="s2">&quot;Unsupported display. Supported resolutions are </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span> <span class="n">SUPPORTED_RESOLUTIONS</span>
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">rotation</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_MADCTL</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">madctl</span><span class="p">]))</span></div>
 
+
     <span class="k">def</span> <span class="nf">_set_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Send CASET (column address set) command to display.</span>
 
 <span class="sd">        Args:</span>
@@ -436,7 +549,7 @@
                 <span class="n">start</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_set_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Send RASET (row address set) command to display.</span>
 
 <span class="sd">        Args:</span>
@@ -448,7 +561,7 @@
                 <span class="n">start</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">,</span> <span class="n">end</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_set_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set window to column and row address.</span>
 
 <span class="sd">        Args:</span>
@@ -461,8 +574,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_rows</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_RAMWR</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ST7789.vline"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vline">[docs]</a>    <span class="k">def</span> <span class="nf">vline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ST7789.vline">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vline">[docs]</a>
+    <span class="k">def</span> <span class="nf">vline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw vertical line at the given location and color.</span>
 
 <span class="sd">        Args:</span>
@@ -473,8 +588,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.hline"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.hline">[docs]</a>    <span class="k">def</span> <span class="nf">hline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.hline">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.hline">[docs]</a>
+    <span class="k">def</span> <span class="nf">hline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw horizontal line at the given location and color.</span>
 
 <span class="sd">        Args:</span>
@@ -485,8 +603,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.pixel"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.pixel">[docs]</a>    <span class="k">def</span> <span class="nf">pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.pixel">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.pixel">[docs]</a>
+    <span class="k">def</span> <span class="nf">pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a pixel at the given location and color.</span>
 
 <span class="sd">        Args:</span>
@@ -497,8 +618,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">_encode_pixel</span><span class="p">(</span><span class="n">color</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="ST7789.blit_buffer"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.blit_buffer">[docs]</a>    <span class="k">def</span> <span class="nf">blit_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.blit_buffer">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.blit_buffer">[docs]</a>
+    <span class="k">def</span> <span class="nf">blit_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Copy buffer to display at the given location.</span>
 
 <span class="sd">        Args:</span>
@@ -511,8 +635,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.rect"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.rect">[docs]</a>    <span class="k">def</span> <span class="nf">rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.rect">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.rect">[docs]</a>
+    <span class="k">def</span> <span class="nf">rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a rectangle at the given location, size and color.</span>
 
 <span class="sd">        Args:</span>
@@ -527,8 +654,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.fill_rect"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.fill_rect">[docs]</a>    <span class="k">def</span> <span class="nf">fill_rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.fill_rect">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.fill_rect">[docs]</a>
+    <span class="k">def</span> <span class="nf">fill_rect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a rectangle at the given location, size and filled with color.</span>
 
 <span class="sd">        Args:</span>
@@ -549,8 +679,11 @@
         <span class="k">if</span> <span class="n">rest</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">pixel</span> <span class="o">*</span> <span class="n">rest</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.fill"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.fill">[docs]</a>    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.fill">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.fill">[docs]</a>
+    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fill the entire FrameBuffer with the specified color.</span>
 
 <span class="sd">        Args:</span>
@@ -558,8 +691,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.line"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.line">[docs]</a>    <span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.line">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.line">[docs]</a>
+    <span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a single pixel wide line starting at x0, y0 and ending at x1, y1.</span>
 
 <span class="sd">        Args:</span>
@@ -591,8 +727,11 @@
                 <span class="n">err</span> <span class="o">+=</span> <span class="n">dx</span>
             <span class="n">x0</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="ST7789.vscrdef"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vscrdef">[docs]</a>    <span class="k">def</span> <span class="nf">vscrdef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.vscrdef">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vscrdef">[docs]</a>
+    <span class="k">def</span> <span class="nf">vscrdef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set Vertical Scrolling Definition.</span>
 
 <span class="sd">        To scroll a 135x240 display these values should be 40, 240, 40.</span>
@@ -609,8 +748,11 @@
         <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;HHH&quot;</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_VSCRDEF</span><span class="p">,</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;HHH&quot;</span><span class="p">,</span> <span class="n">tfa</span><span class="p">,</span> <span class="n">vsa</span><span class="p">,</span> <span class="n">bfa</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="ST7789.vscsad"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vscsad">[docs]</a>    <span class="k">def</span> <span class="nf">vscsad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vssa</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.vscsad">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.vscsad">[docs]</a>
+    <span class="k">def</span> <span class="nf">vscsad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vssa</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set Vertical Scroll Start Address of RAM.</span>
 
 <span class="sd">        Defines which line in the Frame Memory will be written as the first</span>
@@ -628,8 +770,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">ST7789_VSCSAD</span><span class="p">,</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;H&quot;</span><span class="p">,</span> <span class="n">vssa</span><span class="p">))</span></div>
 
+
     <span class="k">def</span> <span class="nf">_text8</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Internal method to write characters with width of 8 and</span>
 <span class="sd">        heights of 8 or 16.</span>
 
@@ -730,7 +873,7 @@
                 <span class="n">x0</span> <span class="o">+=</span> <span class="mi">8</span>
 
     <span class="k">def</span> <span class="nf">_text16</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Internal method to draw characters with width of 16 and heights of 16</span>
 <span class="sd">        or 32.</span>
 
@@ -892,8 +1035,10 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">blit_buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="o">+</span><span class="mi">8</span><span class="o">*</span><span class="n">line</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
             <span class="n">x0</span> <span class="o">+=</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span>
 
-<div class="viewcode-block" id="ST7789.text"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.text">[docs]</a>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ST7789.text">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.text">[docs]</a>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw text on display in specified font and colors. 8 and 16 bit wide</span>
 <span class="sd">        fonts are supported.</span>
 
@@ -910,8 +1055,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_text16</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ST7789.bitmap"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.bitmap">[docs]</a>    <span class="k">def</span> <span class="nf">bitmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.bitmap">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.bitmap">[docs]</a>
+    <span class="k">def</span> <span class="nf">bitmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a bitmap on display at the specified column and row</span>
 
 <span class="sd">        Args:</span>
@@ -945,9 +1093,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_set_window</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">to_col</span><span class="p">,</span> <span class="n">to_row</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span></div>
 
+
     <span class="c1"># @micropython.native</span>
-<div class="viewcode-block" id="ST7789.write"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ST7789.write">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="n">WHITE</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Write a string using a converted true-type font on the display starting</span>
 <span class="sd">        at the specified column and row</span>
 
@@ -1002,8 +1153,11 @@
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                 <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="ST7789.write_width"><a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.write_width">[docs]</a>    <span class="k">def</span> <span class="nf">write_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ST7789.write_width">
+<a class="viewcode-back" href="../st7789py.html#st7789py.ST7789.write_width">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the width in pixels of the string if it was written with the</span>
 <span class="sd">        specified font</span>
 
@@ -1020,7 +1174,9 @@
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                 <span class="k">pass</span>
 
-        <span class="k">return</span> <span class="n">width</span></div></div>
+        <span class="k">return</span> <span class="n">width</span></div>
+</div>
+
 </pre></div>
 
            </div>

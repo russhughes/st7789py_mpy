@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>st7789py Reference &mdash; st7789py 0.1.0 documentation</title>
@@ -11,10 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #2980B9" >
-            <a href="index.html" class="icon icon-home"> st7789py
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            st7789py
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -40,26 +45,73 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">st7789py Driver</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">st7789py Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#x240-example-programs">320x240 Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-lines-py">320x240 lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-hello-py">320x240  hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-feathers-py">320x240 feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-fonts-py">320x240 fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-scroll-py">320x240 scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#x240-toasters-py">320x240 toasters.py</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#x240-ttgo-t-display-example-programs">135x240 TTGO T-Display Example Programs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#lines-py">lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#hello-py">hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#feathers-py">feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#fonts-py">fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#scroll-py">scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#toasters-py">toasters.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#chango-py">chango.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples.html#noto-fonts-py">noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_atoms3.html">M5STACK ATOM-S3 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-feathers-py">atom_s3/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-rotations-py">atom_s3/rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-scroll-py">atom_s3/scroll.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_generic.html">Generic ESP32 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-lines-py">esp32_320x240/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-hello-py">esp32_320x240/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-feathers-py">esp32_320x240/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-fonts-py">esp32_320x240/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-scroll-py">esp32_320x240/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-toasters-py">esp32_320x240/toasters.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_tdisplay.html">TTGO T-Display Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-lines-py">ttgo_tdisplay/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-hello-py">ttgo_tdisplay/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-feathers-py">ttgo_tdisplay/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-fonts-py">ttgo_tdisplay/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-scroll-py">ttgo_tdisplay/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-toasters-py">ttgo_tdisplay/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-chango-py">ttgo_tdisplay/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-noto-fonts-py">ttgo_tdisplay/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_tdisplay_rp2040.html">TTGO T-Display RP2040 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-lines-py">ttgo_tdisplay_rp2040/lines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-hello-py">ttgo_tdisplay_rp2040/hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-feathers-py">ttgo_tdisplay_rp2040/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-fonts-py">ttgo_tdisplay_rp2040/fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-scroll-py">ttgo_tdisplay_rp2040/scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-toasters-py">ttgo_tdisplay_rp2040/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-chango-py">ttgo_tdisplay_rp2040/chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-noto-fonts-py">ttgo_tdisplay_rp2040/noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples_pi_pico.html">Raspberry Pi Pico Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples_pi_pico.html#rp-2040-waveshare-13-feathers-py">rp_2040/waveshare_13/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples_pi_pico.html#rp-2040-waveshare-114-feathers-py">rp_2040/waveshare_114/feathers.py</a></li>
 </ul>
 </li>
 </ul>
@@ -88,8 +140,8 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>st7789py Reference</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">st7789py Reference</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/st7789py.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -100,11 +152,9 @@
            <div itemprop="articleBody">
              
   <section id="module-st7789py">
-<span id="st7789py-reference"></span><h1>st7789py Reference<a class="headerlink" href="#module-st7789py" title="Permalink to this headline"></a></h1>
-<p>Copyright (c) 2020, 2021 Russ Hughes</p>
-<p>This file incorporates work covered by the following copyright and
-permission notice and is licensed under the same terms:</p>
-<p>The MIT License (MIT)</p>
+<span id="st7789py-reference"></span><h1>st7789py Reference<a class="headerlink" href="#module-st7789py" title="Link to this heading"></a></h1>
+<p>MIT License</p>
+<p>Copyright (c) 2020-2023 Russ Hughes</p>
 <p>Copyright (c) 2019 Ivan Belokobylskiy</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal
@@ -112,40 +162,53 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
 <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</p>
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
 <p>The driver is based on devbis’ st7789py_mpy module from
 <a class="reference external" href="https://github.com/devbis/st7789py_mpy">https://github.com/devbis/st7789py_mpy</a>.</p>
-<p>This driver adds support for:</p>
+<p>This driver supports:</p>
 <ul class="simple">
-<li><p>320x240, 240x240 and 135x240 pixel displays</p></li>
+<li><p>320x240, 240x240, 135x240 and 128x128 pixel displays</p></li>
 <li><p>Display rotation</p></li>
+<li><p>RGB and BGR color orders</p></li>
 <li><p>Hardware based scrolling</p></li>
 <li><p>Drawing text using 8 and 16 bit wide bitmap fonts with heights that are
 multiples of 8.  Included are 12 bitmap fonts derived from classic pc
 BIOS text mode fonts.</p></li>
 <li><p>Drawing text using converted TrueType fonts.</p></li>
 <li><p>Drawing converted bitmaps</p></li>
+<li><p>Named color constants</p>
+<ul>
+<li><p>BLACK</p></li>
+<li><p>BLUE</p></li>
+<li><p>RED</p></li>
+<li><p>GREEN</p></li>
+<li><p>CYAN</p></li>
+<li><p>MAGENTA</p></li>
+<li><p>YELLOW</p></li>
+<li><p>WHITE</p></li>
+</ul>
+</li>
 </ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="st7789py.color565">
-<span class="sig-prename descclassname"><span class="pre">st7789py.</span></span><span class="sig-name descname"><span class="pre">color565</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#color565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.color565" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">st7789py.</span></span><span class="sig-name descname"><span class="pre">color565</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#color565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.color565" title="Link to this definition"></a></dt>
 <dd><p>Convert red, green and blue values (0-255) into a 16-bit 565 encoding.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="st7789py.ST7789">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">st7789py.</span></span><span class="sig-name descname"><span class="pre">ST7789</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">st7789py.</span></span><span class="sig-name descname"><span class="pre">ST7789</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789" title="Link to this definition"></a></dt>
 <dd><p>ST7789 driver class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>spi</strong> (<em>spi</em>) – spi object <strong>Required</strong></p></li>
 <li><p><strong>width</strong> (<em>int</em>) – display width <strong>Required</strong></p></li>
@@ -154,32 +217,39 @@ BIOS text mode fonts.</p></li>
 <li><p><strong>dc</strong> (<em>pin</em>) – dc pin <strong>Required</strong></p></li>
 <li><p><strong>cs</strong> (<em>pin</em>) – cs pin</p></li>
 <li><p><strong>backlight</strong> (<em>pin</em>) – backlight pin</p></li>
-<li><p><strong>rotation</strong> (<em>int</em>) – display rotation
-- 0-Portrait
-- 1-Landscape
-- 2-Inverted Portrait
-- 3-Inverted Landscape</p></li>
+<li><p><strong>rotation</strong> (<em>int</em>) – <ul>
+<li><p>0-Portrait</p></li>
+<li><p>1-Landscape</p></li>
+<li><p>2-Inverted Portrait</p></li>
+<li><p>3-Inverted Landscape</p></li>
+</ul>
+</p></li>
+<li><p><strong>color_order</strong> (<em>int</em>) – <ul>
+<li><p>RGB: Red, Green Blue, default</p></li>
+<li><p>BGR: Blue, Green, Red</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.hard_reset">
-<span class="sig-name descname"><span class="pre">hard_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.hard_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.hard_reset" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hard_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.hard_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.hard_reset" title="Link to this definition"></a></dt>
 <dd><p>Hard reset display.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.soft_reset">
-<span class="sig-name descname"><span class="pre">soft_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.soft_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.soft_reset" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">soft_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.soft_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.soft_reset" title="Link to this definition"></a></dt>
 <dd><p>Soft reset display.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.sleep_mode">
-<span class="sig-name descname"><span class="pre">sleep_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.sleep_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.sleep_mode" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sleep_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.sleep_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.sleep_mode" title="Link to this definition"></a></dt>
 <dd><p>Enable or disable display sleep mode.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>value</strong> (<em>bool</em>) – if True enable sleep mode. if False disable sleep</p></li>
 <li><p><strong>mode</strong> – </p></li>
@@ -190,10 +260,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.inversion_mode">
-<span class="sig-name descname"><span class="pre">inversion_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.inversion_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.inversion_mode" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">inversion_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.inversion_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.inversion_mode" title="Link to this definition"></a></dt>
 <dd><p>Enable or disable display inversion mode.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>value</strong> (<em>bool</em>) – if True enable inversion mode. if False disable</p></li>
 <li><p><strong>mode</strong> (<em>inversion</em>) – </p></li>
@@ -204,10 +274,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.rotation">
-<span class="sig-name descname"><span class="pre">rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.rotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.rotation" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.rotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.rotation" title="Link to this definition"></a></dt>
 <dd><p>Set display rotation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>rotation</strong> (<em>int</em>) – <ul class="simple">
 <li><p>0-Portrait</p></li>
 <li><p>1-Landscape</p></li>
@@ -221,10 +291,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.vline">
-<span class="sig-name descname"><span class="pre">vline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.vline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.vline" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.vline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.vline" title="Link to this definition"></a></dt>
 <dd><p>Draw vertical line at the given location and color.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
 <li><p><strong>Y</strong> (<em>int</em>) – y coordinate</p></li>
@@ -237,10 +307,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.hline">
-<span class="sig-name descname"><span class="pre">hline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.hline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.hline" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.hline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.hline" title="Link to this definition"></a></dt>
 <dd><p>Draw horizontal line at the given location and color.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
 <li><p><strong>Y</strong> (<em>int</em>) – y coordinate</p></li>
@@ -253,10 +323,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.pixel">
-<span class="sig-name descname"><span class="pre">pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.pixel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.pixel" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.pixel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.pixel" title="Link to this definition"></a></dt>
 <dd><p>Draw a pixel at the given location and color.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
 <li><p><strong>Y</strong> (<em>int</em>) – y coordinate</p></li>
@@ -268,10 +338,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.blit_buffer">
-<span class="sig-name descname"><span class="pre">blit_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.blit_buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.blit_buffer" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">blit_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.blit_buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.blit_buffer" title="Link to this definition"></a></dt>
 <dd><p>Copy buffer to display at the given location.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>buffer</strong> (<em>bytes</em>) – Data to copy to display</p></li>
 <li><p><strong>x</strong> (<em>int</em>) – Top left corner x coordinate</p></li>
@@ -285,10 +355,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.rect">
-<span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.rect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.rect" title="Link to this definition"></a></dt>
 <dd><p>Draw a rectangle at the given location, size and color.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>int</em>) – Top left corner x coordinate</p></li>
 <li><p><strong>y</strong> (<em>int</em>) – Top left corner y coordinate</p></li>
@@ -302,10 +372,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.fill_rect">
-<span class="sig-name descname"><span class="pre">fill_rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.fill_rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.fill_rect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fill_rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.fill_rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.fill_rect" title="Link to this definition"></a></dt>
 <dd><p>Draw a rectangle at the given location, size and filled with color.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>int</em>) – Top left corner x coordinate</p></li>
 <li><p><strong>y</strong> (<em>int</em>) – Top left corner y coordinate</p></li>
@@ -319,10 +389,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.fill">
-<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.fill" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.fill" title="Link to this definition"></a></dt>
 <dd><p>Fill the entire FrameBuffer with the specified color.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p>
 </dd>
 </dl>
@@ -330,10 +400,10 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.line">
-<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.line" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.line" title="Link to this definition"></a></dt>
 <dd><p>Draw a single pixel wide line starting at x0, y0 and ending at x1, y1.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x0</strong> (<em>int</em>) – Start point x coordinate</p></li>
 <li><p><strong>y0</strong> (<em>int</em>) – Start point y coordinate</p></li>
@@ -347,7 +417,7 @@ BIOS text mode fonts.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.vscrdef">
-<span class="sig-name descname"><span class="pre">vscrdef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tfa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bfa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.vscrdef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.vscrdef" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vscrdef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tfa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bfa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.vscrdef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.vscrdef" title="Link to this definition"></a></dt>
 <dd><p>Set Vertical Scrolling Definition.</p>
 <p>To scroll a 135x240 display these values should be 40, 240, 40.
 There are 40 lines above the display that are not shown followed by
@@ -355,7 +425,7 @@ There are 40 lines above the display that are not shown followed by
 You could write to these areas off display and scroll them into view by
 changing the TFA, VSA and BFA values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tfa</strong> (<em>int</em>) – Top Fixed Area</p></li>
 <li><p><strong>vsa</strong> (<em>int</em>) – Vertical Scrolling Area</p></li>
@@ -367,7 +437,7 @@ changing the TFA, VSA and BFA values.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.vscsad">
-<span class="sig-name descname"><span class="pre">vscsad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vssa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.vscsad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.vscsad" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vscsad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vssa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.vscsad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.vscsad" title="Link to this definition"></a></dt>
 <dd><p>Set Vertical Scroll Start Address of RAM.</p>
 <p>Defines which line in the Frame Memory will be written as the first
 line after the last line of the Top Fixed Area on the display</p>
@@ -378,7 +448,7 @@ utime.sleep(0.01)</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>vssa</strong> (<em>int</em>) – Vertical Scrolling Start Address</p>
 </dd>
 </dl>
@@ -386,11 +456,11 @@ utime.sleep(0.01)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.text">
-<span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.text" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.text" title="Link to this definition"></a></dt>
 <dd><p>Draw text on display in specified font and colors. 8 and 16 bit wide
 fonts are supported.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>font</strong> (<em>module</em>) – font module to use.</p></li>
 <li><p><strong>text</strong> (<em>str</em>) – text to write</p></li>
@@ -405,10 +475,10 @@ fonts are supported.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.bitmap">
-<span class="sig-name descname"><span class="pre">bitmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.bitmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.bitmap" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">bitmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.bitmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.bitmap" title="Link to this definition"></a></dt>
 <dd><p>Draw a bitmap on display at the specified column and row</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bitmap</strong> (<em>bitmap_module</em>) – The module containing the bitmap to draw</p></li>
 <li><p><strong>x</strong> (<em>int</em>) – column to start drawing at</p></li>
@@ -422,11 +492,11 @@ module</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.write" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.write" title="Link to this definition"></a></dt>
 <dd><p>Write a string using a converted true-type font on the display starting
 at the specified column and row</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>font</strong> (<em>font</em>) – The module containing the converted true-type font</p></li>
 <li><p><strong>s</strong> (<em>string</em>) – The string to write</p></li>
@@ -441,11 +511,11 @@ at the specified column and row</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="st7789py.ST7789.write_width">
-<span class="sig-name descname"><span class="pre">write_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.write_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.write_width" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">write_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/st7789py.html#ST7789.write_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#st7789py.ST7789.write_width" title="Link to this definition"></a></dt>
 <dd><p>Returns the width in pixels of the string if it was written with the
 specified font</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>font</strong> (<em>font</em>) – The module containing the converted true-type font</p></li>
 <li><p><strong>string</strong> (<em>string</em>) – The string to measure</p></li>
