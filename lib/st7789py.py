@@ -878,8 +878,8 @@ class ST7789():
                 bs_bit += 1
 
             color = bitmap.PALETTE[color_index]
-            buffer[i] = color & 0xff00 >> 8
-            buffer[i + 1] = color_index & 0xff
+            buffer[i] = color >> 8 & 0xff
+            buffer[i + 1] = color & 0xff
 
         to_col = x + bitmap.WIDTH - 1
         to_row = y + bitmap.HEIGHT - 1
