@@ -1,3 +1,17 @@
+Excelent micropython driver for st7789 module forked from:
+https://github.com/russhughes/st7789py_mpy
+
+Started this because:
+
+   1 - My lack of experience to compile and develop fast modules in C for use in micropython
+   
+   2 - Buy a I8080 (parallel 8 bits bus board) to try and learn.
+
+Results:
+  Fast micropython only driver for st7789 with 8 bit parallel bus, thanks to what i have learn with (https://github.com/HughMaingauche/ILI9341-parallel-TFT-driver-for-micropython).
+  
+  Obs.: For ESP32 ONLY!!!!!!!
+
 Python ST7789 driver for MicroPython
 ====================================
 
