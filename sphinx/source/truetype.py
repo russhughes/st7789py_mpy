@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Converted from Chango-Regular.ttf using:
-#     ./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f
+#     ./write_font_converter.py Chango-Regular.ttf 16 -c 0x20-0x7f
 
 # Maps the order of the character data
 MAP = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

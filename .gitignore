@@ -6,3 +6,4 @@ __pycache__
 *.o
 *.P
 .history
+*.mpy

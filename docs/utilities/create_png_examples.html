@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>create_png_examples.py &mdash; st7789py 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="image_converter.py" href="image_converter.html" />
+    <link rel="prev" title="Utilities" href="../utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            st7789py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.init"><code class="docutils literal notranslate"><span class="pre">ST7789.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pbitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.pbitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.polygon"><code class="docutils literal notranslate"><span class="pre">ST7789.polygon()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#configuration-modules">Configuration modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configs/atom_s3.html">M5STACK AtomS3 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/atom_s3.html#tft-configs-atom-s3-tft-config-py">tft_configs/atom_s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/atom_s3.html#tft-configs-atom-s3-tft-buttons-py">tft_configs/atom_s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/esp32_320x240.html">Generic ESP32 320x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-config-py">tft_configs/esp32_320x240/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-buttons-py">tft_configs/esp32_320x240/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core.html">M5STACK CORE 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core.html#tft-configs-m5stack-core-tft-config-py">tft_configs/m5stack_core/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core.html#tft-configs-m5stack-core-tft-buttons-py">tft_configs/m5stack_core/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core2.html">M5STACK CORE2 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-config-py">tft_configs/m5stack_core2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-buttons-py">tft_configs/m5stack_core2/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core3.html">M5STACK CoreS3 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-config-py">tft_configs/m5stack_core3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-buttons-py">tft_configs/m5stack_core3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html">RP2040-Touch-LCD-1.28 240x240 (GC9A01)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-config-py">tft_configs/rp2040_touch_lcd_128/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-buttons-py">tft_configs/rp2040_touch_lcd_128/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t-dongle-s3.html">LilyGo T-Dongle-S3 80x160 (ST7735)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-config-py">tft_configs/t-dongle-s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-buttons-py">tft_configs/t-dongle-s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t-embed.html">LilyGo T-embed 170x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-embed.html#tft-configs-t-embed-tft-config-py">tft_configs/t-embed/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-embed.html#tft-configs-t-embed-tft-buttons-py">tft_configs/t-embed/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t_qt_pro.html">LilyGo T-QT Pro 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-config-py">tft_configs/t_qt_pro/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-buttons-py">tft_configs/t_qt_pro/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/ttgo_tdisplay.html">LilyGo T-DISPLAY 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-config-py">tft_configs/ttgo_tdisplay/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-buttons-py">tft_configs/ttgo_tdisplay/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html">LilyGo T-DISPLAY RP2040 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-config-py">tft_configs/ttgo_tdisplay_rp2040/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-buttons-py">tft_configs/ttgo_tdisplay_rp2040/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_114.html">Waveshare Pico LCD 1.14 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_114.html#tft-configs-waveshare-114-tft-config-py">tft_configs/waveshare_114/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_114.html#tft-configs-waveshare-114-tft-buttons-py">tft_configs/waveshare_114/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_13.html">Waveshare Pico LCD 1.3 240x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_13.html#tft-configs-waveshare-13-tft-config-py">tft_configs/waveshare_13/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_13.html#tft-configs-waveshare-13-tft-buttons-py">tft_configs/waveshare_13/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_2.html">Waveshare Pico LCD 2 240x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_2.html#tft-configs-waveshare-2-tft-config-py">tft_configs/waveshare_2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_2.html#tft-configs-waveshare-2-tft-buttons-py">tft_configs/waveshare_2/tft_buttons.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/alien.html">alien.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/boxlines.html">boxlines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/chango.html">chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/color_test.html">color_test.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/colorbars.html">colorbars.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/feathers.html">feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/fonts.html">fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/hello.html">hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/noto_fonts.html">noto_fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/proverbs.html">proverbs.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/roids.html">roids.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/rotations.html">rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/scroll.html">scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/tiny_hello.html">tiny_hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/tiny_toasters.html">tiny_toasters.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fonts.html">Fonts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#bitmap-fonts">Bitmap Fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#bitmap-font-conversion">Bitmap Font Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#bitmap-font-samples">Bitmap Font Samples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#id2">16x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#true-type-fonts">True Type fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../utilities.html">Utilities</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">create_png_examples.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="image_converter.html">image_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="image_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="make_colorbars_bitmap.html">make_colorbars_bitmap.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="make_colorbars_bitmap.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="make_colorbars_bitmap.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sprites_converter.html">sprites_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sprites_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sprites_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text_font_converter.html">text_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="text_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="write_font_converter.html">write_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="write_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="write_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">st7789py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../utilities.html">Utilities</a></li>
+      <li class="breadcrumb-item active">create_png_examples.py</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/utilities/create_png_examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="create-png-examples-py">
+<span id="create-png-examples"></span><h1>create_png_examples.py<a class="headerlink" href="#create-png-examples-py" title="Link to this heading"></a></h1>
+<p>Reads all font-bin files from the specified <cite>input</cite> directory and writes png images to t
+he specified <cite>output</cite> directory. Optionally limiting the characters included to -first-char
+(-f) thru -last-char (-l).  This is the program I used to create the png font samples in the
+documentation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../fonts.html#bitmap-font-samples"><span class="std std-ref">Bitmap Font Samples</span></a>.</p></li>
+</ul>
+</div>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">- create_png_examples.py font_directory png_directory</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: create_png_examples.py [-h] input output</span>
+
+<span class="go">Creates png samples of each text font file from the input directoryto the output directory.</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">input       input directory containing font-bin files</span>
+<span class="go">output      output directory to create pngs</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">-h, --help  show this help message and exit</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../utilities.html" class="btn btn-neutral float-left" title="Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="image_converter.html" class="btn btn-neutral float-right" title="image_converter.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

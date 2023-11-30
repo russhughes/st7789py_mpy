@@ -19,7 +19,8 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 update:
-	# Update documentation on my webserver using rsync over ssh
-	# /usr/bin/rsync --progress --delete -e 'ssh -i ~/.ssh/id_rsa' -avz build/html/  penfold.owt.com:/htdocs/st7789py/
 	# update docs directory of this repo using rsync
-	/usr/bin/rsync --progress --delete -avz build/html/ ../docs/
+	/usr/bin/rsync --progress --delete -avz build/html/ ../docs/ > /dev/null
+	# update local webserver for testing
+	# /usr/bin/rsync --progress --delete -avz build/html/ /htdocs/st7789py > /dev/null
+	

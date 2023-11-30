@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tiny_toasters.py &mdash; st7789py 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fonts" href="../fonts.html" />
+    <link rel="prev" title="tiny_hello.py" href="tiny_hello.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            st7789py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.init"><code class="docutils literal notranslate"><span class="pre">ST7789.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pbitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.pbitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.polygon"><code class="docutils literal notranslate"><span class="pre">ST7789.polygon()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Example Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#configuration-modules">Configuration modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configs/atom_s3.html">M5STACK AtomS3 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/atom_s3.html#tft-configs-atom-s3-tft-config-py">tft_configs/atom_s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/atom_s3.html#tft-configs-atom-s3-tft-buttons-py">tft_configs/atom_s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/esp32_320x240.html">Generic ESP32 320x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-config-py">tft_configs/esp32_320x240/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-buttons-py">tft_configs/esp32_320x240/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core.html">M5STACK CORE 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core.html#tft-configs-m5stack-core-tft-config-py">tft_configs/m5stack_core/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core.html#tft-configs-m5stack-core-tft-buttons-py">tft_configs/m5stack_core/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core2.html">M5STACK CORE2 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-config-py">tft_configs/m5stack_core2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-buttons-py">tft_configs/m5stack_core2/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core3.html">M5STACK CoreS3 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-config-py">tft_configs/m5stack_core3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-buttons-py">tft_configs/m5stack_core3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html">RP2040-Touch-LCD-1.28 240x240 (GC9A01)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-config-py">tft_configs/rp2040_touch_lcd_128/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-buttons-py">tft_configs/rp2040_touch_lcd_128/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t-dongle-s3.html">LilyGo T-Dongle-S3 80x160 (ST7735)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-config-py">tft_configs/t-dongle-s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-buttons-py">tft_configs/t-dongle-s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t-embed.html">LilyGo T-embed 170x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-embed.html#tft-configs-t-embed-tft-config-py">tft_configs/t-embed/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-embed.html#tft-configs-t-embed-tft-buttons-py">tft_configs/t-embed/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t_qt_pro.html">LilyGo T-QT Pro 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-config-py">tft_configs/t_qt_pro/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-buttons-py">tft_configs/t_qt_pro/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/ttgo_tdisplay.html">LilyGo T-DISPLAY 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-config-py">tft_configs/ttgo_tdisplay/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-buttons-py">tft_configs/ttgo_tdisplay/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html">LilyGo T-DISPLAY RP2040 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-config-py">tft_configs/ttgo_tdisplay_rp2040/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-buttons-py">tft_configs/ttgo_tdisplay_rp2040/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_114.html">Waveshare Pico LCD 1.14 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_114.html#tft-configs-waveshare-114-tft-config-py">tft_configs/waveshare_114/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_114.html#tft-configs-waveshare-114-tft-buttons-py">tft_configs/waveshare_114/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_13.html">Waveshare Pico LCD 1.3 240x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_13.html#tft-configs-waveshare-13-tft-config-py">tft_configs/waveshare_13/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_13.html#tft-configs-waveshare-13-tft-buttons-py">tft_configs/waveshare_13/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_2.html">Waveshare Pico LCD 2 240x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_2.html#tft-configs-waveshare-2-tft-config-py">tft_configs/waveshare_2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_2.html#tft-configs-waveshare-2-tft-buttons-py">tft_configs/waveshare_2/tft_buttons.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#examples">Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="alien.html">alien.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boxlines.html">boxlines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chango.html">chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="color_test.html">color_test.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="colorbars.html">colorbars.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feathers.html">feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonts.html">fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hello.html">hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="noto_fonts.html">noto_fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="proverbs.html">proverbs.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roids.html">roids.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rotations.html">rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scroll.html">scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tiny_hello.html">tiny_hello.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">tiny_toasters.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fonts.html">Fonts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#bitmap-fonts">Bitmap Fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#bitmap-font-conversion">Bitmap Font Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#bitmap-font-samples">Bitmap Font Samples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#id2">16x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#true-type-fonts">True Type fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/create_png_examples.html">create_png_examples.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/create_png_examples.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/create_png_examples.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/image_converter.html">image_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/image_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/image_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/make_colorbars_bitmap.html">make_colorbars_bitmap.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/make_colorbars_bitmap.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/make_colorbars_bitmap.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/sprites_converter.html">sprites_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/sprites_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/sprites_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/text_font_converter.html">text_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/text_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/text_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/write_font_converter.html">write_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/write_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/write_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">st7789py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Example Programs</a></li>
+      <li class="breadcrumb-item active">tiny_toasters.py</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/tiny_toasters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tiny-toasters-py">
+<span id="tiny-toasters"></span><h1>tiny_toasters.py<a class="headerlink" href="#tiny-toasters-py" title="Link to this heading"></a></h1>
+<figure class="align-center" id="id1">
+<img alt="../_images/tiny_toasters.jpg" src="../_images/tiny_toasters.jpg" />
+<figcaption>
+<p><span class="caption-text">Test sprites_converter.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Tiny Flying Toasters for smaller displays using a converted BMP spritesheet module using:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">`sprites_converter.py ttoasters.bmp 32 32 4 &gt; ttoast_bitmaps.py`</span>
+</pre></div>
+</div>
+<p class="rubric">The tiny_toasters.py example uses the spritesheet from CircuitPython_Flying_Toasters pendant
+project <a class="reference external" href="https://learn.adafruit.com/circuitpython-sprite-animation-pendant-mario-clouds-flying-toasters">https://learn.adafruit.com/circuitpython-sprite-animation-pendant-mario-clouds-flying-toasters</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example requires the following modules:</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><cite>st7789py</cite></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><cite>tft_config</cite></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><cite>tiny_toasters</cite></p></li>
+</ul>
+</td></tr></table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">  2</span><span class="sd">tiny_toasters.py</span>
+<span class="linenos">  3</span><span class="sd">================</span>
+<span class="linenos">  4</span>
+<span class="linenos">  5</span><span class="sd">.. figure:: ../_static/tiny_toasters.jpg</span>
+<span class="linenos">  6</span><span class="sd">    :align: center</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span><span class="sd">    Test sprites_converter.</span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span><span class="sd">Tiny Flying Toasters for smaller displays using a converted BMP spritesheet module using:</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span><span class="sd">.. code-block:: console</span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span><span class="sd">  `sprites_converter.py ttoasters.bmp 32 32 4 &gt; ttoast_bitmaps.py`</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="sd">.. rubric:: The tiny_toasters.py example uses the spritesheet from CircuitPython_Flying_Toasters pendant</span>
+<span class="linenos"> 17</span><span class="sd">  project https://learn.adafruit.com/circuitpython-sprite-animation-pendant-mario-clouds-flying-toasters</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="sd">.. note:: This example requires the following modules:</span>
+<span class="linenos"> 21</span>
+<span class="linenos"> 22</span><span class="sd">  .. hlist::</span>
+<span class="linenos"> 23</span><span class="sd">     :columns: 3</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span><span class="sd">     - `st7789py`</span>
+<span class="linenos"> 26</span><span class="sd">     - `tft_config`</span>
+<span class="linenos"> 27</span><span class="sd">     - `tiny_toasters`</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="kn">import</span> <span class="nn">gc</span>
+<span class="linenos"> 32</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos"> 33</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 34</span><span class="kn">import</span> <span class="nn">st7789py</span> <span class="k">as</span> <span class="nn">st7789</span>
+<span class="linenos"> 35</span><span class="kn">import</span> <span class="nn">tft_config</span>
+<span class="linenos"> 36</span><span class="kn">import</span> <span class="nn">tiny_toasters_bitmaps</span> <span class="k">as</span> <span class="nn">toast_bitmaps</span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span><span class="n">TOASTER_FRAMES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="linenos"> 39</span><span class="n">TOAST_FRAMES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="linenos"> 40</span>
+<span class="linenos"> 41</span>
+<span class="linenos"> 42</span><span class="k">def</span> <span class="nf">collide</span><span class="p">(</span><span class="n">a_col</span><span class="p">,</span> <span class="n">a_row</span><span class="p">,</span> <span class="n">a_width</span><span class="p">,</span> <span class="n">a_height</span><span class="p">,</span> <span class="n">b_col</span><span class="p">,</span> <span class="n">b_row</span><span class="p">,</span> <span class="n">b_width</span><span class="p">,</span> <span class="n">b_height</span><span class="p">):</span>
+<span class="linenos"> 43</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;return true if two rectangles overlap&quot;&quot;&quot;</span>
+<span class="linenos"> 44</span>    <span class="k">return</span> <span class="p">(</span>
+<span class="linenos"> 45</span>        <span class="n">a_col</span> <span class="o">+</span> <span class="n">a_width</span> <span class="o">&gt;=</span> <span class="n">b_col</span>
+<span class="linenos"> 46</span>        <span class="ow">and</span> <span class="n">a_col</span> <span class="o">&lt;=</span> <span class="n">b_col</span> <span class="o">+</span> <span class="n">b_width</span>
+<span class="linenos"> 47</span>        <span class="ow">and</span> <span class="n">a_row</span> <span class="o">+</span> <span class="n">a_height</span> <span class="o">&gt;=</span> <span class="n">b_row</span>
+<span class="linenos"> 48</span>        <span class="ow">and</span> <span class="n">a_row</span> <span class="o">&lt;=</span> <span class="n">b_row</span> <span class="o">+</span> <span class="n">b_height</span>
+<span class="linenos"> 49</span>    <span class="p">)</span>
+<span class="linenos"> 50</span>
+<span class="linenos"> 51</span>
+<span class="linenos"> 52</span><span class="k">def</span> <span class="nf">random_start</span><span class="p">(</span><span class="n">tft</span><span class="p">,</span> <span class="n">sprites</span><span class="p">,</span> <span class="n">bitmaps</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+<span class="linenos"> 53</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 54</span><span class="sd">    Return a random location along the top or right of the screen, if that location would overlaps</span>
+<span class="linenos"> 55</span><span class="sd">    with another sprite return (0,0). This allows the other sprites to keep moving giving the next</span>
+<span class="linenos"> 56</span><span class="sd">    random_start a better chance to avoid a collision.</span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 59</span>    <span class="c1"># 50/50 chance to try along the top/right half or along the right/top half of the screen</span>
+<span class="linenos"> 60</span>    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos"> 61</span>        <span class="n">row</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 62</span>        <span class="n">col</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">bitmaps</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">bitmaps</span><span class="o">.</span><span class="n">WIDTH</span><span class="p">)</span>
+<span class="linenos"> 63</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 64</span>        <span class="n">col</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">bitmaps</span><span class="o">.</span><span class="n">WIDTH</span>
+<span class="linenos"> 65</span>        <span class="n">row</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="linenos"> 66</span>
+<span class="linenos"> 67</span>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
+<span class="linenos"> 68</span>        <span class="n">collide</span><span class="p">(</span>
+<span class="linenos"> 69</span>            <span class="n">col</span><span class="p">,</span>
+<span class="linenos"> 70</span>            <span class="n">row</span><span class="p">,</span>
+<span class="linenos"> 71</span>            <span class="n">bitmaps</span><span class="o">.</span><span class="n">WIDTH</span><span class="p">,</span>
+<span class="linenos"> 72</span>            <span class="n">bitmaps</span><span class="o">.</span><span class="n">HEIGHT</span><span class="p">,</span>
+<span class="linenos"> 73</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">col</span><span class="p">,</span>
+<span class="linenos"> 74</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">row</span><span class="p">,</span>
+<span class="linenos"> 75</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+<span class="linenos"> 76</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+<span class="linenos"> 77</span>        <span class="p">)</span>
+<span class="linenos"> 78</span>        <span class="k">for</span> <span class="n">sprite</span> <span class="ow">in</span> <span class="n">sprites</span>
+<span class="linenos"> 79</span>        <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="n">sprite</span><span class="o">.</span><span class="n">num</span>
+<span class="linenos"> 80</span>    <span class="p">):</span>
+<span class="linenos"> 81</span>        <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 82</span>        <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 83</span>
+<span class="linenos"> 84</span>    <span class="k">return</span> <span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+<span class="linenos"> 85</span>
+<span class="linenos"> 86</span>
+<span class="linenos"> 87</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos"> 88</span>    <span class="k">class</span> <span class="nc">Toast</span><span class="p">:</span>
+<span class="linenos"> 89</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 90</span><span class="sd">        Toast class to keep track of toaster and toast sprites</span>
+<span class="linenos"> 91</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 92</span>
+<span class="linenos"> 93</span>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sprites</span><span class="p">,</span> <span class="n">bitmaps</span><span class="p">,</span> <span class="n">frames</span><span class="p">):</span>
+<span class="linenos"> 94</span><span class="w">            </span><span class="sd">&quot;&quot;&quot;create new sprite in random location that does not overlap other sprites&quot;&quot;&quot;</span>
+<span class="linenos"> 95</span>            <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sprites</span><span class="p">)</span>
+<span class="linenos"> 96</span>            <span class="bp">self</span><span class="o">.</span><span class="n">bitmaps</span> <span class="o">=</span> <span class="n">bitmaps</span>
+<span class="linenos"> 97</span>            <span class="bp">self</span><span class="o">.</span><span class="n">frames</span> <span class="o">=</span> <span class="n">frames</span>
+<span class="linenos"> 98</span>            <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+<span class="linenos"> 99</span>            <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">random_start</span><span class="p">(</span><span class="n">tft</span><span class="p">,</span> <span class="n">sprites</span><span class="p">,</span> <span class="n">bitmaps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+<span class="linenos">100</span>            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">bitmaps</span><span class="o">.</span><span class="n">WIDTH</span>
+<span class="linenos">101</span>            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bitmaps</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">102</span>            <span class="bp">self</span><span class="o">.</span><span class="n">last_col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span>
+<span class="linenos">103</span>            <span class="bp">self</span><span class="o">.</span><span class="n">last_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span>
+<span class="linenos">104</span>            <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span>
+<span class="linenos">105</span>            <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span> <span class="o">=</span> <span class="o">-</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos">106</span>            <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="linenos">107</span>            <span class="bp">self</span><span class="o">.</span><span class="n">prev_dir_col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span>
+<span class="linenos">108</span>            <span class="bp">self</span><span class="o">.</span><span class="n">prev_dir_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span>
+<span class="linenos">109</span>            <span class="bp">self</span><span class="o">.</span><span class="n">iceberg</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">110</span>
+<span class="linenos">111</span>        <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">112</span><span class="w">            </span><span class="sd">&quot;&quot;&quot;clear above and behind sprite&quot;&quot;&quot;</span>
+<span class="linenos">113</span>            <span class="n">tft</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span>
+<span class="linenos">114</span>                <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span>
+<span class="linenos">115</span>            <span class="p">)</span>
+<span class="linenos">116</span>
+<span class="linenos">117</span>            <span class="n">tft</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span>
+<span class="linenos">118</span>                <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span><span class="p">,</span>
+<span class="linenos">119</span>                <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span>
+<span class="linenos">120</span>                <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span><span class="p">,</span>
+<span class="linenos">121</span>                <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+<span class="linenos">122</span>                <span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">,</span>
+<span class="linenos">123</span>            <span class="p">)</span>
+<span class="linenos">124</span>
+<span class="linenos">125</span>        <span class="k">def</span> <span class="nf">erase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">126</span><span class="w">            </span><span class="sd">&quot;&quot;&quot;erase last position of sprite&quot;&quot;&quot;</span>
+<span class="linenos">127</span>            <span class="n">tft</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span>
+<span class="linenos">128</span>                <span class="bp">self</span><span class="o">.</span><span class="n">last_col</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span>
+<span class="linenos">129</span>            <span class="p">)</span>
+<span class="linenos">130</span>
+<span class="linenos">131</span>        <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sprites</span><span class="p">):</span>
+<span class="linenos">132</span><span class="w">            </span><span class="sd">&quot;&quot;&quot;step frame and move sprite&quot;&quot;&quot;</span>
+<span class="linenos">133</span>
+<span class="linenos">134</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span>
+<span class="linenos">135</span>                <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span>
+<span class="linenos">136</span>
+<span class="linenos">137</span>            <span class="bp">self</span><span class="o">.</span><span class="n">last_col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span>
+<span class="linenos">138</span>            <span class="bp">self</span><span class="o">.</span><span class="n">last_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span>
+<span class="linenos">139</span>            <span class="n">new_col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span>
+<span class="linenos">140</span>            <span class="n">new_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span>
+<span class="linenos">141</span>
+<span class="linenos">142</span>            <span class="c1"># if new location collides with another sprite, change direction for 32 frames</span>
+<span class="linenos">143</span>
+<span class="linenos">144</span>            <span class="k">for</span> <span class="n">sprite</span> <span class="ow">in</span> <span class="n">sprites</span><span class="p">:</span>
+<span class="linenos">145</span>                <span class="k">if</span> <span class="p">(</span>
+<span class="linenos">146</span>                    <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">!=</span> <span class="n">sprite</span><span class="o">.</span><span class="n">num</span>
+<span class="linenos">147</span>                    <span class="ow">and</span> <span class="n">collide</span><span class="p">(</span>
+<span class="linenos">148</span>                        <span class="n">new_col</span><span class="p">,</span>
+<span class="linenos">149</span>                        <span class="n">new_row</span><span class="p">,</span>
+<span class="linenos">150</span>                        <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+<span class="linenos">151</span>                        <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+<span class="linenos">152</span>                        <span class="n">sprite</span><span class="o">.</span><span class="n">col</span><span class="p">,</span>
+<span class="linenos">153</span>                        <span class="n">sprite</span><span class="o">.</span><span class="n">row</span><span class="p">,</span>
+<span class="linenos">154</span>                        <span class="n">sprite</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+<span class="linenos">155</span>                        <span class="n">sprite</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+<span class="linenos">156</span>                    <span class="p">)</span>
+<span class="linenos">157</span>                    <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">&gt;</span> <span class="n">sprite</span><span class="o">.</span><span class="n">col</span><span class="p">)</span>
+<span class="linenos">158</span>                <span class="p">):</span>
+<span class="linenos">159</span>                    <span class="bp">self</span><span class="o">.</span><span class="n">iceberg</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="linenos">160</span>                    <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">161</span>                    <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="linenos">162</span>                    <span class="n">new_col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span>
+<span class="linenos">163</span>                    <span class="n">new_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span>
+<span class="linenos">164</span>
+<span class="linenos">165</span>            <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">new_col</span>
+<span class="linenos">166</span>            <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">new_row</span>
+<span class="linenos">167</span>
+<span class="linenos">168</span>            <span class="c1"># if new location touches edge of screen, erase then set new start location</span>
+<span class="linenos">169</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">&gt;</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">170</span>                <span class="bp">self</span><span class="o">.</span><span class="n">erase</span><span class="p">()</span>
+<span class="linenos">171</span>                <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span> <span class="o">=</span> <span class="o">-</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos">172</span>                <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="linenos">173</span>                <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">random_start</span><span class="p">(</span><span class="n">tft</span><span class="p">,</span> <span class="n">sprites</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bitmaps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+<span class="linenos">174</span>
+<span class="linenos">175</span>            <span class="c1"># Track post collision direction change</span>
+<span class="linenos">176</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iceberg</span><span class="p">:</span>
+<span class="linenos">177</span>                <span class="bp">self</span><span class="o">.</span><span class="n">iceberg</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="linenos">178</span>                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iceberg</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos">179</span>                    <span class="bp">self</span><span class="o">.</span><span class="n">dir_col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prev_dir_col</span>
+<span class="linenos">180</span>                    <span class="bp">self</span><span class="o">.</span><span class="n">dir_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prev_dir_row</span>
+<span class="linenos">181</span>
+<span class="linenos">182</span>        <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">183</span><span class="w">            </span><span class="sd">&quot;&quot;&quot;if the location is not 0,0 draw current frame of sprite at it&#39;s location&quot;&quot;&quot;</span>
+<span class="linenos">184</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">:</span>
+<span class="linenos">185</span>                <span class="n">tft</span><span class="o">.</span><span class="n">bitmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bitmaps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">])</span>
+<span class="linenos">186</span>
+<span class="linenos">187</span>    <span class="c1"># configure display driver</span>
+<span class="linenos">188</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">tft_config</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">tft_config</span><span class="o">.</span><span class="n">WIDE</span><span class="p">)</span>
+<span class="linenos">189</span>
+<span class="linenos">190</span>    <span class="c1"># create toast spites and set animation frames</span>
+<span class="linenos">191</span>    <span class="n">sprites</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">192</span>    <span class="n">sprites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Toast</span><span class="p">(</span><span class="n">sprites</span><span class="p">,</span> <span class="n">toast_bitmaps</span><span class="p">,</span> <span class="n">TOAST_FRAMES</span><span class="p">))</span>
+<span class="linenos">193</span>    <span class="n">sprites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Toast</span><span class="p">(</span><span class="n">sprites</span><span class="p">,</span> <span class="n">toast_bitmaps</span><span class="p">,</span> <span class="n">TOASTER_FRAMES</span><span class="p">))</span>
+<span class="linenos">194</span>    <span class="n">sprites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Toast</span><span class="p">(</span><span class="n">sprites</span><span class="p">,</span> <span class="n">toast_bitmaps</span><span class="p">,</span> <span class="n">TOASTER_FRAMES</span><span class="p">))</span>
+<span class="linenos">195</span>
+<span class="linenos">196</span>    <span class="c1"># move and draw sprites</span>
+<span class="linenos">197</span>
+<span class="linenos">198</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">199</span>        <span class="k">for</span> <span class="n">sprite</span> <span class="ow">in</span> <span class="n">sprites</span><span class="p">:</span>
+<span class="linenos">200</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">201</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">sprites</span><span class="p">)</span>
+<span class="linenos">202</span>            <span class="n">sprite</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="linenos">203</span>
+<span class="linenos">204</span>        <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="linenos">205</span>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="linenos">206</span>
+<span class="linenos">207</span>
+<span class="linenos">208</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tiny_hello.html" class="btn btn-neutral float-left" title="tiny_hello.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../fonts.html" class="btn btn-neutral float-right" title="Fonts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

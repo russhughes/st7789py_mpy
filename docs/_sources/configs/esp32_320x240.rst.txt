@@ -1,0 +1,26 @@
+.. _../tft_configs/esp32_320x240:
+
+Generic ESP32 320x240
+=====================
+
+
+
+tft_configs/esp32_320x240/tft_config.py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../../../tft_configs/esp32_320x240/tft_config.py
+   :language: python
+   :linenos:
+   :lines: 1-
+
+
+tft_configs/esp32_320x240/tft_buttons.py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Generic ESP32 with Two buttons
+
+.. literalinclude:: ../../../tft_configs/esp32_320x240/tft_buttons.py
+   :language: python
+   :linenos:
+   :lines: 1-
+

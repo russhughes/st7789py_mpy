@@ -50,58 +50,73 @@ This driver supports:
 
 """
 
-import time
-from micropython import const
-import ustruct as struct
+from math import sin, cos
 
-# commands
-ST7789_NOP = const(0x00)
-ST7789_SWRESET = const(0x01)
-ST7789_RDDID = const(0x04)
-ST7789_RDDST = const(0x09)
+#
+# This allows sphinx to build the docs
+#
 
-ST7789_SLPIN = const(0x10)
-ST7789_SLPOUT = const(0x11)
-ST7789_PTLON = const(0x12)
-ST7789_NORON = const(0x13)
+try:
+    from time import sleep_ms
+except ImportError:
+    sleep_ms = lambda ms: None
+    uint = int
+    const = lambda x: x
 
-ST7789_INVOFF = const(0x20)
-ST7789_INVON = const(0x21)
-ST7789_DISPOFF = const(0x28)
-ST7789_DISPON = const(0x29)
-ST7789_CASET = const(0x2A)
-ST7789_RASET = const(0x2B)
-ST7789_RAMWR = const(0x2C)
-ST7789_RAMRD = const(0x2E)
+    class micropython:
+        @staticmethod
+        def viper(func):
+            return func
 
-ST7789_PTLAR = const(0x30)
-ST7789_VSCRDEF = const(0x33)
-ST7789_COLMOD = const(0x3A)
-ST7789_MADCTL = const(0x36)
-ST7789_VSCSAD = const(0x37)
+        @staticmethod
+        def native(func):
+            return func
 
-ST7789_MADCTL_MY = const(0x80)
-ST7789_MADCTL_MX = const(0x40)
-ST7789_MADCTL_MV = const(0x20)
-ST7789_MADCTL_ML = const(0x10)
-ST7789_MADCTL_BGR = const(0x08)
-ST7789_MADCTL_MH = const(0x04)
-ST7789_MADCTL_RGB = const(0x00)
 
-ST7789_RDID1 = const(0xDA)
-ST7789_RDID2 = const(0xDB)
-ST7789_RDID3 = const(0xDC)
-ST7789_RDID4 = const(0xDD)
+#
+# If you don't need to build the docs, you can remove all of the lines between
+# here and the comment above except for the "from time import sleep_ms" line.
+#
 
-COLOR_MODE_65K = const(0x50)
-COLOR_MODE_262K = const(0x60)
-COLOR_MODE_12BIT = const(0x03)
-COLOR_MODE_16BIT = const(0x05)
-COLOR_MODE_18BIT = const(0x06)
-COLOR_MODE_16M = const(0x07)
+import struct
+
+# ST7789 commands
+_ST7789_SWRESET = b"\x01"
+_ST7789_SLPIN = b"\x10"
+_ST7789_SLPOUT = b"\x11"
+_ST7789_NORON = b"\x13"
+_ST7789_INVOFF = b"\x20"
+_ST7789_INVON = b"\x21"
+_ST7789_DISPOFF = b"\x28"
+_ST7789_DISPON = b"\x29"
+_ST7789_CASET = b"\x2a"
+_ST7789_RASET = b"\x2b"
+_ST7789_RAMWR = b"\x2c"
+_ST7789_VSCRDEF = b"\x33"
+_ST7789_COLMOD = b"\x3a"
+_ST7789_MADCTL = b"\x36"
+_ST7789_VSCSAD = b"\x37"
+_ST7789_RAMCTL = b"\xb0"
+
+# MADCTL bits
+_ST7789_MADCTL_MY = const(0x80)
+_ST7789_MADCTL_MX = const(0x40)
+_ST7789_MADCTL_MV = const(0x20)
+_ST7789_MADCTL_ML = const(0x10)
+_ST7789_MADCTL_BGR = const(0x08)
+_ST7789_MADCTL_MH = const(0x04)
+_ST7789_MADCTL_RGB = const(0x00)
 
 RGB = 0x00
 BGR = 0x08
+
+# Color modes
+_COLOR_MODE_65K = const(0x50)
+_COLOR_MODE_262K = const(0x60)
+_COLOR_MODE_12BIT = const(0x03)
+_COLOR_MODE_16BIT = const(0x05)
+_COLOR_MODE_18BIT = const(0x06)
+_COLOR_MODE_16M = const(0x07)
 
 # Color definitions
 BLACK = const(0x0000)
@@ -113,10 +128,13 @@ MAGENTA = const(0xF81F)
 YELLOW = const(0xFFE0)
 WHITE = const(0xFFFF)
 
-_ENCODE_PIXEL = ">H"
-_ENCODE_POS = ">HH"
-_DECODE_PIXEL = ">BBB"
+_ENCODE_PIXEL = const(">H")
+_ENCODE_PIXEL_SWAPPED = const("<H")
+_ENCODE_POS = const(">HH")
+_ENCODE_POS_16 = const("<HH")
 
+# must be at least 128 for 8 bit wide fonts
+# must be at least 256 for 16 bit wide fonts
 _BUFFER_SIZE = const(256)
 
 _BIT7 = const(0x80)
@@ -128,56 +146,85 @@ _BIT2 = const(0x04)
 _BIT1 = const(0x02)
 _BIT0 = const(0x01)
 
-# Rotation tables (width, height, xstart, ystart)[rotation % 4]
+# fmt: off
 
-SUPPORTED_RESOLUTIONS = [(320,240),(240,240),(240,135),(128,128)]
+# Rotation tables
+#   (madctl, width, height, xstart, ystart, needs_swap)[rotation % 4]
 
-WIDTH_320 = [(240, 320,  0,  0),
-             (320, 240,  0,  0),
-             (240, 320,  0,  0),
-             (320, 240,  0,  0)]
+_DISPLAY_240x320 = (
+    (0x00, 240, 320, 0, 0, False),
+    (0x60, 320, 240, 0, 0, False),
+    (0xc0, 240, 320, 0, 0, False),
+    (0xa0, 320, 240, 0, 0, False))
 
-WIDTH_240 = [(240, 240,  0,  0),
-             (240, 240,  0,  0),
-             (240, 240,  0, 80),
-             (240, 240, 80,  0)]
+_DISPLAY_240x240 = (
+    (0x00, 240, 240,  0,  0, False),
+    (0x60, 240, 240,  0,  0, False),
+    (0xc0, 240, 240,  0, 80, False),
+    (0xa0, 240, 240, 80,  0, False))
 
-WIDTH_135 = [(135, 240, 52, 40),
-             (240, 135, 40, 53),
-             (135, 240, 53, 40),
-             (240, 135, 40, 52)]
+_DISPLAY_135x240 = (
+    (0x00, 135, 240, 52, 40, False),
+    (0x60, 240, 135, 40, 53, False),
+    (0xc0, 135, 240, 53, 40, False),
+    (0xa0, 240, 135, 40, 52, False))
 
-WIDTH_128 = [(128, 128,  2,  1),
-             (128, 128,  1,  2),
-             (128, 128,  2,  1),
-             (128, 128,  1,  2)]
+_DISPLAY_128x128 = (
+    (0x00, 128, 128, 2, 1, False),
+    (0x60, 128, 128, 1, 2, False),
+    (0xc0, 128, 128, 2, 1, False),
+    (0xa0, 128, 128, 1, 2, False))
 
-# MADCTL ROTATIONS[rotation % 4]
-ROTATIONS = [0x00, 0x60, 0xc0, 0xa0]
+# index values into rotation table
+_WIDTH = const(0)
+_HEIGHT = const(1)
+_XSTART = const(2)
+_YSTART = const(3)
+_NEEDS_SWAP = const(4)
+
+# Supported displays (physical width, physical height, rotation table)
+_SUPPORTED_DISPLAYS = (
+    (240, 320, _DISPLAY_240x320),
+    (240, 240, _DISPLAY_240x240),
+    (135, 240, _DISPLAY_135x240),
+    (128, 128, _DISPLAY_128x128))
+
+# init tuple format (b'command', b'data', delay_ms)
+_ST7789_INIT_CMDS = (
+    ( b'\x11', b'\x00', 120),               # Exit sleep mode
+    ( b'\x13', b'\x00', 0),                 # Turn on the display
+    ( b'\xb6', b'\x0a\x82', 0),             # Set display function control
+    ( b'\x3a', b'\x55', 10),                # Set pixel format to 16 bits per pixel (RGB565)
+    ( b'\xb2', b'\x0c\x0c\x00\x33\x33', 0), # Set porch control
+    ( b'\xb7', b'\x35', 0),                 # Set gate control
+    ( b'\xbb', b'\x28', 0),                 # Set VCOMS setting
+    ( b'\xc0', b'\x0c', 0),                 # Set power control 1
+    ( b'\xc2', b'\x01\xff', 0),             # Set power control 2
+    ( b'\xc3', b'\x10', 0),                 # Set power control 3
+    ( b'\xc4', b'\x20', 0),                 # Set power control 4
+    ( b'\xc6', b'\x0f', 0),                 # Set VCOM control 1
+    ( b'\xd0', b'\xa4\xa1', 0),             # Set power control A
+                                            # Set gamma curve positive polarity
+    ( b'\xe0', b'\xd0\x00\x02\x07\x0a\x28\x32\x44\x42\x06\x0e\x12\x14\x17', 0),
+                                            # Set gamma curve negative polarity
+    ( b'\xe1', b'\xd0\x00\x02\x07\x0a\x28\x31\x54\x47\x0e\x1c\x17\x1b\x1e', 0),
+    ( b'\x21', b'\x00', 0),                 # Enable display inversion
+    ( b'\x29', b'\x00', 120)                # Turn on the display
+)
+
+# fmt: on
 
 
 def color565(red, green=0, blue=0):
     """
     Convert red, green and blue values (0-255) into a 16-bit 565 encoding.
     """
-    try:
-        red, green, blue = red  # see if the first var is a tuple/list
-    except TypeError:
-        pass
-    return (red & 0xf8) << 8 | (green & 0xfc) << 3 | blue >> 3
+    if isinstance(red, (tuple, list)):
+        red, green, blue = red[:3]
+    return (red & 0xF8) << 8 | (green & 0xFC) << 3 | blue >> 3
 
 
-def _encode_pos(x, y):
-    """Encode a postion into bytes."""
-    return struct.pack(_ENCODE_POS, x, y)
-
-
-def _encode_pixel(color):
-    """Encode a pixel color into bytes."""
-    return struct.pack(_ENCODE_PIXEL, color)
-
-
-class ST7789():
+class ST7789:
     """
     ST7789 driver class
 
@@ -200,16 +247,41 @@ class ST7789():
 
           - RGB: Red, Green Blue, default
           - BGR: Blue, Green, Red
+
+        custom_init (tuple): custom initialization commands
+
+          - ((b'command', b'data', delay_ms), ...)
+
+        custom_rotations (tuple): custom rotation definitions
+
+          - ((width, height, xstart, ystart, madctl, needs_swap), ...)
+
     """
-    def __init__(self, spi, width, height, reset=None, dc=None,
-                 cs=None, backlight=None, rotation=0, color_order=RGB):
+
+    def __init__(
+        self,
+        spi,
+        width,
+        height,
+        reset=None,
+        dc=None,
+        cs=None,
+        backlight=None,
+        rotation=0,
+        color_order=BGR,
+        custom_init=None,
+        custom_rotations=None,
+    ):
         """
         Initialize display.
         """
-        if (height,width) not in SUPPORTED_RESOLUTIONS:
-            print (height,width)
+        self.rotations = custom_rotations or self._find_rotations(width, height)
+        if not self.rotations:
+            supported_displays = ", ".join(
+                [f"{display[0]}x{display[1]}" for display in _SUPPORTED_DISPLAYS]
+            )
             raise ValueError(
-                "Unsupported display. Supported resolutions are %s"% SUPPORTED_RESOLUTIONS
+                f"Unsupported {width}x{height} display. Supported displays: {supported_displays}"
             )
 
         if dc is None:
@@ -226,32 +298,40 @@ class ST7789():
         self.backlight = backlight
         self._rotation = rotation % 4
         self.color_order = color_order
-
+        self.init_cmds = custom_init or _ST7789_INIT_CMDS
         self.hard_reset()
-        self.soft_reset()
-        self.sleep_mode(False)
-
-        self._set_color_mode(COLOR_MODE_65K | COLOR_MODE_16BIT)
-        time.sleep_ms(50)
+        # yes, twice, once is not always enough
+        self.init(self.init_cmds)
+        self.init(self.init_cmds)
         self.rotation(self._rotation)
-        self.inversion_mode(True)
-        time.sleep_ms(10)
-        self._write(ST7789_NORON)
-        time.sleep_ms(10)
+        self.needs_swap = False
+        self.fill(0x0)
+
         if backlight is not None:
             backlight.value(1)
-        self.fill(0)
-        self._write(ST7789_DISPON)
-        time.sleep_ms(150)
+
+    @staticmethod
+    def _find_rotations(width, height):
+        for display in _SUPPORTED_DISPLAYS:
+            if display[0] == width and display[1] == height:
+                return display[2]
+        return None
+
+    def init(self, commands):
+        """
+        Initialize display.
+        """
+        for command, data, delay in commands:
+            self._write(command, data)
+            sleep_ms(delay)
 
     def _write(self, command=None, data=None):
         """SPI write to the device: commands and data."""
         if self.cs:
             self.cs.off()
-
         if command is not None:
             self.dc.off()
-            self.spi.write(bytes([command]))
+            self.spi.write(command)
         if data is not None:
             self.dc.on()
             self.spi.write(data)
@@ -266,13 +346,13 @@ class ST7789():
             self.cs.off()
         if self.reset:
             self.reset.on()
-        time.sleep_ms(50)
+        sleep_ms(10)
         if self.reset:
             self.reset.off()
-        time.sleep_ms(50)
+        sleep_ms(10)
         if self.reset:
             self.reset.on()
-        time.sleep_ms(150)
+        sleep_ms(120)
         if self.cs:
             self.cs.on()
 
@@ -280,8 +360,8 @@ class ST7789():
         """
         Soft reset display.
         """
-        self._write(ST7789_SWRESET)
-        time.sleep_ms(150)
+        self._write(_ST7789_SWRESET)
+        sleep_ms(150)
 
     def sleep_mode(self, value):
         """
@@ -292,9 +372,9 @@ class ST7789():
             mode
         """
         if value:
-            self._write(ST7789_SLPIN)
+            self._write(_ST7789_SLPIN)
         else:
-            self._write(ST7789_SLPOUT)
+            self._write(_ST7789_SLPOUT)
 
     def inversion_mode(self, value):
         """
@@ -305,31 +385,9 @@ class ST7789():
             inversion mode
         """
         if value:
-            self._write(ST7789_INVON)
+            self._write(_ST7789_INVON)
         else:
-            self._write(ST7789_INVOFF)
-
-    def _set_color_mode(self, mode):
-        """
-        Set display color mode.
-
-        Args:
-            mode (int): color mode
-                COLOR_MODE_65K, COLOR_MODE_262K, COLOR_MODE_12BIT,
-                COLOR_MODE_16BIT, COLOR_MODE_18BIT, COLOR_MODE_16M
-        """
-        self._write(ST7789_COLMOD, bytes([mode & 0x77]))
-
-    def _set_color_order(self, mode):
-        """
-        Set display color order.
-
-        Args:
-            mode (int): color order
-                RGB: Red, Green Blue
-                BGR: Blue, Green, Red
-        """
-        self._write(ST7789_COL, bytes([mode & 0x77]))
+            self._write(_ST7789_INVOFF)
 
     def rotation(self, rotation):
         """
@@ -341,53 +399,26 @@ class ST7789():
                 - 1-Landscape
                 - 2-Inverted Portrait
                 - 3-Inverted Landscape
-        """
 
-        rotation %= 4
+            custom_rotations can have any number of rotations
+        """
+        rotation %= len(self.rotations)
         self._rotation = rotation
-        madctl = ROTATIONS[rotation]
-        if (self.color_order == BGR):
-            madctl |= ST7789_MADCTL_BGR
+        (
+            madctl,
+            self.width,
+            self.height,
+            self.xstart,
+            self.ystart,
+            self.needs_swap,
+        ) = self.rotations[rotation]
 
-        if self.physical_width == 320:
-            table = WIDTH_320
-        elif self.physical_width == 240:
-            table = WIDTH_240
-        elif self.physical_width == 135:
-            table = WIDTH_135
-        elif self.physical_width == 128:
-            table = WIDTH_128
+        if self.color_order == BGR:
+            madctl |= _ST7789_MADCTL_BGR
         else:
-            raise ValueError(
-                "Unsupported display. Supported resolutions are %s"% SUPPORTED_RESOLUTIONS
-            )
+            madctl &= ~_ST7789_MADCTL_BGR
 
-        self.width, self.height, self.xstart, self.ystart = table[rotation]
-        self._write(ST7789_MADCTL, bytes([madctl]))
-
-    def _set_columns(self, start, end):
-        """
-        Send CASET (column address set) command to display.
-
-        Args:
-            start (int): column start address
-            end (int): column end address
-        """
-        if start <= end <= self.width:
-            self._write(ST7789_CASET, _encode_pos(
-                start+self.xstart, end + self.xstart))
-
-    def _set_rows(self, start, end):
-        """
-        Send RASET (row address set) command to display.
-
-        Args:
-            start (int): row start address
-            end (int): row end address
-       """
-        if start <= end <= self.height:
-            self._write(ST7789_RASET, _encode_pos(
-                start+self.ystart, end+self.ystart))
+        self._write(_ST7789_MADCTL, bytes([madctl]))
 
     def _set_window(self, x0, y0, x1, y1):
         """
@@ -399,9 +430,16 @@ class ST7789():
             x1 (int): column end address
             y1 (int): row end address
         """
-        self._set_columns(x0, x1)
-        self._set_rows(y0, y1)
-        self._write(ST7789_RAMWR)
+        if x0 <= x1 <= self.width and y0 <= y1 <= self.height:
+            self._write(
+                _ST7789_CASET,
+                struct.pack(_ENCODE_POS, x0 + self.xstart, x1 + self.xstart),
+            )
+            self._write(
+                _ST7789_RASET,
+                struct.pack(_ENCODE_POS, y0 + self.ystart, y1 + self.ystart),
+            )
+            self._write(_ST7789_RAMWR)
 
     def vline(self, x, y, length, color):
         """
@@ -437,7 +475,12 @@ class ST7789():
             color (int): 565 encoded color
         """
         self._set_window(x, y, x, y)
-        self._write(None, _encode_pixel(color))
+        self._write(
+            None,
+            struct.pack(
+                _ENCODE_PIXEL_SWAPPED if self.needs_swap else _ENCODE_PIXEL, color
+            ),
+        )
 
     def blit_buffer(self, buffer, x, y, width, height):
         """
@@ -482,7 +525,9 @@ class ST7789():
         """
         self._set_window(x, y, x + width - 1, y + height - 1)
         chunks, rest = divmod(width * height, _BUFFER_SIZE)
-        pixel = _encode_pixel(color)
+        pixel = struct.pack(
+            _ENCODE_PIXEL_SWAPPED if self.needs_swap else _ENCODE_PIXEL, color
+        )
         self.dc.on()
         if chunks:
             data = pixel * _BUFFER_SIZE
@@ -548,8 +593,7 @@ class ST7789():
             vsa (int): Vertical Scrolling Area
             bfa (int): Bottom Fixed Area
         """
-        struct.pack(">HHH", tfa, vsa, bfa)
-        self._write(ST7789_VSCRDEF, struct.pack(">HHH", tfa, vsa, bfa))
+        self._write(_ST7789_VSCRDEF, struct.pack(">HHH", tfa, vsa, bfa))
 
     def vscsad(self, vssa):
         """
@@ -568,9 +612,73 @@ class ST7789():
             vssa (int): Vertical Scrolling Start Address
 
         """
-        self._write(ST7789_VSCSAD, struct.pack(">H", vssa))
+        self._write(_ST7789_VSCSAD, struct.pack(">H", vssa))
 
-    def _text8(self, font, text, x0, y0, color=WHITE, background=BLACK):
+    @micropython.viper
+    @staticmethod
+    def _pack8(glyphs, idx: uint, fg_color: uint, bg_color: uint):
+        buffer = bytearray(128)
+        bitmap = ptr16(buffer)
+        glyph = ptr8(glyphs)
+
+        for i in range(0, 64, 8):
+            byte = glyph[idx]
+            bitmap[i] = fg_color if byte & _BIT7 else bg_color
+            bitmap[i + 1] = fg_color if byte & _BIT6 else bg_color
+            bitmap[i + 2] = fg_color if byte & _BIT5 else bg_color
+            bitmap[i + 3] = fg_color if byte & _BIT4 else bg_color
+            bitmap[i + 4] = fg_color if byte & _BIT3 else bg_color
+            bitmap[i + 5] = fg_color if byte & _BIT2 else bg_color
+            bitmap[i + 6] = fg_color if byte & _BIT1 else bg_color
+            bitmap[i + 7] = fg_color if byte & _BIT0 else bg_color
+            idx += 1
+
+        return buffer
+
+    @micropython.viper
+    @staticmethod
+    def _pack16(glyphs, idx: uint, fg_color: uint, bg_color: uint):
+        """
+        Pack a character into a byte array.
+
+        Args:
+            char (str): character to pack
+
+        Returns:
+            128 bytes: character bitmap in color565 format
+        """
+
+        buffer = bytearray(256)
+        bitmap = ptr16(buffer)
+        glyph = ptr8(glyphs)
+
+        for i in range(0, 128, 16):
+            byte = glyph[idx]
+
+            bitmap[i] = fg_color if byte & _BIT7 else bg_color
+            bitmap[i + 1] = fg_color if byte & _BIT6 else bg_color
+            bitmap[i + 2] = fg_color if byte & _BIT5 else bg_color
+            bitmap[i + 3] = fg_color if byte & _BIT4 else bg_color
+            bitmap[i + 4] = fg_color if byte & _BIT3 else bg_color
+            bitmap[i + 5] = fg_color if byte & _BIT2 else bg_color
+            bitmap[i + 6] = fg_color if byte & _BIT1 else bg_color
+            bitmap[i + 7] = fg_color if byte & _BIT0 else bg_color
+            idx += 1
+
+            byte = glyph[idx]
+            bitmap[i + 8] = fg_color if byte & _BIT7 else bg_color
+            bitmap[i + 9] = fg_color if byte & _BIT6 else bg_color
+            bitmap[i + 10] = fg_color if byte & _BIT5 else bg_color
+            bitmap[i + 11] = fg_color if byte & _BIT4 else bg_color
+            bitmap[i + 12] = fg_color if byte & _BIT3 else bg_color
+            bitmap[i + 13] = fg_color if byte & _BIT2 else bg_color
+            bitmap[i + 14] = fg_color if byte & _BIT1 else bg_color
+            bitmap[i + 15] = fg_color if byte & _BIT0 else bg_color
+            idx += 1
+
+        return buffer
+
+    def _text8(self, font, text, x0, y0, fg_color=WHITE, bg_color=BLACK):
         """
         Internal method to write characters with width of 8 and
         heights of 8 or 16.
@@ -583,12 +691,14 @@ class ST7789():
             color (int): 565 encoded color to use for characters
             background (int): 565 encoded color to use for background
         """
+
         for char in text:
             ch = ord(char)
-            if (font.FIRST <= ch < font.LAST
-                    and x0+font.WIDTH <= self.width
-                    and y0+font.HEIGHT <= self.height):
-
+            if (
+                font.FIRST <= ch < font.LAST
+                and x0 + font.WIDTH <= self.width
+                and y0 + font.HEIGHT <= self.height
+            ):
                 if font.HEIGHT == 8:
                     passes = 1
                     size = 8
@@ -599,79 +709,13 @@ class ST7789():
                     each = 8
 
                 for line in range(passes):
-                    idx = (ch-font.FIRST)*size+(each*line)
-                    buffer = struct.pack(
-                        '>64H',
-                        color if font.FONT[idx] & _BIT7 else background,
-                        color if font.FONT[idx] & _BIT6 else background,
-                        color if font.FONT[idx] & _BIT5 else background,
-                        color if font.FONT[idx] & _BIT4 else background,
-                        color if font.FONT[idx] & _BIT3 else background,
-                        color if font.FONT[idx] & _BIT2 else background,
-                        color if font.FONT[idx] & _BIT1 else background,
-                        color if font.FONT[idx] & _BIT0 else background,
-                        color if font.FONT[idx+1] & _BIT7 else background,
-                        color if font.FONT[idx+1] & _BIT6 else background,
-                        color if font.FONT[idx+1] & _BIT5 else background,
-                        color if font.FONT[idx+1] & _BIT4 else background,
-                        color if font.FONT[idx+1] & _BIT3 else background,
-                        color if font.FONT[idx+1] & _BIT2 else background,
-                        color if font.FONT[idx+1] & _BIT1 else background,
-                        color if font.FONT[idx+1] & _BIT0 else background,
-                        color if font.FONT[idx+2] & _BIT7 else background,
-                        color if font.FONT[idx+2] & _BIT6 else background,
-                        color if font.FONT[idx+2] & _BIT5 else background,
-                        color if font.FONT[idx+2] & _BIT4 else background,
-                        color if font.FONT[idx+2] & _BIT3 else background,
-                        color if font.FONT[idx+2] & _BIT2 else background,
-                        color if font.FONT[idx+2] & _BIT1 else background,
-                        color if font.FONT[idx+2] & _BIT0 else background,
-                        color if font.FONT[idx+3] & _BIT7 else background,
-                        color if font.FONT[idx+3] & _BIT6 else background,
-                        color if font.FONT[idx+3] & _BIT5 else background,
-                        color if font.FONT[idx+3] & _BIT4 else background,
-                        color if font.FONT[idx+3] & _BIT3 else background,
-                        color if font.FONT[idx+3] & _BIT2 else background,
-                        color if font.FONT[idx+3] & _BIT1 else background,
-                        color if font.FONT[idx+3] & _BIT0 else background,
-                        color if font.FONT[idx+4] & _BIT7 else background,
-                        color if font.FONT[idx+4] & _BIT6 else background,
-                        color if font.FONT[idx+4] & _BIT5 else background,
-                        color if font.FONT[idx+4] & _BIT4 else background,
-                        color if font.FONT[idx+4] & _BIT3 else background,
-                        color if font.FONT[idx+4] & _BIT2 else background,
-                        color if font.FONT[idx+4] & _BIT1 else background,
-                        color if font.FONT[idx+4] & _BIT0 else background,
-                        color if font.FONT[idx+5] & _BIT7 else background,
-                        color if font.FONT[idx+5] & _BIT6 else background,
-                        color if font.FONT[idx+5] & _BIT5 else background,
-                        color if font.FONT[idx+5] & _BIT4 else background,
-                        color if font.FONT[idx+5] & _BIT3 else background,
-                        color if font.FONT[idx+5] & _BIT2 else background,
-                        color if font.FONT[idx+5] & _BIT1 else background,
-                        color if font.FONT[idx+5] & _BIT0 else background,
-                        color if font.FONT[idx+6] & _BIT7 else background,
-                        color if font.FONT[idx+6] & _BIT6 else background,
-                        color if font.FONT[idx+6] & _BIT5 else background,
-                        color if font.FONT[idx+6] & _BIT4 else background,
-                        color if font.FONT[idx+6] & _BIT3 else background,
-                        color if font.FONT[idx+6] & _BIT2 else background,
-                        color if font.FONT[idx+6] & _BIT1 else background,
-                        color if font.FONT[idx+6] & _BIT0 else background,
-                        color if font.FONT[idx+7] & _BIT7 else background,
-                        color if font.FONT[idx+7] & _BIT6 else background,
-                        color if font.FONT[idx+7] & _BIT5 else background,
-                        color if font.FONT[idx+7] & _BIT4 else background,
-                        color if font.FONT[idx+7] & _BIT3 else background,
-                        color if font.FONT[idx+7] & _BIT2 else background,
-                        color if font.FONT[idx+7] & _BIT1 else background,
-                        color if font.FONT[idx+7] & _BIT0 else background
-                    )
-                    self.blit_buffer(buffer, x0, y0+8*line, 8, 8)
+                    idx = (ch - font.FIRST) * size + (each * line)
+                    buffer = self._pack8(font.FONT, idx, fg_color, bg_color)
+                    self.blit_buffer(buffer, x0, y0 + 8 * line, 8, 8)
 
                 x0 += 8
 
-    def _text16(self, font, text, x0, y0, color=WHITE, background=BLACK):
+    def _text16(self, font, text, x0, y0, fg_color=WHITE, bg_color=BLACK):
         """
         Internal method to draw characters with width of 16 and heights of 16
         or 32.
@@ -684,12 +728,14 @@ class ST7789():
             color (int): 565 encoded color to use for characters
             background (int): 565 encoded color to use for background
         """
+
         for char in text:
             ch = ord(char)
-            if (font.FIRST <= ch < font.LAST
-                    and x0+font.WIDTH <= self.width
-                    and y0+font.HEIGHT <= self.height):
-
+            if (
+                font.FIRST <= ch < font.LAST
+                and x0 + font.WIDTH <= self.width
+                and y0 + font.HEIGHT <= self.height
+            ):
                 each = 16
                 if font.HEIGHT == 16:
                     passes = 2
@@ -699,140 +745,10 @@ class ST7789():
                     size = 64
 
                 for line in range(passes):
-                    idx = (ch-font.FIRST)*size+(each*line)
-                    buffer = struct.pack(
-                        '>128H',
-                        color if font.FONT[idx] & _BIT7 else background,
-                        color if font.FONT[idx] & _BIT6 else background,
-                        color if font.FONT[idx] & _BIT5 else background,
-                        color if font.FONT[idx] & _BIT4 else background,
-                        color if font.FONT[idx] & _BIT3 else background,
-                        color if font.FONT[idx] & _BIT2 else background,
-                        color if font.FONT[idx] & _BIT1 else background,
-                        color if font.FONT[idx] & _BIT0 else background,
-                        color if font.FONT[idx+1] & _BIT7 else background,
-                        color if font.FONT[idx+1] & _BIT6 else background,
-                        color if font.FONT[idx+1] & _BIT5 else background,
-                        color if font.FONT[idx+1] & _BIT4 else background,
-                        color if font.FONT[idx+1] & _BIT3 else background,
-                        color if font.FONT[idx+1] & _BIT2 else background,
-                        color if font.FONT[idx+1] & _BIT1 else background,
-                        color if font.FONT[idx+1] & _BIT0 else background,
-                        color if font.FONT[idx+2] & _BIT7 else background,
-                        color if font.FONT[idx+2] & _BIT6 else background,
-                        color if font.FONT[idx+2] & _BIT5 else background,
-                        color if font.FONT[idx+2] & _BIT4 else background,
-                        color if font.FONT[idx+2] & _BIT3 else background,
-                        color if font.FONT[idx+2] & _BIT2 else background,
-                        color if font.FONT[idx+2] & _BIT1 else background,
-                        color if font.FONT[idx+2] & _BIT0 else background,
-                        color if font.FONT[idx+3] & _BIT7 else background,
-                        color if font.FONT[idx+3] & _BIT6 else background,
-                        color if font.FONT[idx+3] & _BIT5 else background,
-                        color if font.FONT[idx+3] & _BIT4 else background,
-                        color if font.FONT[idx+3] & _BIT3 else background,
-                        color if font.FONT[idx+3] & _BIT2 else background,
-                        color if font.FONT[idx+3] & _BIT1 else background,
-                        color if font.FONT[idx+3] & _BIT0 else background,
-                        color if font.FONT[idx+4] & _BIT7 else background,
-                        color if font.FONT[idx+4] & _BIT6 else background,
-                        color if font.FONT[idx+4] & _BIT5 else background,
-                        color if font.FONT[idx+4] & _BIT4 else background,
-                        color if font.FONT[idx+4] & _BIT3 else background,
-                        color if font.FONT[idx+4] & _BIT2 else background,
-                        color if font.FONT[idx+4] & _BIT1 else background,
-                        color if font.FONT[idx+4] & _BIT0 else background,
-                        color if font.FONT[idx+5] & _BIT7 else background,
-                        color if font.FONT[idx+5] & _BIT6 else background,
-                        color if font.FONT[idx+5] & _BIT5 else background,
-                        color if font.FONT[idx+5] & _BIT4 else background,
-                        color if font.FONT[idx+5] & _BIT3 else background,
-                        color if font.FONT[idx+5] & _BIT2 else background,
-                        color if font.FONT[idx+5] & _BIT1 else background,
-                        color if font.FONT[idx+5] & _BIT0 else background,
-                        color if font.FONT[idx+6] & _BIT7 else background,
-                        color if font.FONT[idx+6] & _BIT6 else background,
-                        color if font.FONT[idx+6] & _BIT5 else background,
-                        color if font.FONT[idx+6] & _BIT4 else background,
-                        color if font.FONT[idx+6] & _BIT3 else background,
-                        color if font.FONT[idx+6] & _BIT2 else background,
-                        color if font.FONT[idx+6] & _BIT1 else background,
-                        color if font.FONT[idx+6] & _BIT0 else background,
-                        color if font.FONT[idx+7] & _BIT7 else background,
-                        color if font.FONT[idx+7] & _BIT6 else background,
-                        color if font.FONT[idx+7] & _BIT5 else background,
-                        color if font.FONT[idx+7] & _BIT4 else background,
-                        color if font.FONT[idx+7] & _BIT3 else background,
-                        color if font.FONT[idx+7] & _BIT2 else background,
-                        color if font.FONT[idx+7] & _BIT1 else background,
-                        color if font.FONT[idx+7] & _BIT0 else background,
-                        color if font.FONT[idx+8] & _BIT7 else background,
-                        color if font.FONT[idx+8] & _BIT6 else background,
-                        color if font.FONT[idx+8] & _BIT5 else background,
-                        color if font.FONT[idx+8] & _BIT4 else background,
-                        color if font.FONT[idx+8] & _BIT3 else background,
-                        color if font.FONT[idx+8] & _BIT2 else background,
-                        color if font.FONT[idx+8] & _BIT1 else background,
-                        color if font.FONT[idx+8] & _BIT0 else background,
-                        color if font.FONT[idx+9] & _BIT7 else background,
-                        color if font.FONT[idx+9] & _BIT6 else background,
-                        color if font.FONT[idx+9] & _BIT5 else background,
-                        color if font.FONT[idx+9] & _BIT4 else background,
-                        color if font.FONT[idx+9] & _BIT3 else background,
-                        color if font.FONT[idx+9] & _BIT2 else background,
-                        color if font.FONT[idx+9] & _BIT1 else background,
-                        color if font.FONT[idx+9] & _BIT0 else background,
-                        color if font.FONT[idx+10] & _BIT7 else background,
-                        color if font.FONT[idx+10] & _BIT6 else background,
-                        color if font.FONT[idx+10] & _BIT5 else background,
-                        color if font.FONT[idx+10] & _BIT4 else background,
-                        color if font.FONT[idx+10] & _BIT3 else background,
-                        color if font.FONT[idx+10] & _BIT2 else background,
-                        color if font.FONT[idx+10] & _BIT1 else background,
-                        color if font.FONT[idx+10] & _BIT0 else background,
-                        color if font.FONT[idx+11] & _BIT7 else background,
-                        color if font.FONT[idx+11] & _BIT6 else background,
-                        color if font.FONT[idx+11] & _BIT5 else background,
-                        color if font.FONT[idx+11] & _BIT4 else background,
-                        color if font.FONT[idx+11] & _BIT3 else background,
-                        color if font.FONT[idx+11] & _BIT2 else background,
-                        color if font.FONT[idx+11] & _BIT1 else background,
-                        color if font.FONT[idx+11] & _BIT0 else background,
-                        color if font.FONT[idx+12] & _BIT7 else background,
-                        color if font.FONT[idx+12] & _BIT6 else background,
-                        color if font.FONT[idx+12] & _BIT5 else background,
-                        color if font.FONT[idx+12] & _BIT4 else background,
-                        color if font.FONT[idx+12] & _BIT3 else background,
-                        color if font.FONT[idx+12] & _BIT2 else background,
-                        color if font.FONT[idx+12] & _BIT1 else background,
-                        color if font.FONT[idx+12] & _BIT0 else background,
-                        color if font.FONT[idx+13] & _BIT7 else background,
-                        color if font.FONT[idx+13] & _BIT6 else background,
-                        color if font.FONT[idx+13] & _BIT5 else background,
-                        color if font.FONT[idx+13] & _BIT4 else background,
-                        color if font.FONT[idx+13] & _BIT3 else background,
-                        color if font.FONT[idx+13] & _BIT2 else background,
-                        color if font.FONT[idx+13] & _BIT1 else background,
-                        color if font.FONT[idx+13] & _BIT0 else background,
-                        color if font.FONT[idx+14] & _BIT7 else background,
-                        color if font.FONT[idx+14] & _BIT6 else background,
-                        color if font.FONT[idx+14] & _BIT5 else background,
-                        color if font.FONT[idx+14] & _BIT4 else background,
-                        color if font.FONT[idx+14] & _BIT3 else background,
-                        color if font.FONT[idx+14] & _BIT2 else background,
-                        color if font.FONT[idx+14] & _BIT1 else background,
-                        color if font.FONT[idx+14] & _BIT0 else background,
-                        color if font.FONT[idx+15] & _BIT7 else background,
-                        color if font.FONT[idx+15] & _BIT6 else background,
-                        color if font.FONT[idx+15] & _BIT5 else background,
-                        color if font.FONT[idx+15] & _BIT4 else background,
-                        color if font.FONT[idx+15] & _BIT3 else background,
-                        color if font.FONT[idx+15] & _BIT2 else background,
-                        color if font.FONT[idx+15] & _BIT1 else background,
-                        color if font.FONT[idx+15] & _BIT0 else background
-                    )
-                    self.blit_buffer(buffer, x0, y0+8*line, 16, 8)
-            x0 += font.WIDTH
+                    idx = (ch - font.FIRST) * size + (each * line)
+                    buffer = self._pack16(font.FONT, idx, fg_color, bg_color)
+                    self.blit_buffer(buffer, x0, y0 + 8 * line, 16, 8)
+            x0 += 16
 
     def text(self, font, text, x0, y0, color=WHITE, background=BLACK):
         """
@@ -847,10 +763,17 @@ class ST7789():
             color (int): 565 encoded color to use for characters
             background (int): 565 encoded color to use for background
         """
+        fg_color = color if self.needs_swap else ((color << 8) & 0xFF00) | (color >> 8)
+        bg_color = (
+            background
+            if self.needs_swap
+            else ((background << 8) & 0xFF00) | (background >> 8)
+        )
+
         if font.WIDTH == 8:
-            self._text8(font, text, x0, y0, color, background)
+            self._text8(font, text, x0, y0, fg_color, bg_color)
         else:
-            self._text16(font, text, x0, y0, color, background)
+            self._text16(font, text, x0, y0, fg_color, bg_color)
 
     def bitmap(self, bitmap, x, y, index=0):
         """
@@ -862,32 +785,85 @@ class ST7789():
             y (int): row to start drawing at
             index (int): Optional index of bitmap to draw from multiple bitmap
                 module
-
         """
-        bitmap_size = bitmap.HEIGHT * bitmap.WIDTH
+        width = bitmap.WIDTH
+        height = bitmap.HEIGHT
+        to_col = x + width - 1
+        to_row = y + height - 1
+        if self.width <= to_col or self.height <= to_row:
+            return
+
+        bitmap_size = height * width
         buffer_len = bitmap_size * 2
+        bpp = bitmap.BPP
+        bs_bit = bpp * bitmap_size * index  # if index > 0 else 0
+        palette = bitmap.PALETTE
+        needs_swap = self.needs_swap
         buffer = bytearray(buffer_len)
-        bs_bit = bitmap.BPP * bitmap_size * index if index > 0 else 0
 
         for i in range(0, buffer_len, 2):
             color_index = 0
-            for _ in range(bitmap.BPP):
-                color_index <<= 1
-                color_index |= (bitmap.BITMAP[bs_bit // 8]
-                                & 1 << (7 - (bs_bit % 8))) > 0
+            for _ in range(bpp):
+                color_index = (color_index << 1) | (
+                    (bitmap.BITMAP[bs_bit >> 3] >> (7 - (bs_bit & 7))) & 1
+                )
                 bs_bit += 1
 
-            color = bitmap.PALETTE[color_index]
-            buffer[i] = color >> 8 & 0xff
-            buffer[i + 1] = color & 0xff
+            color = palette[color_index]
+            if needs_swap:
+                buffer[i] = color & 0xFF
+                buffer[i + 1] = color >> 8
+            else:
+                buffer[i] = color >> 8
+                buffer[i + 1] = color & 0xFF
 
-        to_col = x + bitmap.WIDTH - 1
-        to_row = y + bitmap.HEIGHT - 1
-        if self.width > to_col and self.height > to_row:
-            self._set_window(x, y, to_col, to_row)
-            self._write(None, buffer)
+        self._set_window(x, y, to_col, to_row)
+        self._write(None, buffer)
 
-    # @micropython.native
+    def pbitmap(self, bitmap, x, y, index=0):
+        """
+        Draw a bitmap on display at the specified column and row one row at a time
+
+        Args:
+            bitmap (bitmap_module): The module containing the bitmap to draw
+            x (int): column to start drawing at
+            y (int): row to start drawing at
+            index (int): Optional index of bitmap to draw from multiple bitmap
+                module
+
+        """
+        width = bitmap.WIDTH
+        height = bitmap.HEIGHT
+        bitmap_size = height * width
+        bpp = bitmap.BPP
+        bs_bit = bpp * bitmap_size * index  # if index > 0 else 0
+        palette = bitmap.PALETTE
+        needs_swap = self.needs_swap
+        buffer = bytearray(bitmap.WIDTH * 2)
+
+        for row in range(height):
+            for col in range(width):
+                color_index = 0
+                for _ in range(bpp):
+                    color_index <<= 1
+                    color_index |= (
+                        bitmap.BITMAP[bs_bit // 8] & 1 << (7 - (bs_bit % 8))
+                    ) > 0
+                    bs_bit += 1
+                color = palette[color_index]
+                if needs_swap:
+                    buffer[col * 2] = color & 0xFF
+                    buffer[col * 2 + 1] = color >> 8 & 0xFF
+                else:
+                    buffer[col * 2] = color >> 8 & 0xFF
+                    buffer[col * 2 + 1] = color & 0xFF
+
+            to_col = x + width - 1
+            to_row = y + row
+            if self.width > to_col and self.height > to_row:
+                self._set_window(x, y + row, to_col, to_row)
+                self._write(None, buffer)
+
     def write(self, font, string, x, y, fg=WHITE, bg=BLACK):
         """
         Write a string using a converted true-type font on the display starting
@@ -903,11 +879,11 @@ class ST7789():
         """
         buffer_len = font.HEIGHT * font.MAX_WIDTH * 2
         buffer = bytearray(buffer_len)
-        fg_hi = (fg & 0xff00) >> 8
-        fg_lo = fg & 0xff
+        fg_hi = fg >> 8
+        fg_lo = fg & 0xFF
 
-        bg_hi = (bg & 0xff00) >> 8
-        bg_lo = bg & 0xff
+        bg_hi = bg >> 8
+        bg_lo = bg & 0xFF
 
         for character in string:
             try:
@@ -952,14 +928,67 @@ class ST7789():
         Args:
             font (font): The module containing the converted true-type font
             string (string): The string to measure
+
+        Returns:
+            int: The width of the string in pixels
+
         """
         width = 0
         for character in string:
             try:
                 char_index = font.MAP.index(character)
                 width += font.WIDTHS[char_index]
-
             except ValueError:
                 pass
 
         return width
+
+    @micropython.native
+    def polygon(self, points, x, y, color, angle=0, center_x=0, center_y=0):
+        """
+        Draw a polygon on the display.
+
+        Args:
+            points (list): List of points to draw.
+            x (int): X-coordinate of the polygon's position.
+            y (int): Y-coordinate of the polygon's position.
+            color (int): 565 encoded color.
+            angle (float): Rotation angle in radians (default: 0).
+            center_x (int): X-coordinate of the rotation center (default: 0).
+            center_y (int): Y-coordinate of the rotation center (default: 0).
+
+        Raises:
+            ValueError: If the polygon has less than 3 points.
+        """
+        if len(points) < 3:
+            raise ValueError("Polygon must have at least 3 points.")
+
+        if angle:
+            cos_a = cos(angle)
+            sin_a = sin(angle)
+            rotated = [
+                (
+                    x
+                    + center_x
+                    + int(
+                        (point[0] - center_x) * cos_a - (point[1] - center_y) * sin_a
+                    ),
+                    y
+                    + center_y
+                    + int(
+                        (point[0] - center_x) * sin_a + (point[1] - center_y) * cos_a
+                    ),
+                )
+                for point in points
+            ]
+        else:
+            rotated = [(x + int((point[0])), y + int((point[1]))) for point in points]
+
+        for i in range(1, len(rotated)):
+            self.line(
+                rotated[i - 1][0],
+                rotated[i - 1][1],
+                rotated[i][0],
+                rotated[i][1],
+                color,
+            )

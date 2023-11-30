@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>roids.py &mdash; st7789py 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="rotations.py" href="rotations.html" />
+    <link rel="prev" title="proverbs.py" href="proverbs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            st7789py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">st7789py Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../st7789py.html">st7789py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.init"><code class="docutils literal notranslate"><span class="pre">ST7789.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.inversion_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rotation"><code class="docutils literal notranslate"><span class="pre">ST7789.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vline"><code class="docutils literal notranslate"><span class="pre">ST7789.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.hline"><code class="docutils literal notranslate"><span class="pre">ST7789.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pixel"><code class="docutils literal notranslate"><span class="pre">ST7789.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.blit_buffer"><code class="docutils literal notranslate"><span class="pre">ST7789.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.rect"><code class="docutils literal notranslate"><span class="pre">ST7789.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill_rect"><code class="docutils literal notranslate"><span class="pre">ST7789.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.fill"><code class="docutils literal notranslate"><span class="pre">ST7789.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.line"><code class="docutils literal notranslate"><span class="pre">ST7789.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscrdef"><code class="docutils literal notranslate"><span class="pre">ST7789.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.pbitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.pbitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../st7789py.html#st7789py.ST7789.polygon"><code class="docutils literal notranslate"><span class="pre">ST7789.polygon()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Example Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#configuration-modules">Configuration modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configs/atom_s3.html">M5STACK AtomS3 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/atom_s3.html#tft-configs-atom-s3-tft-config-py">tft_configs/atom_s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/atom_s3.html#tft-configs-atom-s3-tft-buttons-py">tft_configs/atom_s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/esp32_320x240.html">Generic ESP32 320x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-config-py">tft_configs/esp32_320x240/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-buttons-py">tft_configs/esp32_320x240/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core.html">M5STACK CORE 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core.html#tft-configs-m5stack-core-tft-config-py">tft_configs/m5stack_core/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core.html#tft-configs-m5stack-core-tft-buttons-py">tft_configs/m5stack_core/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core2.html">M5STACK CORE2 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-config-py">tft_configs/m5stack_core2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-buttons-py">tft_configs/m5stack_core2/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/m5stack_core3.html">M5STACK CoreS3 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-config-py">tft_configs/m5stack_core3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-buttons-py">tft_configs/m5stack_core3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html">RP2040-Touch-LCD-1.28 240x240 (GC9A01)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-config-py">tft_configs/rp2040_touch_lcd_128/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-buttons-py">tft_configs/rp2040_touch_lcd_128/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t-dongle-s3.html">LilyGo T-Dongle-S3 80x160 (ST7735)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-config-py">tft_configs/t-dongle-s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-buttons-py">tft_configs/t-dongle-s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t-embed.html">LilyGo T-embed 170x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-embed.html#tft-configs-t-embed-tft-config-py">tft_configs/t-embed/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t-embed.html#tft-configs-t-embed-tft-buttons-py">tft_configs/t-embed/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/t_qt_pro.html">LilyGo T-QT Pro 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-config-py">tft_configs/t_qt_pro/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-buttons-py">tft_configs/t_qt_pro/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/ttgo_tdisplay.html">LilyGo T-DISPLAY 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-config-py">tft_configs/ttgo_tdisplay/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-buttons-py">tft_configs/ttgo_tdisplay/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html">LilyGo T-DISPLAY RP2040 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-config-py">tft_configs/ttgo_tdisplay_rp2040/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-buttons-py">tft_configs/ttgo_tdisplay_rp2040/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_114.html">Waveshare Pico LCD 1.14 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_114.html#tft-configs-waveshare-114-tft-config-py">tft_configs/waveshare_114/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_114.html#tft-configs-waveshare-114-tft-buttons-py">tft_configs/waveshare_114/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_13.html">Waveshare Pico LCD 1.3 240x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_13.html#tft-configs-waveshare-13-tft-config-py">tft_configs/waveshare_13/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_13.html#tft-configs-waveshare-13-tft-buttons-py">tft_configs/waveshare_13/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configs/waveshare_2.html">Waveshare Pico LCD 2 240x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_2.html#tft-configs-waveshare-2-tft-config-py">tft_configs/waveshare_2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configs/waveshare_2.html#tft-configs-waveshare-2-tft-buttons-py">tft_configs/waveshare_2/tft_buttons.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html#examples">Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="alien.html">alien.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boxlines.html">boxlines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chango.html">chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="color_test.html">color_test.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="colorbars.html">colorbars.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feathers.html">feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonts.html">fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hello.html">hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="noto_fonts.html">noto_fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="proverbs.html">proverbs.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">roids.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rotations.html">rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scroll.html">scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tiny_hello.html">tiny_hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tiny_toasters.html">tiny_toasters.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fonts.html">Fonts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#bitmap-fonts">Bitmap Fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#bitmap-font-conversion">Bitmap Font Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#bitmap-font-samples">Bitmap Font Samples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#id2">16x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fonts.html#true-type-fonts">True Type fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/create_png_examples.html">create_png_examples.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/create_png_examples.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/create_png_examples.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/image_converter.html">image_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/image_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/image_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/make_colorbars_bitmap.html">make_colorbars_bitmap.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/make_colorbars_bitmap.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/make_colorbars_bitmap.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/sprites_converter.html">sprites_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/sprites_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/sprites_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/text_font_converter.html">text_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/text_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/text_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities/write_font_converter.html">write_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/write_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utilities/write_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">st7789py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Example Programs</a></li>
+      <li class="breadcrumb-item active">roids.py</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/roids.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="roids-py">
+<span id="roids"></span><h1>roids.py<a class="headerlink" href="#roids-py" title="Link to this heading"></a></h1>
+<figure class="align-center" id="id1">
+<img alt="../_images/roids.jpg" src="../_images/roids.jpg" />
+<figcaption>
+<p><span class="caption-text">Test for polygons.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Asteroids style game demo using polygons.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example requires the following modules:</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><cite>st7789py</cite></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><cite>tft_config</cite></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><cite>tft_buttons</cite></p></li>
+</ul>
+</td></tr></table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">  2</span><span class="sd">roids.py</span>
+<span class="linenos">  3</span><span class="sd">========</span>
+<span class="linenos">  4</span>
+<span class="linenos">  5</span><span class="sd">.. figure:: ../_static/roids.jpg</span>
+<span class="linenos">  6</span><span class="sd">    :align: center</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span><span class="sd">    Test for polygons.</span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span><span class="sd">Asteroids style game demo using polygons.</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span><span class="sd">.. note:: This example requires the following modules:</span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span><span class="sd">  .. hlist::</span>
+<span class="linenos"> 15</span><span class="sd">    :columns: 3</span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="sd">    - `st7789py`</span>
+<span class="linenos"> 18</span><span class="sd">    - `tft_config`</span>
+<span class="linenos"> 19</span><span class="sd">    - `tft_buttons`</span>
+<span class="linenos"> 20</span>
+<span class="linenos"> 21</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span><span class="kn">import</span> <span class="nn">math</span>
+<span class="linenos"> 24</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 25</span><span class="kn">import</span> <span class="nn">utime</span>
+<span class="linenos"> 26</span><span class="kn">import</span> <span class="nn">tft_config</span>
+<span class="linenos"> 27</span><span class="kn">import</span> <span class="nn">tft_buttons</span> <span class="k">as</span> <span class="nn">Buttons</span>
+<span class="linenos"> 28</span><span class="kn">import</span> <span class="nn">st7789py</span> <span class="k">as</span> <span class="nn">st7789</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="n">tft</span> <span class="o">=</span> <span class="n">tft_config</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">tft_config</span><span class="o">.</span><span class="n">WIDE</span><span class="p">)</span>
+<span class="linenos"> 32</span><span class="n">buttons</span> <span class="o">=</span> <span class="n">Buttons</span><span class="o">.</span><span class="n">Buttons</span><span class="p">()</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span>
+<span class="linenos"> 35</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos"> 36</span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos"> 37</span><span class="sd">    Game on!</span>
+<span class="linenos"> 38</span><span class="sd">    &#39;&#39;&#39;</span>
+<span class="linenos"> 39</span>
+<span class="linenos"> 40</span>    <span class="k">class</span> <span class="nc">Poly</span><span class="p">():</span>
+<span class="linenos"> 41</span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos"> 42</span><span class="sd">        Poly class to keep track of a polygon based sprite</span>
+<span class="linenos"> 43</span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos"> 44</span>
+<span class="linenos"> 45</span>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos"> 46</span>                <span class="bp">self</span><span class="p">,</span>
+<span class="linenos"> 47</span>                <span class="c1"># list (x,y) tuples of convex polygon, must be closed</span>
+<span class="linenos"> 48</span>                <span class="n">polygon</span><span class="p">,</span>
+<span class="linenos"> 49</span>                <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>             <span class="c1"># x location of polygon</span>
+<span class="linenos"> 50</span>                <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>             <span class="c1"># y location of polygon</span>
+<span class="linenos"> 51</span>                <span class="n">v_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>           <span class="c1"># velocity in x axis</span>
+<span class="linenos"> 52</span>                <span class="n">v_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>           <span class="c1"># velocity in y axis</span>
+<span class="linenos"> 53</span>                <span class="n">angle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>         <span class="c1"># angle in radians polygon is facing</span>
+<span class="linenos"> 54</span>                <span class="n">spin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>          <span class="c1"># spin in radians per frame_time</span>
+<span class="linenos"> 55</span>                <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>         <span class="c1"># scale factor for polygon</span>
+<span class="linenos"> 56</span>                <span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>        <span class="c1"># radius of polygon for collision detection</span>
+<span class="linenos"> 57</span>                <span class="n">max_velocity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>    <span class="c1"># max velocity of polygon</span>
+<span class="linenos"> 58</span>                <span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="linenos"> 59</span>
+<span class="linenos"> 60</span>            <span class="c1"># scale the polygon if scale was given</span>
+<span class="linenos"> 61</span>            <span class="bp">self</span><span class="o">.</span><span class="n">polygon</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos"> 62</span>                <span class="n">polygon</span> <span class="k">if</span> <span class="n">scale</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[(</span><span class="nb">int</span><span class="p">(</span><span class="n">scale</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">scale</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon</span><span class="p">])</span>
+<span class="linenos"> 63</span>
+<span class="linenos"> 64</span>            <span class="c1"># if no location given assign a random location</span>
+<span class="linenos"> 65</span>            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">x</span>
+<span class="linenos"> 66</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">y</span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span>            <span class="c1"># set angle if given</span>
+<span class="linenos"> 69</span>            <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">angle</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">angle</span>
+<span class="linenos"> 70</span>
+<span class="linenos"> 71</span>            <span class="c1"># set random spin unless one was given</span>
+<span class="linenos"> 72</span>            <span class="bp">self</span><span class="o">.</span><span class="n">spin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">16</span> <span class="k">if</span> <span class="n">spin</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">spin</span>
+<span class="linenos"> 73</span>
+<span class="linenos"> 74</span>            <span class="c1"># set random velocity unless one was given</span>
+<span class="linenos"> 75</span>            <span class="bp">self</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span>
+<span class="linenos"> 76</span>                <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">)</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.75</span> <span class="k">if</span> <span class="n">v_x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">v_x</span>
+<span class="linenos"> 77</span>            <span class="bp">self</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span>
+<span class="linenos"> 78</span>                <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">)</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.75</span> <span class="k">if</span> <span class="n">v_y</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">v_y</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span>            <span class="c1"># set radius, max_velocity and radius counter</span>
+<span class="linenos"> 81</span>            <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+<span class="linenos"> 82</span>            <span class="bp">self</span><span class="o">.</span><span class="n">max_velocity</span> <span class="o">=</span> <span class="n">max_velocity</span>
+<span class="linenos"> 83</span>            <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span>
+<span class="linenos"> 84</span>
+<span class="linenos"> 85</span>        <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rad</span><span class="p">):</span>
+<span class="linenos"> 86</span><span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos"> 87</span><span class="sd">            Rotate polygon in radians</span>
+<span class="linenos"> 88</span><span class="sd">            &#39;&#39;&#39;</span>
+<span class="linenos"> 89</span>            <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">+=</span> <span class="n">rad</span>
+<span class="linenos"> 90</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">&gt;</span> <span class="n">rad_max</span><span class="p">:</span>
+<span class="linenos"> 91</span>                <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 92</span>            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos"> 93</span>                <span class="bp">self</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="n">rad_max</span>
+<span class="linenos"> 94</span>
+<span class="linenos"> 95</span>        <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 96</span><span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos"> 97</span><span class="sd">            Rotate and move polygon velocity distance.</span>
+<span class="linenos"> 98</span><span class="sd">            &#39;&#39;&#39;</span>
+<span class="linenos"> 99</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">100</span>                <span class="bp">self</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spin</span><span class="p">)</span>
+<span class="linenos">101</span>
+<span class="linenos">102</span>            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity_x</span><span class="p">)</span>
+<span class="linenos">103</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity_y</span><span class="p">)</span>
+<span class="linenos">104</span>            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">%=</span> <span class="n">width</span>
+<span class="linenos">105</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">%=</span> <span class="n">height</span>
+<span class="linenos">106</span>
+<span class="linenos">107</span>        <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="linenos">108</span><span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">109</span><span class="sd">            Draw the polygon</span>
+<span class="linenos">110</span><span class="sd">            &#39;&#39;&#39;</span>
+<span class="linenos">111</span>            <span class="n">tft</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">polygon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">112</span>
+<span class="linenos">113</span>        <span class="k">def</span> <span class="nf">collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">poly</span><span class="p">):</span>
+<span class="linenos">114</span><span class="w">            </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">115</span><span class="sd">            Detect collisions using overlapping radiuses.</span>
+<span class="linenos">116</span><span class="sd">            Returns True on collision.</span>
+<span class="linenos">117</span><span class="sd">            &#39;&#39;&#39;</span>
+<span class="linenos">118</span>            <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span>
+<span class="linenos">119</span>                <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">poly</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">poly</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span>
+<span class="linenos">120</span>                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">poly</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">poly</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="linenos">121</span>                <span class="o">&lt;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">poly</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="n">poly</span><span class="o">.</span><span class="n">radius</span><span class="p">))</span>
+<span class="linenos">122</span>
+<span class="linenos">123</span>    <span class="k">def</span> <span class="nf">create_roid</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v_y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos">124</span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">125</span><span class="sd">        Create a new roid with the given parameters.</span>
+<span class="linenos">126</span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos">127</span>        <span class="k">return</span> <span class="n">Poly</span><span class="p">(</span>
+<span class="linenos">128</span>            <span class="n">roid_poly</span><span class="p">,</span>
+<span class="linenos">129</span>            <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+<span class="linenos">130</span>            <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+<span class="linenos">131</span>            <span class="n">v_x</span><span class="o">=</span><span class="n">v_x</span><span class="p">,</span>
+<span class="linenos">132</span>            <span class="n">v_y</span><span class="o">=</span><span class="n">v_y</span><span class="p">,</span>
+<span class="linenos">133</span>            <span class="n">scale</span><span class="o">=</span><span class="n">roid_scale</span><span class="p">[</span><span class="n">size</span><span class="p">],</span>
+<span class="linenos">134</span>            <span class="n">radius</span><span class="o">=</span><span class="n">roid_radius</span><span class="p">[</span><span class="n">size</span><span class="p">],</span>
+<span class="linenos">135</span>            <span class="n">counter</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="linenos">136</span>
+<span class="linenos">137</span>    <span class="k">def</span> <span class="nf">update_missiles</span><span class="p">():</span>
+<span class="linenos">138</span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">139</span><span class="sd">        Update active missiles and handle asteroid hits.</span>
+<span class="linenos">140</span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos">141</span>        <span class="k">for</span> <span class="n">missile</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">missiles</span><span class="p">):</span>                      <span class="c1"># for each missile</span>
+<span class="linenos">142</span>            <span class="n">missile</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>                      <span class="c1"># erase old missile</span>
+<span class="linenos">143</span>            <span class="k">if</span> <span class="n">missile</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                         <span class="c1"># if counter &gt; 0 missile is active</span>
+<span class="linenos">144</span>                <span class="n">missile</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>                              <span class="c1"># update missile position</span>
+<span class="linenos">145</span>
+<span class="linenos">146</span>                <span class="k">for</span> <span class="n">roid</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">roids</span><span class="p">):</span>                    <span class="c1"># for each roid</span>
+<span class="linenos">147</span>                    <span class="k">if</span> <span class="n">missile</span><span class="o">.</span><span class="n">collision</span><span class="p">(</span><span class="n">roid</span><span class="p">):</span>             <span class="c1"># check if missile collides with roid</span>
+<span class="linenos">148</span>                        <span class="n">roid</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>             <span class="c1"># erase the roid</span>
+<span class="linenos">149</span>                        <span class="k">if</span> <span class="n">roid</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                <span class="c1"># if roid is not the smallest size</span>
+<span class="linenos">150</span>                            <span class="n">roids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>                   <span class="c1"># add first smaller roid</span>
+<span class="linenos">151</span>                                <span class="n">create_roid</span><span class="p">(</span>
+<span class="linenos">152</span>                                    <span class="n">roid</span><span class="o">.</span><span class="n">counter</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">153</span>                                    <span class="n">x</span><span class="o">=</span><span class="n">roid</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+<span class="linenos">154</span>                                    <span class="n">y</span><span class="o">=</span><span class="n">roid</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+<span class="linenos">155</span>                                    <span class="n">v_x</span><span class="o">=</span><span class="n">roid</span><span class="o">.</span><span class="n">velocity_x</span><span class="p">,</span>
+<span class="linenos">156</span>                                    <span class="n">v_y</span><span class="o">=</span><span class="n">roid</span><span class="o">.</span><span class="n">velocity_y</span><span class="p">))</span>
+<span class="linenos">157</span>                            <span class="n">roids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>                   <span class="c1"># add second smaller roid</span>
+<span class="linenos">158</span>                                <span class="n">create_roid</span><span class="p">(</span>
+<span class="linenos">159</span>                                    <span class="n">roid</span><span class="o">.</span><span class="n">counter</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">160</span>                                    <span class="n">x</span><span class="o">=</span><span class="n">roid</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+<span class="linenos">161</span>                                    <span class="n">y</span><span class="o">=</span><span class="n">roid</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+<span class="linenos">162</span>                                    <span class="n">v_x</span><span class="o">=-</span><span class="n">roid</span><span class="o">.</span><span class="n">velocity_x</span><span class="p">,</span>
+<span class="linenos">163</span>                                    <span class="n">v_y</span><span class="o">=-</span><span class="n">roid</span><span class="o">.</span><span class="n">velocity_y</span><span class="p">))</span>
+<span class="linenos">164</span>
+<span class="linenos">165</span>                        <span class="n">roids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">roid</span><span class="p">)</span>                  <span class="c1"># remove the roid that was hit</span>
+<span class="linenos">166</span>                        <span class="n">missile</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">167</span>
+<span class="linenos">168</span>                <span class="k">if</span> <span class="n">missile</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                     <span class="c1"># if the missile has life left</span>
+<span class="linenos">169</span>                    <span class="n">missile</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>              <span class="c1"># draw missile</span>
+<span class="linenos">170</span>                    <span class="n">missile</span><span class="o">.</span><span class="n">counter</span> <span class="o">-=</span> <span class="mi">1</span>                    <span class="c1"># reduce missile life</span>
+<span class="linenos">171</span>                <span class="k">else</span><span class="p">:</span>
+<span class="linenos">172</span>
+<span class="linenos">173</span>                    <span class="n">missiles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">missile</span><span class="p">)</span>                <span class="c1"># remove exploded missile</span>
+<span class="linenos">174</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos">175</span>                <span class="n">missiles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">missile</span><span class="p">)</span>                    <span class="c1"># remove expired missile</span>
+<span class="linenos">176</span>
+<span class="linenos">177</span>    <span class="k">def</span> <span class="nf">update_ship</span><span class="p">():</span>
+<span class="linenos">178</span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">179</span><span class="sd">        Update ship velocity and limit to max_velocity</span>
+<span class="linenos">180</span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos">181</span>        <span class="c1"># apply drag to velocity of ship so it will eventually slow to a stop</span>
+<span class="linenos">182</span>        <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">-=</span> <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">*</span> <span class="n">ship_drag_frame</span>
+<span class="linenos">183</span>        <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">-=</span> <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">*</span> <span class="n">ship_drag_frame</span>
+<span class="linenos">184</span>
+<span class="linenos">185</span>        <span class="k">if</span> <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">&gt;</span> <span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span><span class="p">:</span>             <span class="c1"># Limit velocity to +/- max_velocity</span>
+<span class="linenos">186</span>            <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">=</span> <span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span>
+<span class="linenos">187</span>        <span class="k">elif</span> <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span><span class="p">:</span>
+<span class="linenos">188</span>            <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">=</span> <span class="o">-</span><span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span>
+<span class="linenos">189</span>
+<span class="linenos">190</span>        <span class="k">if</span> <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">&gt;</span> <span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span><span class="p">:</span>
+<span class="linenos">191</span>            <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">=</span> <span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span>
+<span class="linenos">192</span>        <span class="k">elif</span> <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span><span class="p">:</span>
+<span class="linenos">193</span>            <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">ship</span><span class="o">.</span><span class="n">max_velocity</span>
+<span class="linenos">194</span>
+<span class="linenos">195</span>        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>                      <span class="c1"># if ship is moving very slowly, stop it</span>
+<span class="linenos">196</span>            <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">197</span>
+<span class="linenos">198</span>        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+<span class="linenos">199</span>            <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">200</span>
+<span class="linenos">201</span>        <span class="n">ship</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>                                         <span class="c1"># move the ship and draw it</span>
+<span class="linenos">202</span>        <span class="n">ship</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+<span class="linenos">203</span>
+<span class="linenos">204</span>    <span class="k">def</span> <span class="nf">update_roids</span><span class="p">():</span>
+<span class="linenos">205</span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">206</span><span class="sd">        Update roid positions handle ship collisions</span>
+<span class="linenos">207</span><span class="sd">        Returns True if not hit, False if hit</span>
+<span class="linenos">208</span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos">209</span>        <span class="n">not_hit</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">210</span>
+<span class="linenos">211</span>        <span class="k">for</span> <span class="n">roid</span> <span class="ow">in</span> <span class="n">roids</span><span class="p">:</span>                                  <span class="c1"># for each roid, erase, move then draw</span>
+<span class="linenos">212</span>            <span class="n">roid</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+<span class="linenos">213</span>            <span class="n">roid</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+<span class="linenos">214</span>            <span class="n">roid</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+<span class="linenos">215</span>
+<span class="linenos">216</span>            <span class="k">if</span> <span class="n">roid</span><span class="o">.</span><span class="n">collision</span><span class="p">(</span><span class="n">ship</span><span class="p">):</span>                        <span class="c1"># check for roid/ship collision</span>
+<span class="linenos">217</span>                <span class="n">ship</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>                     <span class="c1"># erase ship</span>
+<span class="linenos">218</span>                <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">=</span> <span class="mf">0.0</span>                       <span class="c1"># stop movement</span>
+<span class="linenos">219</span>                <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">220</span>
+<span class="linenos">221</span>                <span class="n">not_hit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">222</span>
+<span class="linenos">223</span>        <span class="k">return</span> <span class="n">not_hit</span>
+<span class="linenos">224</span>
+<span class="linenos">225</span>    <span class="k">def</span> <span class="nf">explode_ship</span><span class="p">():</span>
+<span class="linenos">226</span><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="linenos">227</span><span class="sd">        Increment explosion step and alternate between drawing</span>
+<span class="linenos">228</span><span class="sd">        explosion poly and explosion poly rotated 45 degrees</span>
+<span class="linenos">229</span>
+<span class="linenos">230</span><span class="sd">        Returns True when explosion is finished</span>
+<span class="linenos">231</span><span class="sd">        &#39;&#39;&#39;</span>
+<span class="linenos">232</span>        <span class="n">ship</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos">233</span>        <span class="k">if</span> <span class="n">ship</span><span class="o">.</span><span class="n">counter</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">234</span>            <span class="n">tft</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">explosion_poly</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">,</span> <span class="mf">0.785398</span><span class="p">)</span>
+<span class="linenos">235</span>            <span class="n">tft</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">explosion_poly</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+<span class="linenos">236</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">237</span>            <span class="n">tft</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">explosion_poly</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="mf">0.785398</span><span class="p">)</span>
+<span class="linenos">238</span>            <span class="n">tft</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">explosion_poly</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+<span class="linenos">239</span>
+<span class="linenos">240</span>        <span class="k">if</span> <span class="n">ship</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span>
+<span class="linenos">241</span>            <span class="c1"># erase explosion, move ship to center and stop explosion</span>
+<span class="linenos">242</span>            <span class="n">tft</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">explosion_poly</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">ship</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+<span class="linenos">243</span>            <span class="c1"># move ship to center</span>
+<span class="linenos">244</span>            <span class="n">ship</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">width</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+<span class="linenos">245</span>            <span class="n">ship</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">height</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+<span class="linenos">246</span>            <span class="n">ship</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">247</span>            <span class="k">return</span> <span class="kc">True</span>
+<span class="linenos">248</span>
+<span class="linenos">249</span>        <span class="k">return</span> <span class="kc">False</span>
+<span class="linenos">250</span>
+<span class="linenos">251</span>    <span class="c1"># enable display and clear screen</span>
+<span class="linenos">252</span>    <span class="n">tft</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+<span class="linenos">253</span>    <span class="n">width</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span>
+<span class="linenos">254</span>    <span class="n">height</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">255</span>
+<span class="linenos">256</span>    <span class="n">rad_max</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>               <span class="c1"># 360&#39; in radians</span>
+<span class="linenos">257</span>
+<span class="linenos">258</span>    <span class="c1"># ship variables</span>
+<span class="linenos">259</span>    <span class="n">ship_alive</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">260</span>    <span class="n">ship_radius</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="linenos">261</span>    <span class="n">ship_rad_frame</span> <span class="o">=</span> <span class="n">rad_max</span> <span class="o">/</span> <span class="mi">16</span>       <span class="c1"># turning rate per frame</span>
+<span class="linenos">262</span>    <span class="n">ship_accel_frame</span> <span class="o">=</span> <span class="mf">0.6</span>              <span class="c1"># acceleration per frame</span>
+<span class="linenos">263</span>    <span class="n">ship_drag_frame</span> <span class="o">=</span> <span class="mf">0.015</span>             <span class="c1"># drag factor per frame</span>
+<span class="linenos">264</span>
+<span class="linenos">265</span>    <span class="n">ship_poly</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">)]</span>
+<span class="linenos">266</span>
+<span class="linenos">267</span>    <span class="n">ship</span> <span class="o">=</span> <span class="n">Poly</span><span class="p">(</span>
+<span class="linenos">268</span>        <span class="n">ship_poly</span><span class="p">,</span>
+<span class="linenos">269</span>        <span class="n">x</span><span class="o">=</span><span class="n">width</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<span class="linenos">270</span>        <span class="n">y</span><span class="o">=</span><span class="n">height</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<span class="linenos">271</span>        <span class="n">v_x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">272</span>        <span class="n">v_y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">273</span>        <span class="n">radius</span><span class="o">=</span><span class="n">ship_radius</span><span class="p">,</span>
+<span class="linenos">274</span>        <span class="n">spin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="linenos">275</span>
+<span class="linenos">276</span>    <span class="n">explosion_poly</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)]</span>
+<span class="linenos">277</span>
+<span class="linenos">278</span>    <span class="c1"># asteroid variables</span>
+<span class="linenos">279</span>    <span class="n">roid_radius</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="linenos">280</span>    <span class="n">roid_scale</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="linenos">281</span>
+<span class="linenos">282</span>    <span class="n">roid_poly</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">283</span>        <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="linenos">284</span>        <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<span class="linenos">285</span>        <span class="p">(</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">)]</span>
+<span class="linenos">286</span>    <span class="n">roids</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">287</span>
+<span class="linenos">288</span>    <span class="c1"># missile variables</span>
+<span class="linenos">289</span>    <span class="n">missile_velocity</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="linenos">290</span>    <span class="n">missile_max</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="linenos">291</span>    <span class="n">missile_life</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="linenos">292</span>    <span class="n">missile_rate</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="linenos">293</span>    <span class="n">missile_last</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="linenos">294</span>    <span class="n">missile_poly</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="linenos">295</span>    <span class="n">missiles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">296</span>
+<span class="linenos">297</span>    <span class="n">frame_time</span> <span class="o">=</span> <span class="mi">60</span>                         <span class="c1"># target frame rate delay</span>
+<span class="linenos">298</span>
+<span class="linenos">299</span>    <span class="c1"># game loop</span>
+<span class="linenos">300</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">301</span>        <span class="n">last_frame</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="linenos">302</span>
+<span class="linenos">303</span>        <span class="c1"># add roids if there are none</span>
+<span class="linenos">304</span>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">roids</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">305</span>            <span class="n">roids</span> <span class="o">=</span> <span class="p">[</span><span class="n">create_roid</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">create_roid</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="linenos">306</span>
+<span class="linenos">307</span>        <span class="n">update_missiles</span><span class="p">()</span>
+<span class="linenos">308</span>
+<span class="linenos">309</span>        <span class="c1"># Erase the ship</span>
+<span class="linenos">310</span>        <span class="n">ship</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+<span class="linenos">311</span>
+<span class="linenos">312</span>        <span class="k">if</span> <span class="n">ship_alive</span><span class="p">:</span>
+<span class="linenos">313</span>            <span class="c1"># if left button pressed</span>
+<span class="linenos">314</span>            <span class="k">if</span> <span class="n">buttons</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="n">buttons</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">315</span>                <span class="c1"># rotate ship counter clockwise</span>
+<span class="linenos">316</span>                <span class="n">ship</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="n">ship_rad_frame</span><span class="p">)</span>
+<span class="linenos">317</span>
+<span class="linenos">318</span>            <span class="c1"># if right button pressed</span>
+<span class="linenos">319</span>            <span class="k">if</span> <span class="n">buttons</span><span class="o">.</span><span class="n">right</span> <span class="ow">and</span> <span class="n">buttons</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">320</span>                 <span class="c1"># rotate ship clockwise</span>
+<span class="linenos">321</span>                <span class="n">ship</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">ship_rad_frame</span><span class="p">)</span>
+<span class="linenos">322</span>
+<span class="linenos">323</span>            <span class="c1"># if hyperspace button pressed move ship to random location</span>
+<span class="linenos">324</span>            <span class="k">if</span> <span class="n">buttons</span><span class="o">.</span><span class="n">hyper</span> <span class="ow">and</span> <span class="n">buttons</span><span class="o">.</span><span class="n">hyper</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">325</span>                <span class="n">diameter</span> <span class="o">=</span> <span class="n">ship</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="linenos">326</span>                <span class="n">ship</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">diameter</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="n">diameter</span><span class="p">)</span>
+<span class="linenos">327</span>                <span class="n">ship</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">diameter</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="n">diameter</span><span class="p">)</span>
+<span class="linenos">328</span>
+<span class="linenos">329</span>                <span class="c1"># stop movement</span>
+<span class="linenos">330</span>                <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">331</span>                <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">332</span>
+<span class="linenos">333</span>            <span class="c1"># if thrust button pressed</span>
+<span class="linenos">334</span>            <span class="k">if</span> <span class="n">buttons</span><span class="o">.</span><span class="n">thrust</span> <span class="ow">and</span> <span class="n">buttons</span><span class="o">.</span><span class="n">thrust</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">335</span>                <span class="c1"># accelerate ship in the direction the ship is facing</span>
+<span class="linenos">336</span>                <span class="n">d_y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ship</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">ship_accel_frame</span>
+<span class="linenos">337</span>                <span class="n">d_x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ship</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">ship_accel_frame</span>
+<span class="linenos">338</span>                <span class="n">ship</span><span class="o">.</span><span class="n">velocity_x</span> <span class="o">+=</span> <span class="n">d_x</span>
+<span class="linenos">339</span>                <span class="n">ship</span><span class="o">.</span><span class="n">velocity_y</span> <span class="o">+=</span> <span class="n">d_y</span>
+<span class="linenos">340</span>
+<span class="linenos">341</span>            <span class="c1"># if the fire button is pressed and less than missile_max active missles</span>
+<span class="linenos">342</span>            <span class="k">if</span> <span class="n">buttons</span><span class="o">.</span><span class="n">fire</span> <span class="ow">and</span> <span class="n">buttons</span><span class="o">.</span><span class="n">fire</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">missiles</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">missile_max</span><span class="p">:</span>
+<span class="linenos">343</span>
+<span class="linenos">344</span>                <span class="c1"># limit missiles firing to once every missile_rate ms</span>
+<span class="linenos">345</span>                <span class="k">if</span> <span class="n">last_frame</span> <span class="o">-</span> <span class="n">missile_last</span> <span class="o">&gt;</span> <span class="n">missile_rate</span><span class="p">:</span>
+<span class="linenos">346</span>
+<span class="linenos">347</span>                    <span class="c1"># fire missile in direction ship in facing</span>
+<span class="linenos">348</span>                    <span class="n">v_y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ship</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">missile_velocity</span>
+<span class="linenos">349</span>                    <span class="n">v_x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ship</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">missile_velocity</span>
+<span class="linenos">350</span>
+<span class="linenos">351</span>                    <span class="c1"># create new missile</span>
+<span class="linenos">352</span>                    <span class="n">missile</span> <span class="o">=</span> <span class="n">Poly</span><span class="p">(</span>
+<span class="linenos">353</span>                        <span class="n">missile_poly</span><span class="p">,</span>
+<span class="linenos">354</span>                        <span class="n">x</span><span class="o">=</span><span class="n">ship</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+<span class="linenos">355</span>                        <span class="n">y</span><span class="o">=</span><span class="n">ship</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+<span class="linenos">356</span>                        <span class="n">v_x</span><span class="o">=</span><span class="n">v_x</span><span class="p">,</span>
+<span class="linenos">357</span>                        <span class="n">v_y</span><span class="o">=</span><span class="n">v_y</span><span class="p">,</span>
+<span class="linenos">358</span>                        <span class="n">angle</span><span class="o">=</span><span class="n">ship</span><span class="o">.</span><span class="n">angle</span><span class="p">,</span>
+<span class="linenos">359</span>                        <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">360</span>                        <span class="n">spin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">361</span>                        <span class="n">counter</span><span class="o">=</span><span class="n">missile_life</span><span class="p">)</span>
+<span class="linenos">362</span>
+<span class="linenos">363</span>                    <span class="c1"># add to to missile list and save last fire time</span>
+<span class="linenos">364</span>                    <span class="n">missiles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">missile</span><span class="p">)</span>
+<span class="linenos">365</span>                    <span class="n">missile_last</span> <span class="o">=</span> <span class="n">last_frame</span>
+<span class="linenos">366</span>
+<span class="linenos">367</span>            <span class="n">update_ship</span><span class="p">()</span>
+<span class="linenos">368</span>
+<span class="linenos">369</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">370</span>            <span class="c1"># explosion animation until returns True</span>
+<span class="linenos">371</span>            <span class="n">ship_alive</span> <span class="o">=</span> <span class="n">explode_ship</span><span class="p">()</span>
+<span class="linenos">372</span>
+<span class="linenos">373</span>        <span class="c1"># update roids and return if ship was not hit</span>
+<span class="linenos">374</span>        <span class="n">not_hit</span> <span class="o">=</span> <span class="n">update_roids</span><span class="p">()</span>
+<span class="linenos">375</span>        <span class="k">if</span> <span class="n">ship_alive</span><span class="p">:</span>
+<span class="linenos">376</span>            <span class="n">ship_alive</span> <span class="o">=</span> <span class="n">not_hit</span>
+<span class="linenos">377</span>
+<span class="linenos">378</span>        <span class="c1"># wait until frame time expires</span>
+<span class="linenos">379</span>        <span class="k">while</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span> <span class="o">-</span> <span class="n">last_frame</span> <span class="o">&lt;</span> <span class="n">frame_time</span><span class="p">:</span>
+<span class="linenos">380</span>            <span class="k">pass</span>
+<span class="linenos">381</span>
+<span class="linenos">382</span>
+<span class="linenos">383</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="proverbs.html" class="btn btn-neutral float-left" title="proverbs.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rotations.html" class="btn btn-neutral float-right" title="rotations.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

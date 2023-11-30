@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="st7789py.html">st7789py Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="st7789py.html#st7789py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="st7789py.html#st7789py.ST7789"><code class="docutils literal notranslate"><span class="pre">ST7789</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.init"><code class="docutils literal notranslate"><span class="pre">ST7789.init()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.hard_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.hard_reset()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.soft_reset"><code class="docutils literal notranslate"><span class="pre">ST7789.soft_reset()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.sleep_mode"><code class="docutils literal notranslate"><span class="pre">ST7789.sleep_mode()</span></code></a></li>
@@ -69,66 +70,160 @@
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.vscsad"><code class="docutils literal notranslate"><span class="pre">ST7789.vscsad()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.text"><code class="docutils literal notranslate"><span class="pre">ST7789.text()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.bitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.pbitmap"><code class="docutils literal notranslate"><span class="pre">ST7789.pbitmap()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.write"><code class="docutils literal notranslate"><span class="pre">ST7789.write()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.write_width"><code class="docutils literal notranslate"><span class="pre">ST7789.write_width()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="st7789py.html#st7789py.ST7789.polygon"><code class="docutils literal notranslate"><span class="pre">ST7789.polygon()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples_atoms3.html">M5STACK ATOM-S3 Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-feathers-py">atom_s3/feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-rotations-py">atom_s3/rotations.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_atoms3.html#atom-s3-scroll-py">atom_s3/scroll.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#configuration-modules">Configuration modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configs/atom_s3.html">M5STACK AtomS3 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/atom_s3.html#tft-configs-atom-s3-tft-config-py">tft_configs/atom_s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/atom_s3.html#tft-configs-atom-s3-tft-buttons-py">tft_configs/atom_s3/tft_buttons.py</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="examples_generic.html">Generic ESP32 Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-lines-py">esp32_320x240/lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-hello-py">esp32_320x240/hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-feathers-py">esp32_320x240/feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-fonts-py">esp32_320x240/fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-scroll-py">esp32_320x240/scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_generic.html#esp32-320x240-toasters-py">esp32_320x240/toasters.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configs/esp32_320x240.html">Generic ESP32 320x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-config-py">tft_configs/esp32_320x240/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/esp32_320x240.html#tft-configs-esp32-320x240-tft-buttons-py">tft_configs/esp32_320x240/tft_buttons.py</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="examples_tdisplay.html">TTGO T-Display Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-lines-py">ttgo_tdisplay/lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-hello-py">ttgo_tdisplay/hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-feathers-py">ttgo_tdisplay/feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-fonts-py">ttgo_tdisplay/fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-scroll-py">ttgo_tdisplay/scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-toasters-py">ttgo_tdisplay/toasters.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-chango-py">ttgo_tdisplay/chango.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay.html#ttgo-tdisplay-noto-fonts-py">ttgo_tdisplay/noto_fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configs/m5stack_core.html">M5STACK CORE 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/m5stack_core.html#tft-configs-m5stack-core-tft-config-py">tft_configs/m5stack_core/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/m5stack_core.html#tft-configs-m5stack-core-tft-buttons-py">tft_configs/m5stack_core/tft_buttons.py</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="examples_tdisplay_rp2040.html">TTGO T-Display RP2040 Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-lines-py">ttgo_tdisplay_rp2040/lines.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-hello-py">ttgo_tdisplay_rp2040/hello.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-feathers-py">ttgo_tdisplay_rp2040/feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-fonts-py">ttgo_tdisplay_rp2040/fonts.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-scroll-py">ttgo_tdisplay_rp2040/scroll.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-toasters-py">ttgo_tdisplay_rp2040/toasters.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-chango-py">ttgo_tdisplay_rp2040/chango.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_tdisplay_rp2040.html#ttgo-tdisplay-rp2040-noto-fonts-py">ttgo_tdisplay_rp2040/noto_fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configs/m5stack_core2.html">M5STACK CORE2 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-config-py">tft_configs/m5stack_core2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/m5stack_core2.html#tft-configs-m5stack-core2-tft-buttons-py">tft_configs/m5stack_core2/tft_buttons.py</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="examples_pi_pico.html">Raspberry Pi Pico Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples_pi_pico.html#rp-2040-waveshare-13-feathers-py">rp_2040/waveshare_13/feathers.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples_pi_pico.html#rp-2040-waveshare-114-feathers-py">rp_2040/waveshare_114/feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configs/m5stack_core3.html">M5STACK CoreS3 320x240 (ILI9342)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-config-py">tft_configs/m5stack_core3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/m5stack_core3.html#tft-configs-m5stack-core3-tft-buttons-py">tft_configs/m5stack_core3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/rp2040_touch_lcd_128.html">RP2040-Touch-LCD-1.28 240x240 (GC9A01)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-config-py">tft_configs/rp2040_touch_lcd_128/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/rp2040_touch_lcd_128.html#tft-configs-rp2040-touch-lcd-128-tft-buttons-py">tft_configs/rp2040_touch_lcd_128/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/t-dongle-s3.html">LilyGo T-Dongle-S3 80x160 (ST7735)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-config-py">tft_configs/t-dongle-s3/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/t-dongle-s3.html#tft-configs-t-dongle-s3-tft-buttons-py">tft_configs/t-dongle-s3/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/t-embed.html">LilyGo T-embed 170x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/t-embed.html#tft-configs-t-embed-tft-config-py">tft_configs/t-embed/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/t-embed.html#tft-configs-t-embed-tft-buttons-py">tft_configs/t-embed/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/t_qt_pro.html">LilyGo T-QT Pro 128x128 (GC9107)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-config-py">tft_configs/t_qt_pro/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/t_qt_pro.html#tft-configs-t-qt-pro-tft-buttons-py">tft_configs/t_qt_pro/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/ttgo_tdisplay.html">LilyGo T-DISPLAY 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-config-py">tft_configs/ttgo_tdisplay/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/ttgo_tdisplay.html#tft-configs-ttgo-tdisplay-tft-buttons-py">tft_configs/ttgo_tdisplay/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/ttgo_tdisplay_rp2040.html">LilyGo T-DISPLAY RP2040 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-config-py">tft_configs/ttgo_tdisplay_rp2040/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/ttgo_tdisplay_rp2040.html#tft-configs-ttgo-tdisplay-rp2040-tft-buttons-py">tft_configs/ttgo_tdisplay_rp2040/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/waveshare_114.html">Waveshare Pico LCD 1.14 135x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/waveshare_114.html#tft-configs-waveshare-114-tft-config-py">tft_configs/waveshare_114/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/waveshare_114.html#tft-configs-waveshare-114-tft-buttons-py">tft_configs/waveshare_114/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/waveshare_13.html">Waveshare Pico LCD 1.3 240x240</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/waveshare_13.html#tft-configs-waveshare-13-tft-config-py">tft_configs/waveshare_13/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/waveshare_13.html#tft-configs-waveshare-13-tft-buttons-py">tft_configs/waveshare_13/tft_buttons.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configs/waveshare_2.html">Waveshare Pico LCD 2 240x320</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configs/waveshare_2.html#tft-configs-waveshare-2-tft-config-py">tft_configs/waveshare_2/tft_config.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configs/waveshare_2.html#tft-configs-waveshare-2-tft-buttons-py">tft_configs/waveshare_2/tft_buttons.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/alien.html">alien.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/boxlines.html">boxlines.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/chango.html">chango.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/color_test.html">color_test.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/colorbars.html">colorbars.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/feathers.html">feathers.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/fonts.html">fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/hello.html">hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/noto_fonts.html">noto_fonts.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/proverbs.html">proverbs.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/roids.html">roids.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/rotations.html">rotations.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/scroll.html">scroll.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/tiny_hello.html">tiny_hello.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/tiny_toasters.html">tiny_toasters.py</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fonts.html">Fonts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fonts.html#rom-font-conversion">Rom Font Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fonts.html#id1">16x16 Rom Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#bitmap-fonts">Bitmap Fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fonts.html#bitmap-font-conversion">Bitmap Font Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fonts.html#bitmap-font-samples">Bitmap Font Samples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fonts.html#id2">16x16 Rom Fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#true-type-fonts">True Type fonts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utilities/create_png_examples.html">create_png_examples.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utilities/create_png_examples.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities/create_png_examples.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities/image_converter.html">image_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utilities/image_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities/image_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities/make_colorbars_bitmap.html">make_colorbars_bitmap.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utilities/make_colorbars_bitmap.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities/make_colorbars_bitmap.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities/sprites_converter.html">sprites_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utilities/sprites_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities/sprites_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities/text_font_converter.html">text_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utilities/text_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities/text_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities/write_font_converter.html">write_font_converter.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utilities/write_font_converter.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities/write_font_converter.html#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
         </div>
