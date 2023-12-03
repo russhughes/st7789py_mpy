@@ -7,3 +7,4 @@ __pycache__
 *.P
 .history
 *.mpy
+sphinx/source/_build
