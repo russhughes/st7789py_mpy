@@ -75,7 +75,7 @@ def convert_to_bitmap(image_file, bits_requested):
     palette = img.getpalette()
     palette_colors = len(palette) // 3
     actual_colors = min(palette_colors, colors_requested)
-    bits_required = palette_colors.bit_length()
+    bits_required = actual_colors.bit_length()
     if bits_required < bits_requested:
         print(
             f"\nNOTE: Quantization reduced colors to {palette_colors} from the {bits_requested} "
@@ -103,7 +103,7 @@ def convert_to_bitmap(image_file, bits_requested):
     print(f"WIDTH = {img.width}")
     print(f"COLORS = {actual_colors}")
     print(f"BITS = {bitmap_bits}")
-    print(f"BPP = {bits_requested}")
+    print(f"BPP = {bits_required}")
     print("PALETTE = [", end="")
 
     for i, rgb in enumerate(colors):
