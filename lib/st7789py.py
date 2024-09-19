@@ -175,6 +175,13 @@ _DISPLAY_128x128 = (
     (0xc0, 128, 128, 2, 1, False),
     (0xa0, 128, 128, 1, 2, False))
 
+_DISPLAY_170x320 = (
+    (0x00, 170, 320, 0, 0, False), 
+    (0x60, 320, 170, 0, 0, False), 
+    (0xc0, 170, 320, 35, 0, False), # Only checked on this
+    (0xa0, 320, 170, 0, 0, False)   
+)
+
 # index values into rotation table
 _WIDTH = const(0)
 _HEIGHT = const(1)
@@ -187,7 +194,8 @@ _SUPPORTED_DISPLAYS = (
     (240, 320, _DISPLAY_240x320),
     (240, 240, _DISPLAY_240x240),
     (135, 240, _DISPLAY_135x240),
-    (128, 128, _DISPLAY_128x128))
+    (128, 128, _DISPLAY_128x128),
+    (170, 320, _DISPLAY_170x320))
 
 # init tuple format (b'command', b'data', delay_ms)
 _ST7789_INIT_CMDS = (
