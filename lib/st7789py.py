@@ -178,8 +178,8 @@ _DISPLAY_128x128 = (
 _DISPLAY_240x280 = (
     (0x00, 240, 280,  0, 20, False),
     (0x60, 280, 240, 20,  0, False),
-    (0xc0, 240, 280,  0,  20, False),
-    (0xa0, 280, 240,  20,  0, False))
+    (0xc0, 240, 280,  0, 20, False),
+    (0xa0, 280, 240, 20,  0, False))
 
 # index values into rotation table
 _WIDTH = const(0)
