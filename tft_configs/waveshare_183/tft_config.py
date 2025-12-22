@@ -34,4 +34,5 @@ def config(rotation=0):
         dc=Pin(8, Pin.OUT),
         backlight=Pin(13, Pin.OUT),
         rotation=rotation,
+        color_order=st7789.RGB
     )
