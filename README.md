@@ -39,4 +39,5 @@ See the examples directory for example programs that run on:
   - RP2040-Touch-LCD-1.28 240x240 (GC9A01)
   - Waveshare Pico LCD 1.14 135x240
   - Waveshare Pico LCD 1.3 240x240
+  - Waveshare Pico LCD 1.83 240x280
   - Waveshare Pico LCD 2 240x320
